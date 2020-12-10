@@ -42,8 +42,8 @@ path = 'R:\\radio\\2002-20yy_Callisto\\2020\\10\\07'
 ###################################################
 
 def get_db_dataframe():
-    engine = create_engine("mysql+pymysql://" + 'root' + ":" 
-                           + 'delberin1992' + "@" + 'localhost' 
+    engine = create_engine("mysql+pymysql://" + 'root' + ":"
+                           + 'delberin1992' + "@" + 'localhost'
                            + "/" + 'ecallisto_DB')
 
     # from sql to DataFrame (pandas)
@@ -56,18 +56,37 @@ def get_db_dataframe():
 
     ecallisto_data_frame = pd.DataFrame(SQL_Query)
 
-    return ecallisto_data_frame 
+    return ecallisto_data_frame
+
 
 ###################################################
 
+def get_db_from_sql():
+    """
+
+    :rtype: object
+    """
+    engine = create_engine("mysql+pymysql://" + 'root' + ":"
+                           + 'delberin1992' + "@" + 'localhost'
+                           + "/" + 'ecallisto_DB')
+
+    # from sql to DataFrame (pandas)
+
+    SQL_Query = pd.read_sql_query('''SELECT * 
+                                  FROM e_callisto;''', engine)
+
+    ecallisto_db = pd.DataFrame(SQL_Query)
+
+    return ecallisto_db
+
+
+###################################################
 def get_instrument_name():
-    """Return a List of Instrument's names from ecallisto_sql_query table"""
-    
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
     list_of_names = set()
 
-    for name in ecallisto_data_frame['Instrument_name']:
+    for name in ecallisto_db['Instrument_name']:
         list_of_names.add(name)
 
     return list_of_names
@@ -76,12 +95,11 @@ def get_instrument_name():
 ###################################################
 
 def get_file_name():
-    """Return a List of File's names from ecallisto_sql_query table """   
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
     list_of_file_names = set()
 
-    for name in ecallisto_data_frame['File_name']:
+    for name in ecallisto_db['File_name']:
         list_of_file_names.add(name)
 
     return list_of_file_names
@@ -91,10 +109,9 @@ def get_file_name():
 
 
 def get_callisto_spec():
-    """Return a spectrogram from ecallisto_sql_query table"""   
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
-    for file in ecallisto_data_frame['File_name']:
+    for file in ecallisto_db['File_name']:
         full_path = os.path.join(path, file)
         spec = CallistoSpectrogram.read(full_path)
 
@@ -109,7 +126,7 @@ def get_callisto_spec():
 def avg_of_std():
     std_of_instrument = {}
 
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
     list_of_names = get_instrument_name()
 
@@ -117,7 +134,7 @@ def avg_of_std():
 
         file_of_name = []
 
-        for index, row in ecallisto_data_frame.iterrows():
+        for index, row in ecallisto_db.iterrows():
 
             if row["Instrument_name"] == instr_name:
                 file_of_name.append(row["File_name"])
@@ -142,9 +159,9 @@ def avg_of_std():
 ###################################################
 
 def get_single_array_hist(file_name):
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
-    for file in ecallisto_data_frame['File_name']:
+    for file in ecallisto_db['File_name']:
 
         if file == file_name:
             full_path = os.path.join(path, file)
@@ -161,11 +178,11 @@ def get_single_array_hist(file_name):
 
 
 def get_hist_same_instrument(instrument_name):
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
     file_of_name = []
 
-    for index, row in ecallisto_data_frame.iterrows():
+    for index, row in ecallisto_db.iterrows():
 
         if row["Instrument_name"] == instrument_name:
             file_of_name.append(row["File_name"])
@@ -189,9 +206,9 @@ def get_hist_same_instrument(instrument_name):
 def get_all_arrays_hist():
     list_of_hist = []
 
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
-    for file in ecallisto_data_frame['File_name']:
+    for file in ecallisto_db['File_name']:
         full_path = os.path.join(path, file)
         spec = CallistoSpectrogram.read(full_path)
 
@@ -210,9 +227,9 @@ def get_all_arrays_hist():
 
 
 def get_single_delta(file_name):
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
-    for file in ecallisto_data_frame['File_name']:
+    for file in ecallisto_db['File_name']:
 
         if file == file_name:
             full_path = os.path.join(path, file)
@@ -234,14 +251,13 @@ def get_single_delta_spec(spec):
     return c_delta
 
 
-################################################### 
+###################################################
 
 def get_list_of_specs():
-    ecallisto_data_frame = get_db_dataframe()
-    
+    ecallisto_db = get_db_from_sql()
     list_of_specs = []
 
-    for file in ecallisto_data_frame['File_name']:
+    for file in ecallisto_db['File_name']:
         full_path = os.path.join(path, file)
         spec = CallistoSpectrogram.read(full_path)
         list_of_specs.append(spec)
@@ -249,7 +265,7 @@ def get_list_of_specs():
     return list_of_specs
 
 
-################################################### 
+###################################################
 
 
 def get_smallest_delta(list_of_specs):
@@ -269,10 +285,10 @@ def get_smallest_delta(list_of_specs):
     return min_delta
 
 
-################################################### 
+###################################################
 '''
 def get_single_array_interp(file_name):
-    ecallisto_data_frame  = get_db_dataframe()
+    ecallisto_data_frame = get_db_dataframe()
 
     for file in ecallisto_data_frame['File_name']:
 
@@ -302,7 +318,7 @@ def get_single_array_interp(file_name):
 '''
 
 def get_all_array_interp(file_name):
-    ecallisto_data_frame  = get_db_dataframe()
+    ecallisto_data_frame = get_db_dataframe()
 
     for file in ecallisto_data_frame['File_name']:
 
@@ -325,146 +341,138 @@ def get_all_array_interp(file_name):
     return None
 '''
 
-################################################### 
 
-def get_list_of_data_std():    
-    ecallisto_data_frame = get_db_dataframe()
+###################################################
 
-    list_of_std =[] 
+def get_list_of_data_std():
+    ecallisto_db = get_db_from_sql()
 
-    for file in ecallisto_data_frame['File_name']:
+    list_of_std = []
+
+    for file in ecallisto_db['File_name']:
         full_path = os.path.join(path, file)
         spec = CallistoSpectrogram.read(full_path)
-        
-        bgs,_,_,cps = spec.subtract_bg_sliding_window(window_width=200, affected_width=1,
-                                                      amount=0.05, change_points = True)
-       
+
+        bgs, _, _, cps = spec.subtract_bg_sliding_window(window_width=200, affected_width=1,
+                                                         amount=0.05, change_points=True)
+
         array_std = bgs.data.std()
-       
-        rfi_rm = bgs.remove_single_freq_rfi(threshold = 8 * array_std, row_window_height=3)
-        
-        file_name_save = str(f'Saved_Spec/joined_{rfi_rm.filename}.fit.gz')
-        file_path = rfi_rm.save(file_name_save)
-        
-                
+
+        rfi_rm = bgs.remove_single_freq_rfi(threshold=8 * array_std, row_window_height=3)
+
         list_of_std.append(rfi_rm.data.std())
-        
 
     return list_of_std
 
-################################################### 
+
+###################################################
 
 def get_single_data_std(file_name):
-    ecallisto_data_frame = get_db_dataframe()
+    ecallisto_db = get_db_from_sql()
 
-    for file in ecallisto_data_frame['File_name']:
+    for file in ecallisto_db['File_name']:
         if file == file_name:
-            
             full_path = os.path.join(path, file)
             spec = CallistoSpectrogram.read(full_path)
 
-            bgs, _, _, cps = spec.subtract_bg_sliding_window(window_width=200, affected_width=1, 
+            bgs, _, _, cps = spec.subtract_bg_sliding_window(window_width=200, affected_width=1,
                                                              amount=0.05, change_points=True)
             array_std = bgs.data.std()
 
             rfi_rm = bgs.remove_single_freq_rfi(threshold=8 * array_std, row_window_height=3)
 
-            rfi_rm_std = rfi_rm.data.std()       
+            rfi_rm_std = rfi_rm.data.std()
 
     return rfi_rm_std
 
 
-################################################### 
+###################################################
 
-def store_std_to_db():    
+def store_std_in_db():
     engine = create_engine(
         "mysql+pymysql://" + 'root' + ":" + 'delberin1992' + "@" + 'localhost' + "/" + 'ecallisto_DB')
 
     list_of_std = get_list_of_data_std()
 
-    df_std = pd.DataFrame(list_of_std, columns=['STD'])
-    
-    ecallisto_data_frame = get_db_dataframe()
-    
-    ecallisto_data_frame.update(df_std)
-    
-    ecallisto_data_frame.to_sql('e_callisto_df', con = engine,if_exists = 'append', chunksize = 5000, index=False) 
-    
-    
-    return ecallisto_data_frame
+    dataframe_std = pd.DataFrame(list_of_std, columns=['STD'])
 
-################################################### 
+    ecallisto_db = get_db_from_sql()
+
+    ecallisto_db.update(dataframe_std)
+
+    ecallisto_db.to_sql('ecallisto', con=engine, if_exists='append', chunksize=5000, index=False)
+
+    return ecallisto_db
+
+
+###################################################
 
 def get_group_by_station():
     engine = create_engine(
-                            "mysql+pymysql://" + 'root' + ":" + 'delberin1992' 
-                            + "@" + 'localhost' + "/" + 'ecallisto_DB')
+        "mysql+pymysql://" + 'root' + ":" + 'delberin1992'
+        + "@" + 'localhost' + "/" + 'ecallisto_DB')
     SQL_Query = pd.read_sql_query('''SELECT *
-                                    FROM e_callisto_df
+                                    FROM ecallisto_db
                                     GROUP BY File_name
                                     ORDER BY Instrument_name
                                     ;
                                     ''', engine)
-    
+
     grouped_data_frame = pd.DataFrame(SQL_Query)
-    
-    
+
     return grouped_data_frame
 
-################################################### 
 
+###################################################
 
-def order_by_station():    
-    engine = create_engine("mysql+pymysql://" + 'root' + ":" 
+def get_ecallisto_db():
+    engine = create_engine("mysql+pymysql://" + 'root' + ":"
                            + 'delberin1992' + "@" + 'localhost'
                            + "/" + 'ecallisto_DB')
-    
-    SQL_Query = pd.read_sql_query('''SELECT Instrument_name,AVG(STD) 
-                                    FROM e_callisto_df
+
+    SQL_Query = pd.read_sql_query('''SELECT * 
+                                  FROM ecallisto_db;''', engine)
+
+    ecallisto_db = pd.DataFrame(SQL_Query)
+
+    return ecallisto_db
+
+
+###################################################
+
+def order_by_std_avg():
+    engine = create_engine("mysql+pymysql://" + 'root' + ":"
+                           + 'delberin1992' + "@" + 'localhost'
+                           + "/" + 'ecallisto_DB')
+
+    SQL_Query = pd.read_sql_query('''SELECT Instrument_name ,AVG(STD) 
+                                    FROM ecallisto_db
                                     GROUP BY Instrument_name
-                                    ORDER BY STD ASC;
+                                    ORDER BY AVG(STD) ASC;
                                     ''', engine)
-    
-    ordered_data_frame =  pd.DataFrame(SQL_Query)
-    
-    
+
+    ordered_data_frame = pd.DataFrame(SQL_Query)
+
     return ordered_data_frame
 
-################################################### 
 
-def order_by_station_2(): 
-    engine = create_engine("mysql+pymysql://" + 'root' + ":" 
-                           + 'delberin1992' + "@" + 'localhost'
-                           + "/" + 'ecallisto_DB')
-    
-    SQL_Query = pd.read_sql_query('''SELECT *,AVG(STD) 
-                                    FROM e_callisto_df
-                                    GROUP BY Instrument_name
-                                    ORDER BY STD ASC;
-                                    ''', engine)
-    
-    ordered_data_frame_2 = pd.DataFrame(SQL_Query)
-    
-    
-    return ordered_data_frame_2
-
-################################################### 
+###################################################
 
 
-def saved_specs():    
+def saved_specs():
     ecallisto_data_frame = get_db_dataframe()
 
     for file in ecallisto_data_frame['File_name']:
         full_path = os.path.join(path, file)
         spec = CallistoSpectrogram.read(full_path)
-        
-        bgs,_,_,cps = spec.subtract_bg_sliding_window(window_width=200, affected_width=1,
-                                                      amount=0.05, change_points = True)
-       
+
+        bgs, _, _, cps = spec.subtract_bg_sliding_window(window_width=200, affected_width=1,
+                                                         amount=0.05, change_points=True)
+
         array_std = bgs.data.std()
-       
-        rfi_rm = bgs.remove_single_freq_rfi(threshold = 8 * array_std, row_window_height=3)
+
+        rfi_rm = bgs.remove_single_freq_rfi(threshold=8 * array_std, row_window_height=3)
         file_name_save = str(f'Saved_Spec/{rfi_rm.filename}.fit.gz')
         file_path = rfi_rm.save(file_name_save)
-        
-    return None
+
+    return file_path
