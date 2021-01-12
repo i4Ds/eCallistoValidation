@@ -476,3 +476,80 @@ def saved_specs():
         file_path = rfi_rm.save(file_name_save)
 
     return file_path
+
+################################################### 
+
+def get_single_interp():
+    
+    spec = CallistoSpectrogram.read("Spec//ALASKA_20200101_000000_59.fit")
+    array = spec.data.data
+    
+    y = array[100]
+    x2 = np.arange(0, 7200, 2)
+
+    array_interp = np.interp(x3, x2, y)
+
+
+    return plt.plot(x3, array_interp)
+
+################################################### 
+
+def get_array_interp():
+
+    spec = CallistoSpectrogram.read("Spec//ALASKA_20200101_000000_59.fit")
+    array_data = spec.data.data
+
+    interpolated_array = np.empty([200, 7200])
+    
+    for index, array in enumerate(array_data):
+
+
+        x2 = np.arange(0, 7200, 2)    
+        x3 = np.arange(0, 7200)
+        
+        array_interp = np.interp(x3, x2, array)
+        
+        interpolated_array[index,:] = array_interp
+        
+        
+    return interpolated_array
+
+
+################################################### 
+
+
+def get_array_original(file_name):
+    ecallisto_db = get_db_from_sql()
+
+    for file in ecallisto_db['File_name']:
+
+        if file == file_name:
+            full_path = os.path.join(path, file)
+            spec = CallistoSpectrogram.read(full_path)
+
+            array_data = spec.data.data
+
+            return array_data
+
+    return None
+
+################################################### 
+
+
+def get_interpolated_array():
+    array_original = get_array_original("HUMAIN_20201007_081500_59.fit.gz")
+ 
+    interpolated_array = np.empty([200, 7200])
+    
+    for index, array in enumerate(array_original):
+
+
+        x2 = np.arange(0, 7200, 2)    
+        x3 = np.arange(0, 7200)
+        
+        array_interp = np.interp(x3, x2, array)
+        
+        interpolated_array[index,:] = array_interp 
+
+    return interpolated_array
+
