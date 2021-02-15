@@ -535,21 +535,32 @@ def get_array_original(file_name):
 
 ################################################### 
 
-
-def get_interpolated_array():
-    array_original = get_array_original("HUMAIN_20201007_081500_59.fit.gz")
- 
-    interpolated_array = np.empty([200, 7200])
+def get_interpolated_array(original_array, factor):
     
-    for index, array in enumerate(array_original):
+    if factor == 1 : return original_array
+    
+    interpolated_array = np.empty([original_array.shape[0], int(original_array.shape[1]*factor)])
+    
+    for index, array in enumerate(original_array):
 
+        if factor > 1 or factor < 1:
+            
+            x = np.arange(0, original_array.shape[1]*factor)
+            
+            x2 = np.arange(0, original_array.shape[1]*factor ,factor)
+           
+            array_interp = np.interp(x , x2 , array) 
 
-        x2 = np.arange(0, 7200, 2)    
-        x3 = np.arange(0, 7200)
-        
-        array_interp = np.interp(x3, x2, array)
-        
-        interpolated_array[index,:] = array_interp 
+            interpolated_array[index,:] = array_interp 
+            
 
     return interpolated_array
+
+
+# original_array = get_array_original("HUMAIN_20201007_083000_59.fit.gz")
+# interpolated_array = get_interpolated_array(original_array, 1)
+
+# plt.imshow(interpolated_array, aspect = "auto")
+
+################################################### 
 
