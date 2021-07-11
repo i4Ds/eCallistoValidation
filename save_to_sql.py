@@ -56,7 +56,8 @@ def __to_timestamp(date_string, time_string):
                                          minutes = int(sixty_minutes),
                                          seconds = int(sixty_seconds))
                 
-                
+
+                return ts
                 
                 
                 
@@ -100,4 +101,4 @@ for root, dirs, files in os.walk(path):
                        
             df = df + 1
                 
-                return ts  
+                
