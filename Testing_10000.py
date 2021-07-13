@@ -8,7 +8,6 @@ import numpy as np
 import time
 import timeit
 import skimage.transform
-import cv2
 import psycopg2
 from PIL import Image, ImageDraw, ImageFont
 import pandas as pd
