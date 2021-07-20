@@ -67,6 +67,7 @@ for file in cursor.fetchall():
 #         print("Table After updating record ")
 
      
-    except TypeError:
-        pass
-        print(file[1])
+     except Exception as err:
+            exception_type = type(err).__name__
+            print(exception_type, file[1])
+        
