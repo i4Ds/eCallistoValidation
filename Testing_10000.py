@@ -75,7 +75,6 @@ my_colormap = matplotlib.colors.LinearSegmentedColormap.from_list("myColorMap", 
 with PdfPages('Images.pdf') as pdf:
     
     for file in cursor.fetchall():
-       # full_path = os.path.join(path, file[2]) # 2 is the index of file_name in the cursor
         spec = CallistoSpectrogram.read(file[2])
         print(file[2])
         fig1, axs1 = plt.subplots(1, 4, figsize=(25,5))
