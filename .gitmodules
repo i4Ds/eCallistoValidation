@@ -1,3 +1,4 @@
-[submodule "radio"]
-	path = radio
+
+[submodule "radiospectra"]
+	path = radiospectra
 	url = https://github.com/i4Ds/radiospectra
