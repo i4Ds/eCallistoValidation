@@ -46,9 +46,8 @@ print("Table Before updating record ")
 cursor.execute("""SELECT * from ecallisto WHERE std is null ORDER BY id""")
 
 for file in cursor.fetchall():
-    full_path = os.path.join(path, file[1])
     try:
-        spec = CallistoSpectrogram.read(full_path)
+        spec = CallistoSpectrogram.read(file[1])
 
         spec2 = spec.subtract_bg("subtract_bg_sliding_window", window_width=800, affected_width=1,
                                  amount=0.05, change_points=True)
