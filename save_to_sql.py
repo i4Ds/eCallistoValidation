@@ -69,7 +69,9 @@ for root, dirs, files in os.walk(path):
             full_path = os.path.join(root, name)
             
             hdulist = astropy.io.fits.open(full_path)
-            
+            split_path = full_path.split("Callisto/")
+
+
             instrument_name = hdulist[0].header['INSTRUME'] 
             date_obs = hdulist[0].header['DATE-OBS'] 
             time_obs = hdulist[0].header['TIME-OBS']
@@ -83,7 +85,7 @@ for root, dirs, files in os.walk(path):
             # creating dataframe in pandas
             
             data = {
-                'path': [full_path],
+                'path': [split_path],
                 'file_name': [name],
                 'instrument_name': [instrument_name],
                 'start_time': [start_time],
