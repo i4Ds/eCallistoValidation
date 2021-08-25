@@ -8,9 +8,9 @@ import numpy as np
 import time
 
 import skimage.transform
-import cv2
+
 import psycopg2
-from PIL import Image, ImageDraw, ImageFont
+
 import pandas as pd
 import pandas.io.sql as psql
 from sqlalchemy import create_engine
@@ -31,10 +31,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 import warnings
 warnings.filterwarnings("ignore")
 
-path = 'R:\\radio\\2002-20yy_Callisto\\2017\\09\\08'
-
-
-
+path = 'R:\\radio\\2002-20yy_Callisto\\2017\\09'
 
 connection = psycopg2.connect(user="postgres",
                               password="ecallistohackorange",
@@ -46,12 +43,10 @@ cursor = connection.cursor()
 
 print("Table Before updating record ")
 
-cursor.execute("""SELECT * from ecallisto_data WHERE std is null ORDER BY id""")
+cursor.execute("""SELECT * from ecallisto WHERE std is null ORDER BY id""")
 
 for file in cursor.fetchall():
-    
-    full_path = os.path.join(path, file[1]) # 1 is the index of file_name in the cursor
- 
+    full_path = os.path.join(path, file[1])
     try:
         spec = CallistoSpectrogram.read(full_path)
 
@@ -64,10 +59,8 @@ for file in cursor.fetchall():
         cursor.execute(sql_update_query)
 
         connection.commit()
-#         print("Table After updating record ")
 
-     
-     except Exception as err:
-            exception_type = type(err).__name__
-            print(exception_type, file[1])
-        
+    except Exception as err:
+        exception_type = type(err).__name__
+        print(exception_type, file[1])
+
