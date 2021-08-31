@@ -7,9 +7,9 @@ import matplotlib
 import numpy as np
 import time
 import timeit
-import skimage.transform
+
 import psycopg2
-from PIL import Image, ImageDraw, ImageFont
+
 import pandas as pd
 import pandas.io.sql as psql
 from sqlalchemy import create_engine
@@ -19,13 +19,12 @@ from eCallistoProject import plot_config
 
 module_path = os.path.abspath(os.path.join('radiospectra'))
 if module_path not in sys.path:
-    sys.path.append(module_path)
-    
+    sys.path.append(module_path)  
 import radiospectra
-
 from radiospectra.sources import CallistoSpectrogram
 
 from matplotlib.backends.backend_pdf import PdfPages, FigureCanvasPdf, PdfFile
+import config as test_config
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -50,40 +49,41 @@ def move_axes(fig, ax_source, ax_target):
     plt.close(old_fig)
 
 # Connection between Jupyter notebook and Postgres
-connection = psycopg2.connect(user="postgres",
-                              password="ecallistohackorange",
-                              host="localhost",
-                              port="5432",
-                              database="validation")
+connection = psycopg2.connect(host= test_config.DB_HOST,
+                              database= test_config.DB_DATABASE,
+                              user= test_config.DB_USER,
+                              port= test_config.DB_PORT, 
+                              password=test_config.DB_PASSWORD)
 
 cursor = connection.cursor()
 
+# Choosing 10 images for each Station
 cursor.execute("""select * from (
-                                 select ROW_NUMBER() OVER (partition by instrument_name order by id)
-                                 as row_num, ecallisto.* FROM ecallisto
+                                 select ROW_NUMBER() OVER (partition by path order by id)
+                                 as row_num, data.* FROM data
                                  ) t
                                  where row_num <=10
-                                 order by instrument_name""")
+                                 order by id""")
 
 
 my_colormap = matplotlib.colors.LinearSegmentedColormap.from_list("myColorMap", plot_config.COLORMAP / 255)
 
 count = 0
 
-with PdfPages('Images_pdf.pdf') as pdf:
+with PdfPages('Bg_Sub_Images.pdf') as pdf:
 
     for file in cursor.fetchall():
         if count < 10000 :
 
-            spec = CallistoSpectrogram.read(file[2])
-            fig1, axs1 = plt.subplots(1, 4, figsize=(28, 7))
+            spec = CallistoSpectrogram.read(test_config.DATA_PATH + file[2])
+            fig1, axs1 = plt.subplots(1, 4, figsize=(30, 7))
             ax1 = spec.plot()
             ax1.title.set_text("Original Data")
             plt.close()
 
             # Second column, Constbacksub + elimwrongchannels
             spec2 = spec.subtract_bg("constbacksub", "elimwrongchannels")
-            fig2 = plt.subplots(1, 4, figsize=(28, 7))
+            fig2 = plt.subplots(1, 4, figsize=(30, 7))
             ax2 = spec2.plot(vmin=-5, vmax=5)
             ax2.title.set_text("Background subtracted")
             plt.close()
@@ -91,7 +91,7 @@ with PdfPages('Images_pdf.pdf') as pdf:
             # Third column, subtract_bg_sliding_window
             spec3 = spec.subtract_bg("subtract_bg_sliding_window", window_width=800, affected_width=1,
                                      amount=0.05, change_points=True)
-            fig3 = plt.figure(figsize=(28, 7))
+            fig3 = plt.figure(figsize=(30, 7))
             ax3 = spec3.plot(vmin=-5, vmax=5)
             ax3.title.set_text("Gliding background subtracted (window=800)")
             plt.close()
@@ -100,15 +100,17 @@ with PdfPages('Images_pdf.pdf') as pdf:
             data_hist3 = np.absolute(spec2.data.flatten())
 
             data_hist4 = np.absolute(spec3.data.flatten())
-            fig4, ax4 = plt.subplots(figsize=(28, 7))
-            ax4.hist(data_hist3 ,histtype='step',range= (0, 10), bins= 40, label='Background subtracted')
-            ax4.hist(data_hist4 ,histtype='step',range= (0, 10), bins= 40, label='Gliding background subtracted')
+            fig4, ax4 = plt.subplots(figsize=(30, 7))
+            # ax4.hist(data_hist3 ,histtype='step',bins= spec2.header["BITPIX"], label='Background subtracted')
+            ax4.hist(data_hist3, histtype='step', range= (0, 10),bins=20, label='Background subtracted')
+            # ax4.hist(data_hist4 ,histtype='step',bins= spec3.header["BITPIX"], label='Gliding background subtracted')
+            ax4.hist(data_hist4, histtype='step', range= (0, 10),bins=20, label='Gliding background subtracted')
             ax4.title.set_text("Histograms")
             plt.legend()
             plt.close()
 
             # Plot final plot by moving axes to the figure
-            fig_target, (axA, axB, axC, axD) = plt.subplots(1, 4, figsize=(30,7))
+            fig_target, (axA, axB, axC, axD) = plt.subplots(1, 4, figsize=(32,7))
             plt.suptitle(fig1._suptitle.get_text())
 
             move_axes(fig_target, ax1, axA)
@@ -130,8 +132,9 @@ with PdfPages('Images_pdf.pdf') as pdf:
 
             plt.show()
 
+            count += 1
             pdf.savefig(fig_target)
             plt.close()
 
-            count += 1
+
     print("Finished plotting!")
