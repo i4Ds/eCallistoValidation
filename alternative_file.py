@@ -1,8 +1,6 @@
 from main import *
 
-
 def get_final_spec():
-
 
     def move_axes(fig, ax_source, ax_target):
         old_fig = ax_source.figure
@@ -83,16 +81,18 @@ def get_final_spec():
                 data_absolute4 = np.absolute(spec3.data.flatten())
 
                 # Remove the NAN from the data
-                data3_remove_NAN = data_absolute3[np.logical_not(np.isnan(data_absolute3))]
-                data4_remove_NAN = data_absolute4[np.logical_not(np.isnan(data_absolute4))]
+                # data3_remove_NAN = data_absolute3[np.logical_not(np.isnan(data_absolute3))]
+                # data4_remove_NAN = data_absolute4[np.logical_not(np.isnan(data_absolute4))]
+                
+
 
                 # take the min and max from the data to set the bins.
-                min_value = int(min(min(data3_remove_NAN), min(data4_remove_NAN)))
-                max_value = int(max(max(data3_remove_NAN), max(data4_remove_NAN)))
+                min_value = int(min(np.nanmin(data_absolute3), np.nanmin(data_absolute4)))
+                max_value = int(max(np.nanmax(data_absolute3), np.nanmax(data_absolute4)))
 
                 # Calculate the std and snr.
-                std_data = float("{:.3f}".format(standard_deviation(data4_remove_NAN)))
-                snr_data = float("{:.3f}".format(signal_to_noise(data4_remove_NAN)))
+                std_data = float("{:.3f}".format(standard_deviation(data_absolute4)))
+                snr_data = float("{:.3f}".format(signal_to_noise(data_absolute4)))
 
                 # Plot the Histograms
                 ax4.hist(data_absolute3, histtype='step', bins=range(min_value, max_value + 1),
