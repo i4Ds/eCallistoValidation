@@ -32,20 +32,15 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-# Source: https://gist.github.com/salotz/8b4542d7fe9ea3e2eacc1a2eef2532c5 by Kushtrim
-
-def get_connect_DB():
-    global cursor
-    connection = psycopg2.connect(host=test_config.DB_HOST,
-                                  database=test_config.DB_DATABASE,
-                                  user=test_config.DB_USER,
-                                  port=test_config.DB_PORT,
-                                  password=test_config.DB_PASSWORD)
-    cursor = connection.cursor()
+connection = psycopg2.connect(host=test_config.DB_HOST,
+                              database=test_config.DB_DATABASE,
+                              user=test_config.DB_USER,
+                              port=test_config.DB_PORT,
+                              password=test_config.DB_PASSWORD)
+cursor = connection.cursor()
 
 
-get_connect_DB()
-
+cursor.execute("""  select * from validation_data WHERE id BETWEEN 13541 AND 14541""")
 
 
 
@@ -71,8 +66,6 @@ def signal_to_noise(Arr):
     return m/std
 
 
-
-
 def standard_deviation(Arr):
     """
     The Standard deviation of the input data.
@@ -89,3 +82,23 @@ def standard_deviation(Arr):
     calculate_std = Arr.std()
 
     return calculate_std
+
+
+def move_axes(fig, ax_source, ax_target):
+    old_fig = ax_source.figure
+    ax_source.remove()
+    ax_source.figure = fig
+    ax_source.set_ylabel('')
+    ax_source.set_xlabel('')
+        
+    ax_source.set_position(ax_target.get_position())
+    ax_target.remove()
+    ax_target.set_aspect("equal")
+    fig.axes.append(ax_source)
+    fig.add_subplot(ax_source)
+    
+    plt.close(old_fig)
+
+
+
+
