@@ -1,10 +1,5 @@
 from main import *
 
-
-
-
-
-#def signalToNoise(Arr):
 def signal_to_noise(Arr):
     """
     The signal-to-noise ratio of the input data.
@@ -45,8 +40,6 @@ def standard_deviation(Arr):
     return calculate_std
 
 
-
-
 def get_cursor():
     """
     Select all data from the table "validation_data" to update the Std and Snr values.
@@ -58,14 +51,12 @@ def get_cursor():
 
 get_cursor()
 
-
 def update_values():
+
     sql_update_query = f"""UPDATE validation_data SET std = {std_data}, snr = {snr_data} where id = {index[0]} """
     cursor.execute(sql_update_query)
     print("Table after Update")
     connection.commit()
-
-
 
 
 def get_spec(index):
@@ -101,7 +92,6 @@ def flatted_data(spec):
                              amount=0.05, change_points=True)
     data = np.absolute(spec2.data.flatten())
     return data
-
 
 
 def save_values_db():
