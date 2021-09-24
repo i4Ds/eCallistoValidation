@@ -1,14 +1,17 @@
 from main import *
+from STD import  signal_to_noise as snr
+from STD import standard_deviation as std
+
+cursor.execute("""  select * from validation_data WHERE id BETWEEN 13541 AND 14540 ORDER BY snr_values DESC""")
 
 list_of_errors = []
 
-cursor.execute("""  select * from validation_data WHERE id BETWEEN 13541 AND 14541 ORDER BY snr_values DESC""")
-
 for index in cursor.fetchall():
     try:
+        # First column Original Data
         spec = CallistoSpectrogram.read(
             test_config.DATA_PATH + index[1])
-        fig1, axs1 = plt.subplots(1, 4, figsize=(25, 7))
+        fig1, axs1 = plt.subplots(1, 4, figsize=(20, 5))
         ax1 = spec.plot()
         ax1.title.set_text("Original Data")
         plt.close()
@@ -16,7 +19,7 @@ for index in cursor.fetchall():
         # Second column, Constbacksub + elimwrongchannels
         spec2 = spec.subtract_bg(
             "constbacksub", "elimwrongchannels")
-        fig2 = plt.subplots(1, 4, figsize=(25, 7))
+        fig2 = plt.subplots(1, 4, figsize=(20, 5))
         ax2 = spec2.plot(vmin=-5, vmax=5)
         ax2.title.set_text("Background subtracted")
         plt.close()
@@ -24,7 +27,7 @@ for index in cursor.fetchall():
         # Third column, subtract_bg_sliding_window
         spec3 = spec.subtract_bg("subtract_bg_sliding_window", window_width=800, affected_width=1,
                                  amount=0.05, change_points=True)
-        fig3 = plt.figure(figsize=(25, 7))
+        fig3 = plt.figure(figsize=(20, 5))
         ax3 = spec3.plot(vmin=-5, vmax=5)
         ax3.title.set_text(
             "Gliding background subtracted (window=800)")
@@ -34,7 +37,7 @@ for index in cursor.fetchall():
         data_absolute3 = get_abs_data(spec2)
         data_absolute4 = get_abs_data(spec3)
 
-        fig4, ax4 = plt.subplots(figsize=(25, 7))
+        fig4, ax4 = plt.subplots(figsize=(20, 5))
 
         # take the min and max from the data to set the bins.
         min_value = get_min_data(data_absolute3, data_absolute4)
@@ -45,9 +48,9 @@ for index in cursor.fetchall():
         ax4.hist(data_absolute4, histtype='step', bins=range(min_value, max_value + 1),
                  label='Gliding background subtracted')
 
-        # Calculate the std and snr.
-        std_data = round(standard_deviation(data_absolute4), 3)
-        snr_data = round(signal_to_noise(data_absolute4), 3)
+        # Calculate the standard deviation and signal-to-noise => rounded them to have 3 digits.
+        std_data = round(std(data_absolute4), 3)
+        snr_data = round(snr(data_absolute4), 3)
 
         # Set title for the histograms and show the std/snr values.
         ax4.title.set_text(f"Histograms, std = {std_data}, snr = {snr_data}")
