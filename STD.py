@@ -49,7 +49,6 @@ def get_cursor():
     """
     cursor.execute("""SELECT * from validation_data WHERE std is null ORDER BY id""")
 
-get_cursor()
 
 def update_values():
 
@@ -95,6 +94,9 @@ def flatted_data(spec):
 
 
 def save_values_db():
+    """
+    Update the values (std and snr ) into the database (validation).
+    """
     global index, data, std_data, snr_data
     for index in cursor.fetchall():
         try:
@@ -111,5 +113,3 @@ def save_values_db():
             exception_type = type(err).__name__
             print(exception_type, index[1])
 
-
-save_values_db()
