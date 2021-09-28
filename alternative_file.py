@@ -1,6 +1,7 @@
-from main import *
-from STD import  signal_to_noise as snr
-from STD import standard_deviation as std
+from packages.modules import *
+from packages.main import *
+
+cursor = get_connection_db()
 
 cursor.execute("""  select * from validation_data WHERE id BETWEEN 13541 AND 14540 ORDER BY snr_values DESC""")
 
@@ -49,8 +50,8 @@ for index in cursor.fetchall():
                  label='Gliding background subtracted')
 
         # Calculate the standard deviation and signal-to-noise => rounded them to have 3 digits.
-        std_data = round(std(data_absolute4), 3)
-        snr_data = round(snr(data_absolute4), 3)
+        std_data = round(standard_deviation(data_absolute4), 3)
+        snr_data = round(signal_to_noise(data_absolute4), 3)
 
         # Set title for the histograms and show the std/snr values.
         ax4.title.set_text(f"Histograms, std = {std_data}, snr = {snr_data}")
@@ -77,6 +78,7 @@ for index in cursor.fetchall():
         plt.close()
 
     except Exception as err:
+        print(err)
         exception_type = type(err).__name__
         list_of_errors.append(index[2])
         print(exception_type)
