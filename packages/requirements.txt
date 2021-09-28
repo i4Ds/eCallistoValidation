@@ -1,0 +1,15 @@
+astropy
+bs4
+connexion
+flask
+flask_compress
+flask_cors
+iso8601
+numpy
+psycopg2
+Pillow
+ruptures
+scikit-image
+scipy==1.1.0
+sortedcontainers
+sunpy
