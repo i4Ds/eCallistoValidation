@@ -1,14 +1,16 @@
-from main import *
-from STD import  signal_to_noise as snr
-from STD import standard_deviation as std
+from packages.modules import *
+from packages.main import *
 
+cursor = get_connection_db()
 
-cursor.execute("""  select * from validation_data WHERE id BETWEEN 13541 AND 23540 ORDER BY snr_values DESC """)
+cursor.execute("""  select * from validation_data WHERE id BETWEEN 13550 AND 23550 """)
 
 list_of_errors = []
 
 
-with PdfPages('BgSubImages.pdf') as pdf:
+def get_plot(cursor, pdf):
+    fig_target = plt.figure()
+
     for index in cursor.fetchall():
         try:
             # First column Original Data
@@ -52,8 +54,8 @@ with PdfPages('BgSubImages.pdf') as pdf:
                      label='Gliding background subtracted')
 
             # Calculate the standard deviation and signal-to-noise => rounded them to have 3 digits.
-            std_data = round(std(data_absolute4), 3)
-            snr_data = round(snr(data_absolute4), 3)
+            std_data = round(standard_deviation(data_absolute4), 3)
+            snr_data = round(signal_to_noise(data_absolute4), 3)
 
             # Set title for the histograms and show the std/snr values.
             ax4.title.set_text(f"Histograms, std = {std_data}, snr = {snr_data}")
@@ -79,16 +81,18 @@ with PdfPages('BgSubImages.pdf') as pdf:
 
             plt.show()
 
-            pdf.savefig(fig_target)
-            plt.close()
-
-
         except Exception as err:
-
             exception_type = type(err).__name__
             list_of_errors.append(index[2])
             print(exception_type)
 
+
+        pdf.savefig(fig_target)
+        plt.close()
+
+
+with PdfPages('BgSubImages.pdf') as pdf:
+    get_plot(cursor,  pdf)
 
     print("Finished plotting!")
 
