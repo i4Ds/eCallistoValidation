@@ -1,5 +1,7 @@
 from packages.modules import *
 from packages.main import *
+from packages import config as test_config
+
 
 cursor = get_connection_db()
 
@@ -8,15 +10,25 @@ cursor.execute("""  select * from validation_data WHERE id BETWEEN 13550 AND 235
 list_of_errors = []
 
 
-def get_plot(cursor, pdf):
-    fig_target = plt.figure()
+def get_plot(cursor):
+    """
+    Plot the 10'000 spectrograms and then save them into a pdf file.
+    Parameters
+    ----------
+    cursor : the data from DB.
+
+    Returns
+    -------
+    return four columns (Original Data, 'Constbacksub + elimwrongchannels' , subtract_bg_sliding_window, Histograms).
+
+    """
 
     for index in cursor.fetchall():
         try:
             # First column Original Data
             spec = CallistoSpectrogram.read(
                 test_config.DATA_PATH + index[1])
-            fig1, axs1 = plt.subplots(1, 4, figsize=(20, 5))
+            fig1, ax1 = plt.subplots(1, 4, figsize=(20, 5))
             ax1 = spec.plot()
             ax1.title.set_text("Original Data")
             plt.close()
@@ -73,27 +85,22 @@ def get_plot(cursor, pdf):
             move_axes(fig_target, ax4, axD)
 
             for ax in (ax1, ax2, ax3):
-                ax.set_xlabel('Time[UT]')
-                ax.set_ylabel('Frequency[MHz]')
+                ax.set_xlabel('Time[UT]', 24)
+                ax.set_ylabel('Frequency[MHz]', 24)
 
-            ax4.set_xlabel('Pixel values')
-            ax4.set_ylabel('Number of pixels')
+            ax4.set_xlabel('Pixel values', 24)
+            ax4.set_ylabel('Number of pixels', 24)
 
-            plt.show()
+            pdf.savefig(fig_target)
+            plt.close()
 
         except Exception as err:
-            exception_type = type(err).__name__
+            print(err)
+            # exception_type = type(err).__name__
             list_of_errors.append(index[2])
-            print(exception_type)
 
-
-        pdf.savefig(fig_target)
-        plt.close()
-
-
-with PdfPages('BgSubImages.pdf') as pdf:
-    get_plot(cursor,  pdf)
-
+with PdfPages('BgSubImages_test.pdf') as pdf:
+    get_plot(cursor)
     print("Finished plotting!")
 
 
