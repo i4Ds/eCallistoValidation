@@ -6,20 +6,22 @@ from packages.modules import *
 
 Path = 'Spec_test'
 
+plt.rcParams['font.size'] = '16'
+
 def get_plot(Path, pdf):
     for root, dirs, files in os.walk(Path):
         for name in files:
             if name.endswith('.fit.gz'):
                 full_path = os.path.join(root, name)
                 spec = CallistoSpectrogram.read(full_path)
-                fig1, axs1 = plt.subplots(1, 4, figsize=(25, 5))
+                fig1, axs1 = plt.subplots(1, 4, figsize=(27, 6))
                 ax1 = spec.plot()
                 ax1.title.set_text("Original Data")
                 plt.close()
 
                 # Second column, Constbacksub + elimwrongchannels
                 spec2 = spec.subtract_bg("constbacksub", "elimwrongchannels")
-                fig2 = plt.subplots(1, 4, figsize=(25, 5))
+                fig2 = plt.subplots(1, 4, figsize=(27, 6))
                 ax2 = spec2.plot(vmin=-5, vmax=5)
                 ax2.title.set_text("Background subtracted")
                 plt.close()
@@ -27,14 +29,14 @@ def get_plot(Path, pdf):
                 # Third column, subtract_bg_sliding_window
                 spec3 = spec.subtract_bg("subtract_bg_sliding_window", window_width=800, affected_width=1,
                                          amount=0.05, change_points=True)
-                fig3 = plt.figure(figsize=(25, 5))
+                fig3 = plt.figure(figsize=(27, 6))
                 ax3 = spec3.plot(vmin=-5, vmax=5)
                 ax3.title.set_text(
                     "Gliding background subtracted (window=800)")
                 plt.close()
 
                 # Fourth column, Histograms
-                fig4, ax4 = plt.subplots(figsize=(25, 5))
+                fig4, ax4 = plt.subplots(figsize=(27, 6))
 
                 # Fourth column, Histograms
                 data_absolute3 = get_abs_data(spec2)
@@ -65,7 +67,7 @@ def get_plot(Path, pdf):
 
                 # Plot final plot by moving axes to the figure
                 fig_target, (axA, axB, axC, axD) = plt.subplots(
-                    1, 4, figsize=(25, 7))
+                    1, 4, figsize=(34, 9))
                 plt.suptitle(fig1._suptitle.get_text())
 
                 move_axes(fig_target, ax1, axA)
@@ -90,5 +92,11 @@ def get_pdf():
         get_plot(Path, pdf)
         
         print("Finished plotting!")
+
+
+
+
+if __name__ == '__main__':
+    print("This file is for testing")
+    get_pdf()
     
-get_pdf()
