@@ -3,26 +3,25 @@ from packages.main import *
 from packages import config as test_config
 
 
+list_of_errors = []
 cursor = get_connection_db()
 
-cursor.execute("""  select * from validation_data WHERE id BETWEEN 13550 AND 23550 """)
+def get_cursor():
+    """ Select the data from the DB (06.09.2017)
+    :returns: a table of the data.
+    :rtype: an array.
+    """
 
-list_of_errors = []
+    cursor.execute("""  select * from validation_data WHERE id BETWEEN 13550 AND 23550 """)
 
 
 def get_plot(cursor):
+    """Plot the 10'000 spectrograms and then save them into a pdf file.
+    :param an array cursor:  the data from DB.
+    :returns: return four columns (Original Data, 'Constbacksub + elimwrongchannels' , subtract_bg_sliding_window, Histograms).
+    :rtype: fig
     """
-    Plot the 10'000 spectrograms and then save them into a pdf file.
-    Parameters
-    ----------
-    cursor : the data from DB.
-
-    Returns
-    -------
-    return four columns (Original Data, 'Constbacksub + elimwrongchannels' , subtract_bg_sliding_window, Histograms).
-
-    """
-
+    get_cursor()
     for index in cursor.fetchall():
         try:
             # First column Original Data
@@ -85,18 +84,17 @@ def get_plot(cursor):
             move_axes(fig_target, ax4, axD)
 
             for ax in (ax1, ax2, ax3):
-                ax.set_xlabel('Time[UT]', 24)
-                ax.set_ylabel('Frequency[MHz]', 24)
+                ax.set_xlabel('Time[UT]')
+                ax.set_ylabel('Frequency[MHz]')
 
-            ax4.set_xlabel('Pixel values', 24)
-            ax4.set_ylabel('Number of pixels', 24)
-
+            ax4.set_xlabel('Pixel values')
+            ax4.set_ylabel('Number of pixels')
+            plt.show()
             pdf.savefig(fig_target)
             plt.close()
 
         except Exception as err:
             print(err)
-            # exception_type = type(err).__name__
             list_of_errors.append(index[2])
 
 with PdfPages('BgSubImages_test.pdf') as pdf:
