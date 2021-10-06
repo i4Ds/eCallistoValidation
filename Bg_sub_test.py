@@ -94,14 +94,14 @@ def get_plot(cursor):
             plt.close()
 
         except Exception as err:
-            print(err)
+            print("The Error message is: %s and the file name is %s" % (err, index[2]))
             list_of_errors.append(index[2])
 
-with PdfPages('BgSubImages_test.pdf') as pdf:
-    get_plot(cursor)
-    print("Finished plotting!")
-
-
+if __name__ == "__main__":
+    with PdfPages('BgSubImages_test.pdf') as pdf:
+        get_plot(cursor)
+        print(list_of_errors)
+        print("Finished plotting!")
 
 
 
