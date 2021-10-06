@@ -3,6 +3,7 @@ from packages.main import *
 
 
 def get_connection():
+    """ Connect to the database and returns the cursor """
     global connection, cursor
     connection = psycopg2.connect(host=test_config.DB_HOST,
                                   database=test_config.DB_DATABASE,
@@ -20,27 +21,19 @@ def get_cursor():
 
 
 def get_spec(index):
-    """
-    Using CallistoSpectrogram.read to read the path.
-    Parameters
-    ----------
-    index : index of specific column to get the right path
-    Returns
-    -------
-    A spectrogram
+    """ Using CallistoSpectrogram.read to read the path.
+    :param index: index of data in the cursor.
+    :returns: A spectrogram.
+    :rtype: an Object.
     """
     spec = CallistoSpectrogram.read(test_config.DATA_PATH + index[1])
     return spec
 
 def flatted_data(spec):
-    """
-    Take the spectrogram and subtract the background using the function 'subtract_bg_sliding_window'
-    Parameters
-    ----------
-    spec: A spectrogram.
-    Returns
-    -------
-    The absolute value of the data.
+    """Take the spectrogram and subtract the background using the function 'subtract_bg_sliding_window', then take the absolute value of the flattened data.
+    :param an object spec: A spectrogram.
+    :returns: The absolute value of the flattened data.
+    :rtype: float
     """
     spec2 = spec.subtract_bg("subtract_bg_sliding_window", window_width=800, affected_width=1,
                              amount=0.05, change_points=True)
@@ -50,13 +43,8 @@ def flatted_data(spec):
 def calculate_values(index):
     """
     Calculate the std and snr, then update them into the table in Database.
-    Parameters
-    ----------
-    index : index of data in the cursor
-
-    Returns
-    -------
-    Update the values into DB.
+    :param index: index of data in the cursor.
+    :returns: Update the values into DB.
     """
     spec = get_spec(index)
     data = flatted_data(spec)
@@ -65,7 +53,6 @@ def calculate_values(index):
     sql_update_query = f"""UPDATE data SET std = {std_data}, snr= {snr_data} where id = {index[0]} """
     cursor.execute(sql_update_query)
     connection.commit()
-
 
 
 def save_values_db():
@@ -78,9 +65,8 @@ def save_values_db():
             calculate_values(index)
 
         except Exception as err:
-            print(err)
-            exception_type = type(err).__name__
-            print(exception_type, index[1])
+            print("The Error message is: %s and the file name is %s" % (err, index[2]))
+            list_of_errors.append(index[2])
 
 
 if __name__ == "__main__":
