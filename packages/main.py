@@ -1,52 +1,37 @@
-from modules import *
+from packages.modules import *
+import packages.config as test_config
 
 def get_connection_db():
+    """ connect to the database and returns the cursor """
     connection = psycopg2.connect(host=test_config.DB_HOST,
-                                   database=test_config.DB_DATABASE,
-                                   user=test_config.DB_USER,
-                                   port=test_config.DB_PORT,
-                                   password=test_config.DB_PASSWORD)
+                                  user=test_config.DB_USER,
+                                  database=test_config.DB_DATABASE,
+                                  port=test_config.DB_PORT,
+                                  password=test_config.DB_PASSWORD)
+
     cursor = connection.cursor()
     return cursor
 
-
-
-def signal_to_noise(Arr):
+def signal_to_noise(arr):
+    """Calculate the signal-to-noise ratio of the input data.
+    :param array_like arr: an array_like object contain the data.
+    :returns: The signal-to-noise ratio of {Arr}, here defined as the mean divided by the standard deviation.
+    :rtype: float
     """
-    The signal-to-noise ratio of the input data.
-
-    Parameters
-    ----------
-
-    Arr : array_like
-        an array_like object containing the data.
-
-    Returns
-    -------
-    The signal-to-noise ratio of `Arr`, here defined as the mean
-    divided by the standard deviation.
-
-    """
-    Arr = np.asanyarray(Arr)
-    m = Arr.mean()
-    std = Arr.std()
+    arr = np.asanyarray(arr)
+    m = arr.mean()
+    std = arr.std()
     return m/std
 
 
-def standard_deviation(Arr):
+def standard_deviation(arr):
+    """Calculate the Standard deviation of the input data.
+    :param array_like arr: an array_like object contain the data.
+    :returns: The standard deviation of {Arr}.
+    :rtype: float
     """
-    The Standard deviation of the input data.
-    Parameters
-    ----------
-    Arr : array_like
-        an array_like object containing the data.
-
-    Returns
-    -------
-    The standard deviation of `Arr`.
-    """
-    Arr = np.asanyarray(Arr)
-    calculate_std = Arr.std()
+    arr = np.asanyarray(arr)
+    calculate_std = arr.std()
 
     return calculate_std
 
@@ -67,53 +52,33 @@ def move_axes(fig, ax_source, ax_target):
     plt.close(old_fig)
 
 
-
-def get_abs_data(Arr):
+def get_abs_data(arr):
+    """Get the absolute values from the arrays.
+    :param float arr: the data in the arrays from the spectrograms.
+    :returns: Return an array with absolute values.
+    :rtype: float.
     """
-    Get the absolute values from the arrays.
-    Parameters
-    ----------
-    Arr = the data arrays from the spectrograms
-
-    Returns
-    -------
-    Return an array with absolute values
-
-    """
-    abs_data = np.absolute(Arr.data.flatten())
-
+    abs_data = np.absolute(arr.data.flatten())
     return abs_data
 
 
-
 def get_min_data(data1, data2):
-    """
-    Get the minimum from the mentioned data.
-    Parameters
-    ----------
-    data1 : the data from spectrogram using the function 'Constbacksub + elimwrongchannels'
-    data2 : the data from spectrogram using the function  'subtract_bg_sliding_window'
-
-    Returns
-    -------
-    Return the minimum from data1, data2
+    """Get the minimum value from the both data1 and data2.
+    :param float * data1 : the data from spectrogram using the function 'Constbacksub + elimwrongchannels'
+    :param float * data2 : the data from spectrogram using the function  'subtract_bg_sliding_window'
+    :returns: Return the minimum values from data1, data2
+    :rtype: float.
     """
     min_value = int(min(np.nanmin(data1), np.nanmin(data2)))
     return min_value
 
 
-
 def get_max_data(data1, data2):
-    """
-     Get the maximum from the mentioned data.
-    Parameters
-    ----------
-    data1 : the data from spectrogram using the function 'Constbacksub + elimwrongchannels'
-    data2 : the data from spectrogram using the function  'subtract_bg_sliding_window'
-
-    Returns
-    -------
-    Return the maximum from data1, data2.
-    """
+    """Get the maximum value from the both data1 and data2.
+     :param float data1 : the data from spectrogram using the function 'Constbacksub + elimwrongchannels'
+     :param float data2 : the data from spectrogram using the function  'subtract_bg_sliding_window'
+     :returns: Return the maximum values from data1, data2
+     :rtype: float.
+     """
     max_value = int(max(np.nanmax(data1), np.nanmax(data2)))
     return max_value
