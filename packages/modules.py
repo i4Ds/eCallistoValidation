@@ -15,15 +15,14 @@ import pandas.io.sql as psql
 from sqlalchemy import create_engine
 import matplotlib.pyplot as plt
 import re
-from eCallistoProject import plot_config
-import  config as  test_config
+
+#import config as test_config
 
 module_path = os.path.abspath(os.path.join('radiospectra'))
 if module_path not in sys.path:
     sys.path.append(module_path)
 
 import radiospectra
-
 from radiospectra.sources import CallistoSpectrogram
 
 from matplotlib.backends.backend_pdf import PdfPages, FigureCanvasPdf, PdfFile
