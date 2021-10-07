@@ -23,7 +23,7 @@ if module_path not in sys.path:
     sys.path.append(module_path)
 
 import radiospectra
-from radiospectra.sources import CallistoSpectrogram
+from radiospectra.radiospectra.sources import CallistoSpectrogram
 
 from matplotlib.backends.backend_pdf import PdfPages, FigureCanvasPdf, PdfFile
 import datetime

@@ -1,6 +1,7 @@
 from packages.modules import *
 import packages.config as test_config
 
+
 def get_connection_db():
     """ connect to the database and returns the cursor """
     connection = psycopg2.connect(host=test_config.DB_HOST,
@@ -35,23 +36,6 @@ def standard_deviation(arr):
 
     return calculate_std
 
-
-def move_axes(fig, ax_source, ax_target):
-    old_fig = ax_source.figure
-    ax_source.remove()
-    ax_source.figure = fig
-    ax_source.set_ylabel('')
-    ax_source.set_xlabel('')
-
-    ax_source.set_position(ax_target.get_position())
-    ax_target.remove()
-    ax_target.set_aspect("equal")
-    fig.axes.append(ax_source)
-    fig.add_subplot(ax_source)
-
-    plt.close(old_fig)
-
-
 def get_abs_data(arr):
     """Get the absolute values from the arrays.
     :param float arr: the data in the arrays from the spectrograms.
@@ -82,3 +66,20 @@ def get_max_data(data1, data2):
      """
     max_value = int(max(np.nanmax(data1), np.nanmax(data2)))
     return max_value
+
+
+
+def move_axes(fig, ax_source, ax_target):
+    old_fig = ax_source.figure
+    ax_source.remove()
+    ax_source.figure = fig
+    ax_source.set_ylabel('')
+    ax_source.set_xlabel('')
+
+    ax_source.set_position(ax_target.get_position())
+    ax_target.remove()
+    ax_target.set_aspect("equal")
+    fig.axes.append(ax_source)
+    fig.add_subplot(ax_source)
+
+    plt.close(old_fig)
