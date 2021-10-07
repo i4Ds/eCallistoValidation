@@ -12,9 +12,10 @@ def get_all_instruments(cursor):
     return index
 
 
-def get_plot(cursor):
+def get_plot_pdf(cursor, pdf):
     """Plot the 10'000 spectrograms and then save them into a pdf file.
     :param an array cursor:  the data from DB.
+    :param pdf: to save as pdf file.
     :returns: return four columns (Original Data, 'Constbacksub + elimwrongchannels' , subtract_bg_sliding_window, Histograms).
     :rtype: fig
     """
@@ -92,12 +93,22 @@ def get_plot(cursor):
 
         except Exception as err:
             print("The Error message is: %s and the file name is %s" % (err, index[2]))
-            #list_of_errors.append(index[2])
+
+
+def get_pdf_file():
+    """
+    Save the spectrograms into the pdf file.
+    Returns
+    -------
+
+    """
+    with PdfPages('BgSubImages_test.pdf') as pdf:
+        get_plot_pdf(cursor, pdf)
+
+        print("Finished plotting!")
+
 
 if __name__ == "__main__":
-    with PdfPages('BgSubImages_test.pdf') as pdf:
-        get_plot(cursor)
-       
-        print("Finished plotting!")
+    get_pdf_file()
 
 
