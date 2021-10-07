@@ -17,13 +17,14 @@ import matplotlib.pyplot as plt
 import re
 
 #import config as test_config
-
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "radiospectra"))
 module_path = os.path.abspath(os.path.join('radiospectra'))
 if module_path not in sys.path:
     sys.path.append(module_path)
 
+
 import radiospectra
-from radiospectra.radiospectra.sources import CallistoSpectrogram
+from radiospectra.sources import CallistoSpectrogram
 
 from matplotlib.backends.backend_pdf import PdfPages, FigureCanvasPdf, PdfFile
 import datetime
