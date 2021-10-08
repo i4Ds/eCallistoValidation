@@ -7,7 +7,7 @@ import numpy as np
 import time
 import timeit
 import skimage.transform
-
+import psycopg2.extras
 import psycopg2
 from PIL import Image, ImageDraw, ImageFont
 import pandas as pd
@@ -16,7 +16,6 @@ from sqlalchemy import create_engine
 import matplotlib.pyplot as plt
 import re
 
-#import config as test_config
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "radiospectra"))
 module_path = os.path.abspath(os.path.join('radiospectra'))
 if module_path not in sys.path:
