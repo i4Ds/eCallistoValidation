@@ -1,18 +1,6 @@
 from packages.modules import *
 import packages.config as test_config
 
-
-def get_connection_db():
-    """ connect to the database and returns the cursor """
-    connection = psycopg2.connect(host=test_config.DB_HOST,
-                                  user=test_config.DB_USER,
-                                  database=test_config.DB_DATABASE,
-                                  port=test_config.DB_PORT,
-                                  password=test_config.DB_PASSWORD)
-
-    cursor = connection.cursor()
-    return cursor
-
 def signal_to_noise(arr):
     """Calculate the signal-to-noise ratio of the input data.
     :param array_like arr: an array_like object contain the data.
@@ -83,3 +71,23 @@ def move_axes(fig, ax_source, ax_target):
     fig.add_subplot(ax_source)
 
     plt.close(old_fig)
+
+
+def get_all_instruments(database):
+    """
+    Get the all instruments from the Database
+    Parameters
+    ----------
+    database : a database 'Validation'
+
+    Returns
+    -------
+    index : index of the cursor frm database.
+    """
+
+    sql_query_instruments = "select * from validation_data"
+    cursor = database.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute(sql_query_instruments)
+    index = [row for row in cursor.fetchall()]
+
+    return index, cursor
