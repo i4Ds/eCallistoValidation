@@ -10,12 +10,11 @@ def update_all_values():
     None
     """
 
-
-    database  = psycopg2.connect(host=test_config.DB_HOST,
-                                  user=test_config.DB_USER,
-                                  database=test_config.DB_DATABASE,
-                                  port=test_config.DB_PORT,
-                                  password=test_config.DB_PASSWORD)
+    database = psycopg2.connect(host=test_config.DB_HOST,
+                                user=test_config.DB_USER,
+                                database=test_config.DB_DATABASE,
+                                port=test_config.DB_PORT,
+                                password=test_config.DB_PASSWORD)
 
     rows, cursor = get_all_instruments(database)
     for row in rows:
