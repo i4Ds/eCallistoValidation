@@ -35,6 +35,18 @@ rows = get_all_instruments(database, sql_query)
 
 
 def get_plot(rows):
+    """
+    Plot 4 columns(original Spec,Background subtracted("constbacksub", "elimwrongchannels"),
+    Gliding background subtracted, Histograms.
+
+    Parameters
+    ----------
+    rows: the rows from the database.
+
+    Returns
+    -------
+    A pdf file contains the plots.
+    """
     for row in rows:
         try:
             spec = CallistoSpectrogram.read(test_config.DATA_PATH + row[1])
@@ -106,6 +118,7 @@ def get_plot(rows):
             print("The Error message is: %s and the file name is %s" % (err, row[2]))
 
 
+# Save as pdf file
 with PdfPages('BgSubImages_test.pdf') as pdf:
     pdf.savefig(get_plot(rows))
     plt.close()
