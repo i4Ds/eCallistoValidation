@@ -33,7 +33,9 @@ def update_all_values():
             database.commit()
 
         except Exception as err:
-            print("The Error message is: %s and the file name is %s" % (err, row[2]))
+            print(f"The Error message is: {err} and the file name is {row[2]}")
 
-        print("Update Done!")
+        finally:
+            print("Update Done!")
+            database.close()
 
