@@ -115,7 +115,10 @@ def get_plot(rows):
             ax4.set_ylabel('Number of pixels')
 
         except Exception as err:
-            print("The Error message is: %s and the file name is %s" % (err, row[2]))
+            
+            print(f"The Error message is: {err} and the file name is {row[2]}")
+            # print("The Error message is: %s and the file name is %s" % (err, row[2]))
+
 
 
 # Save as pdf file
