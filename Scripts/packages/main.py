@@ -47,6 +47,8 @@ def get_max_data(data1, data2):
 
 
 def move_axes(fig, ax_source, ax_target):
+     """ To move the axes to create a new Figure. """
+        
     old_fig = ax_source.figure
     ax_source.remove()
     ax_source.figure = fig
@@ -60,5 +62,3 @@ def move_axes(fig, ax_source, ax_target):
     fig.add_subplot(ax_source)
 
     plt.close(old_fig)
-
-
