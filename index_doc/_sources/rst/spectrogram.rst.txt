@@ -1,0 +1,8 @@
+spectrogram module
+==================
+
+.. automodule:: spectrogram
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :noindex:

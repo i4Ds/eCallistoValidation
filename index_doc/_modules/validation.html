@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>validation &#8212; eCallisto 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" href="../_static/sunpy_style.css" type="text/css" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+<script type="text/javascript" src="../_static/version.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon-32.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+<title> eCallisto 0.0.1 documentation </title>
+
+<meta name="robots" content="noindex, nofollow" >
+
+  </head><body>
+
+<div id="navbar"
+  class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sunpy.org/">
+        eCallisto</a>
+    </div>
+
+    <div class="collapse navbar-collapse nav-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">About<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="../about.html">Our Mission</a></li>
+            <li class="dropdown-submenu">
+              <a href="../about.html">Acknowledge SunPy</a></li>
+            <li class="dropdown-submenu">
+              <a href="../coc.html">Code of Conduct</a></li>
+          </ul>
+        </li>
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">Documentation<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/en/stable/">sunpy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/ndcube/">ndcube</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/drms/">drms</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://aiapy.readthedocs.io/en/stable/">aiapy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://pfsspy.readthedocs.io/en/stable/">pfsspy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunraster/en/stable/">sunraster</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunkit-instruments/en/stable/">sunkit-instruments</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunkit-image/en/stable/">sunkit-image</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/radiospectra/en/stable/">radiospectra</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://pyflct.readthedocs.io/en/stable/">pyflct</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://ablog.readthedocs.io/">ablog</a></li>
+          </ul>
+        </li>
+        
+        
+        <li><a href="../blog.html">Blog</a></li>
+        
+        
+        <li><a href="../contribute.html">Support Us</a></li>
+        
+        
+        <li><a href="../help.html">Get Help</a></li>
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">SunPy Project<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="../project/">SunPy Project</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/roles.html">Community Roles</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/affiliated.html">Affiliated Packages</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/former.html">Emeritus role holders</a></li>
+          </ul>
+        </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+
+
+  
+
+
+
+
+
+<div class="sidenologo"></div>
+
+<p class="doc-title">
+    <a style="padding-left: 0" href="../index.html">eCallisto 0.0.1</a>
+</p>
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+    <div class="form-group">
+        <label>
+            <input type="text" name="q" class="form-control" placeholder="Search" />
+        </label>
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+</form>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/validation.html">validation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/spectrogram.html">spectrogram module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/callisto.html">callisto module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/API.html">API</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <h1>Source code for validation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. note::</span>
+
+<span class="sd">   This project is under active development.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">astropy.io.fits</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">timeit</span>
+<span class="kn">import</span> <span class="nn">skimage.transform</span>
+<span class="kn">import</span> <span class="nn">psycopg2.extras</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas.io.sql</span> <span class="k">as</span> <span class="nn">psql</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;radiospectra&quot;</span><span class="p">))</span>
+<span class="n">module_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;radiospectra&#39;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">module_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_path</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="signal_to_noise"><a class="viewcode-back" href="../rst/validation.html#validation.signal_to_noise">[docs]</a><span class="k">def</span> <span class="nf">signal_to_noise</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the signal-to-noise ratio of the input data.</span>
+
+<span class="sd">    :param array_like arr: an array_like object contain the data.</span>
+<span class="sd">    :returns: The signal-to-noise ratio of arr, here defined as the mean divided by the standard deviation.</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#arr = np.asanyarray(arr)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">/</span><span class="n">std</span></div>
+
+
+<div class="viewcode-block" id="get_abs_data"><a class="viewcode-back" href="../rst/validation.html#validation.get_abs_data">[docs]</a><span class="k">def</span> <span class="nf">get_abs_data</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the absolute values from the arrays.</span>
+
+<span class="sd">    :param float arr: the data in the arrays from the spectrograms.</span>
+<span class="sd">    :returns: Return an array with absolute values.</span>
+<span class="sd">    :rtype: float.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">abs_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">abs_data</span></div>
+
+
+<div class="viewcode-block" id="get_min_data"><a class="viewcode-back" href="../rst/validation.html#validation.get_min_data">[docs]</a><span class="k">def</span> <span class="nf">get_min_data</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the minimum value from the both data1 and data2.</span>
+
+<span class="sd">    :param float data1: the data from spectrogram using the function &#39;Constbacksub + elimwrongchannels&#39;</span>
+<span class="sd">    :param float data2: the data from spectrogram using the function  &#39;subtract_bg_sliding_window&#39;</span>
+<span class="sd">    :returns: Return the minimum values from data1, data2</span>
+<span class="sd">    :rtype: float.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">min_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">data2</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">min_value</span></div>
+
+
+<div class="viewcode-block" id="get_max_data"><a class="viewcode-back" href="../rst/validation.html#validation.get_max_data">[docs]</a><span class="k">def</span> <span class="nf">get_max_data</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the maximum value from the both data1 and data2.</span>
+
+<span class="sd">     :param float data1: the data from spectrogram using the function &#39;Constbacksub + elimwrongchannels&#39;</span>
+<span class="sd">     :param float data2: the data from spectrogram using the function &#39;subtract_bg_sliding_window&#39;</span>
+<span class="sd">     :returns: Return the maximum values from data1, data2</span>
+<span class="sd">     :rtype: float.</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+
+    <span class="n">max_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data2</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">max_value</span></div>
+
+
+<div class="viewcode-block" id="move_axes"><a class="viewcode-back" href="../rst/validation.html#validation.move_axes">[docs]</a><span class="k">def</span> <span class="nf">move_axes</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_source</span><span class="p">,</span> <span class="n">ax_target</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Move the axes to create the new one.&quot;&quot;&quot;</span>
+
+    <span class="n">old_fig</span> <span class="o">=</span> <span class="n">ax_source</span><span class="o">.</span><span class="n">figure</span>
+    <span class="n">ax_source</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    <span class="n">ax_source</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span>
+    <span class="n">ax_source</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">ax_source</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">ax_source</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">ax_target</span><span class="o">.</span><span class="n">get_position</span><span class="p">())</span>
+    <span class="n">ax_target</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    <span class="n">ax_target</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax_source</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">ax_source</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">old_fig</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_all_instruments"><a class="viewcode-back" href="../rst/validation.html#validation.get_all_instruments">[docs]</a><span class="k">def</span> <span class="nf">get_all_instruments</span><span class="p">(</span><span class="n">database</span><span class="p">,</span> <span class="n">sql_query</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the all instruments data from the Database.</span>
+
+<span class="sd">     :param database: a database &#39;Validation&#39;.</span>
+<span class="sd">     :param sql_query: Sql query from the database.</span>
+<span class="sd">     :returns index: index of the cursor frm database.</span>
+<span class="sd">     :returns cursor: the cursor frm database.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sql_query_instruments</span> <span class="o">=</span> <span class="n">sql_query</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="n">cursor_factory</span><span class="o">=</span><span class="n">psycopg2</span><span class="o">.</span><span class="n">extras</span><span class="o">.</span><span class="n">DictCursor</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_query_instruments</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
+
+    <span class="k">return</span> <span class="n">index</span><span class="p">,</span> <span class="n">cursor</span></div>
+
+
+<div class="viewcode-block" id="plot_spec"><a class="viewcode-back" href="../rst/validation.html#validation.plot_spec">[docs]</a><span class="k">def</span> <span class="nf">plot_spec</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Get the plots in four columns.</span>
+
+<span class="sd">    :returns: return four columns (Original Data, ‘Constbacksub + elimwrongchannels’ , subtract_bg_sliding_window, Histograms).</span>
+<span class="sd">    :rtype: Matplotlip figure.</span>
+<span class="sd">    :exception: The buffer is too small for the requested array!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">database</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_HOST</span><span class="p">,</span>
+                                <span class="n">user</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_USER</span><span class="p">,</span>
+                                <span class="n">database</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_DATABASE</span><span class="p">,</span>
+                                <span class="n">port</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_PORT</span><span class="p">,</span>
+                                <span class="n">password</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_PASSWORD</span><span class="p">)</span>
+
+    <span class="n">sql_query</span> <span class="o">=</span> <span class="s2">&quot;select * from validation_data&quot;</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">get_all_instruments</span><span class="p">(</span><span class="n">database</span><span class="p">,</span> <span class="n">sql_query</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># First column Original Data</span>
+            <span class="n">spec</span> <span class="o">=</span> <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+                <span class="n">test_config</span><span class="o">.</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">fig1</span><span class="p">,</span> <span class="n">axs1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+            <span class="n">ax1</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;Original Data&quot;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="c1"># Second column, Constbacksub + elimwrongchannels</span>
+            <span class="n">spec2</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">subtract_bg</span><span class="p">(</span>
+                <span class="s2">&quot;constbacksub&quot;</span><span class="p">,</span> <span class="s2">&quot;elimwrongchannels&quot;</span><span class="p">)</span>
+            <span class="n">fig2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+            <span class="n">ax2</span> <span class="o">=</span> <span class="n">spec2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;Background subtracted&quot;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="c1"># Third column, subtract_bg_sliding_window</span>
+            <span class="n">spec3</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">subtract_bg</span><span class="p">(</span><span class="s2">&quot;subtract_bg_sliding_window&quot;</span><span class="p">,</span> <span class="n">window_width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">affected_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                     <span class="n">amount</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">change_points</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">fig3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+            <span class="n">ax3</span> <span class="o">=</span> <span class="n">spec3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span>
+                <span class="s2">&quot;Gliding background subtracted (window=800)&quot;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="c1"># Fourth column, Histograms</span>
+            <span class="n">data_absolute3</span> <span class="o">=</span> <span class="n">get_abs_data</span><span class="p">(</span><span class="n">spec2</span><span class="p">)</span>
+            <span class="n">data_absolute4</span> <span class="o">=</span> <span class="n">get_abs_data</span><span class="p">(</span><span class="n">spec3</span><span class="p">)</span>
+
+            <span class="n">fig4</span><span class="p">,</span> <span class="n">ax4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+            <span class="c1"># take the min and max from the data to set the bins.</span>
+            <span class="n">min_value</span> <span class="o">=</span> <span class="n">get_min_data</span><span class="p">(</span><span class="n">data_absolute3</span><span class="p">,</span> <span class="n">data_absolute4</span><span class="p">)</span>
+            <span class="n">max_value</span> <span class="o">=</span> <span class="n">get_max_data</span><span class="p">(</span><span class="n">data_absolute3</span><span class="p">,</span> <span class="n">data_absolute4</span><span class="p">)</span>
+
+            <span class="n">ax4</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data_absolute3</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Background subtracted&#39;</span><span class="p">)</span>
+            <span class="n">ax4</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data_absolute4</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gliding background subtracted&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Calculate the standard deviation and signal-to-noise =&gt; rounded them to have 3 digits.</span>
+            <span class="n">std_data</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data_absolute4</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">snr_data</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">signal_to_noise</span><span class="p">(</span><span class="n">data_absolute4</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+
+            <span class="c1"># Set title for the histograms and show the std/snr values.</span>
+            <span class="n">ax4</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Histograms, std = </span><span class="si">{</span><span class="n">std_data</span><span class="si">}</span><span class="s2">, snr = </span><span class="si">{</span><span class="n">snr_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+            <span class="c1"># Plot final plot by moving axes to the figure</span>
+            <span class="n">fig_target</span><span class="p">,</span> <span class="p">(</span><span class="n">axA</span><span class="p">,</span> <span class="n">axB</span><span class="p">,</span> <span class="n">axC</span><span class="p">,</span> <span class="n">axD</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+                <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">fig1</span><span class="o">.</span><span class="n">_suptitle</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+
+            <span class="n">move_axes</span><span class="p">(</span><span class="n">fig_target</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">axA</span><span class="p">)</span>
+            <span class="n">move_axes</span><span class="p">(</span><span class="n">fig_target</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">axB</span><span class="p">)</span>
+            <span class="n">move_axes</span><span class="p">(</span><span class="n">fig_target</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">axC</span><span class="p">)</span>
+            <span class="n">move_axes</span><span class="p">(</span><span class="n">fig_target</span><span class="p">,</span> <span class="n">ax4</span><span class="p">,</span> <span class="n">axD</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">):</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time[UT]&#39;</span><span class="p">)</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency[MHz]&#39;</span><span class="p">)</span>
+
+            <span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pixel values&#39;</span><span class="p">)</span>
+            <span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
+
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Error message is: </span><span class="si">%s</span><span class="s2"> and the file name is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span></div>
+
+
+<div class="viewcode-block" id="get_pdf_file"><a class="viewcode-back" href="../rst/validation.html#validation.get_pdf_file">[docs]</a><span class="k">def</span> <span class="nf">get_pdf_file</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Save the spectrograms into the pdf file.</span>
+
+<span class="sd">    :returns: return A pdf file containing the Plotted Spectrograms with four columns</span>
+<span class="sd">    :returns: pdf file. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">with</span> <span class="n">PdfPages</span><span class="p">(</span><span class="s1">&#39;BgSubImages_test.pdf&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pdf</span><span class="p">:</span>
+        <span class="n">plot_spec</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished plotting!&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="update_all_values"><a class="viewcode-back" href="../rst/validation.html#validation.update_all_values">[docs]</a><span class="k">def</span> <span class="nf">update_all_values</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the std and snr, then update them into the table in Database.</span>
+
+<span class="sd">    :exception: The buffer is too small for the requested array!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">database</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_HOST</span><span class="p">,</span>
+                                <span class="n">user</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_USER</span><span class="p">,</span>
+                                <span class="n">database</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_DATABASE</span><span class="p">,</span>
+                                <span class="n">port</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_PORT</span><span class="p">,</span>
+                                <span class="n">password</span><span class="o">=</span><span class="n">test_config</span><span class="o">.</span><span class="n">DB_PASSWORD</span><span class="p">)</span>
+
+    <span class="n">rows</span><span class="p">,</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">get_all_instruments</span><span class="p">(</span><span class="n">database</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">spec</span> <span class="o">=</span> <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">test_config</span><span class="o">.</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="n">spec2</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">subtract_bg</span><span class="p">(</span><span class="s2">&quot;subtract_bg_sliding_window&quot;</span><span class="p">,</span> <span class="n">window_width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">affected_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                     <span class="n">amount</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">change_points</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">spec2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+            <span class="n">std_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">snr_data</span> <span class="o">=</span> <span class="n">signal_to_noise</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+            <span class="n">sql_update_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;UPDATE data SET std = </span><span class="si">{</span><span class="n">std_data</span><span class="si">}</span><span class="s2">, snr= </span><span class="si">{</span><span class="n">snr_data</span><span class="si">}</span><span class="s2"> where id = </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;&quot;&quot;</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_update_query</span><span class="p">)</span>
+            <span class="n">database</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Error message is: </span><span class="si">%s</span><span class="s2"> and the file name is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Update Done!&quot;</span><span class="p">)</span></div>
+
+
+<span class="c1"># spec = CallistoSpectrogram.read(&quot;Spec_test//GREENLAND_20170906_115501_63.fit.gz&quot;)</span>
+
+<span class="c1"># spec_copy = copy(spec)</span>
+
+<div class="viewcode-block" id="interpolated_spec"><a class="viewcode-back" href="../rst/validation.html#validation.interpolated_spec">[docs]</a><span class="k">def</span> <span class="nf">interpolated_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Interpolate the input data and it return a new Spectrogram.</span>
+<span class="sd">    </span>
+<span class="sd">    :param object self: The copy of the original Spectrogram.</span>
+<span class="sd">    :param bool overwrite: if function interpolated_spec has been called directly, </span>
+<span class="sd">     there will be a possibility to overwrite it&#39;s current spectrogram data. </span>
+<span class="sd">    :returns: New Spectrogram with the interpolated data. </span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">spec_sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subtract_bg</span><span class="p">(</span><span class="s2">&quot;constbacksub&quot;</span><span class="p">,</span> <span class="s2">&quot;elimwrongchannels&quot;</span><span class="p">)</span>  
+
+    <span class="c1"># Interpolation</span>
+    <span class="n">time_x</span> <span class="o">=</span> <span class="n">spec_sub</span><span class="o">.</span><span class="n">time_axis</span>
+    <span class="n">freq_y</span> <span class="o">=</span> <span class="n">spec_sub</span><span class="o">.</span><span class="n">freq_axis</span>
+    <span class="n">data_z</span> <span class="o">=</span> <span class="n">spec_sub</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="n">inter_f</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp2d</span><span class="p">(</span><span class="n">time_x</span><span class="p">,</span> <span class="n">freq_y</span><span class="p">,</span> <span class="n">data_z</span><span class="p">)</span>
+    
+    <span class="c1"># the Frequency before the Interpolation</span>
+    <span class="n">ynew</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span>
+
+    <span class="n">znew</span> <span class="o">=</span> <span class="n">inter_f</span><span class="p">(</span><span class="n">time_x</span><span class="p">,</span> <span class="n">ynew</span><span class="p">)</span>
+    
+    <span class="c1"># If overwrite= True =&gt; it will overwrite the new values into the Spec_sub.</span>
+    
+    <span class="k">if</span> <span class="n">overwrite</span><span class="p">:</span>
+        <span class="n">spec_sub</span><span class="o">.</span><span class="n">time_axis</span> <span class="o">=</span> <span class="n">time_x</span>
+        <span class="n">spec_sub</span><span class="o">.</span><span class="n">freq_axis</span> <span class="o">=</span> <span class="n">ynew</span>
+        <span class="n">spec_sub</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">znew</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="c1"># TODO</span>
+        <span class="c1"># Update the FITS Header history =&gt; .header.set(&#39;Card_name&#39;, &#39;The content&#39;)</span>
+        
+        <span class="n">spec_sub</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;HISTORY&#39;</span><span class="p">,</span> <span class="s1">&#39;: The Interpolate data after using the constbacksub, elimwrongchannels.&#39;</span> <span class="p">)</span>
+                 
+    <span class="k">return</span> <span class="n">spec_sub</span></div>
+
+<span class="c1"># spec_plot = interpolated_spec(spec_copy)</span>
+<span class="c1"># spec_plot.plot()</span>
+<span class="c1"># print(spec_plot.time_axis.shape)</span>
+<span class="c1"># print(spec_plot.freq_axis.shape)</span>
+<span class="c1"># print(spec_plot.data.shape)</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="left-footer">
+            <p>
+                &copy; 2021, Delberin Ali 
+                
+            </p>
+        </div>
+        <div class="right-footer">
+            Built with <a href="http://sphinx-doc.org/">Sphinx
+                4.2.0.</a>
+        </div>
+        <div class="center-footer ">
+            
+            <a href="https://github.com/sunpy/sunpy">Github</a>
+            
+            <span> • </span>
+            
+            <a href="https://twitter.com/SunPyProject">Twitter</a>
+            
+            <span> • </span>
+            
+            <a href="https://app.element.io/#/room/#sunpy:openastronomy.org">Matrix</a>
+            
+            
+        </div>
+    </div>
+</footer>
+  </body>
+</html>
