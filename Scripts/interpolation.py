@@ -1,11 +1,11 @@
 from packages.modules import *
 from scipy import interpolate
-from copy import copy
+from copy import deepcopy
 
 
 spec = CallistoSpectrogram.read("Spec_test//GREENLAND_20170906_115501_63.fit.gz")
 
-spec_copy = copy(spec)
+spec_copy = deepcopy(spec)
 
 
 def interpolated_spec(self, overwrite=True):
