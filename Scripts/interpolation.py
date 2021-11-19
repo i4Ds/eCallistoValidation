@@ -3,22 +3,19 @@ from scipy import interpolate
 from copy import deepcopy
 
 
-spec = CallistoSpectrogram.read("Spec_test//GREENLAND_20170906_115501_63.fit.gz")
-
-spec_copy = deepcopy(spec)
-
-
-def interpolated_spec(self, overwrite=True):
+def interp2(spec, overwrite=True):
     """ 
     Interpolate the input data and it returns a new Spectrogram.
     
-    :param object self: The copy of the original Spectrogram.
+    :param object spec: The original Spectrogram.
     :param bool overwrite: if function interpolated_spec has been called directly, 
      there will be a possibility to overwrite it's current spectrogram data. 
     :returns: New Spectrogram with the interpolated data. 
     
     """
-    spec_sub = self.subtract_bg("constbacksub", "elimwrongchannels")  
+    spec_copy = deepcopy(spec)
+
+    spec_sub = spec_copy.subtract_bg("constbacksub", "elimwrongchannels")
 
     # Interpolation
     time_x = spec_sub.time_axis
@@ -28,7 +25,7 @@ def interpolated_spec(self, overwrite=True):
     inter_f = interpolate.interp2d(time_x, freq_y, data_z)
     
     # the Frequency before the Interpolation
-    ynew = self.freq_axis
+    ynew = spec_copy.freq_axis
     znew = inter_f(time_x, ynew)
     
     # If overwrite= True => it will overwrite the new values into the Spec_sub.
@@ -46,7 +43,9 @@ def interpolated_spec(self, overwrite=True):
     return spec_sub
 
 
-spec_plot = interpolated_spec(spec_copy)
+spec = CallistoSpectrogram.read("Spec_test/GREENLAND_20170906_115501_63.fit.gz")
+
+spec_plot = interp2(spec)
 spec_plot.plot()
 plt.show()
 print(spec_plot.time_axis.shape)
