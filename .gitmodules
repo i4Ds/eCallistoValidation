@@ -2,3 +2,6 @@
 [submodule "radiospectra"]
 	path = radiospectra
 	url = https://github.com/i4Ds/radiospectra
+[submodule "Scripts/radiospectra2"]
+	path = Scripts/radiospectra2
+	url = https://github.com/i4Ds/radiospectra.git
