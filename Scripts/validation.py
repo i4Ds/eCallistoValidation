@@ -18,13 +18,13 @@ import re
 import packages.config as test_config
 from scipy import interpolate
 from copy import deepcopy
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "radiospectra"))
-module_path = os.path.abspath(os.path.join('radiospectra'))
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "radiospectra2"))
+module_path = os.path.abspath(os.path.join('radiospectra2'))
 if module_path not in sys.path:
     sys.path.append(module_path)
 
 
-import radiospectra
+import radiospectra2
 from radiospectra.sources import CallistoSpectrogram
 
 from matplotlib.backends.backend_pdf import PdfPages, FigureCanvasPdf, PdfFile
@@ -149,14 +149,8 @@ def get_plot(rows):
             data_absolute3 = get_abs_data(spec2)
             data_absolute4 = get_abs_data(spec3)
 
-            # take the min and max from the data to set the bins.
-            min_value = get_min_data(data_absolute3, data_absolute4)
-            max_value = get_max_data(data_absolute3, data_absolute4)
-
-            ax4.hist(data_absolute3, histtype='step', bins=range(
-                min_value, max_value + 1), label='Background subtracted')
-            ax4.hist(data_absolute4, histtype='step', bins=range(
-                min_value, max_value + 1), label='Gliding background subtracted')
+            n, bins, patches = ax4.hist([data_absolute3, data_absolute4], histtype='step', bins=25, log = True,
+                                        label=['Background subtracted', 'Gliding background subtracted'])
 
             # Calculate the standard deviation and signal-to-noise => rounded them to have 3 digits.
             std_data = round(np.std(data_absolute4), 3)
@@ -198,6 +192,7 @@ def update_all_values(rows):
     for row in rows:
         try:
             spec = CallistoSpectrogram.read(test_config.DATA_PATH + row[1])
+            file_name = row[1].split("/")[4]
             spec2 = spec.subtract_bg("subtract_bg_sliding_window", window_width=800, affected_width=1,
                                      amount=0.05, change_points=True)
 
@@ -212,7 +207,7 @@ def update_all_values(rows):
             database.commit()
 
         except Exception as err:
-            print(f"The Error message is: {err} and the file name is {row[2]}")
+            print(f"The Error message is: {err} and the file name is {file_name}")
 
 
 def interpolate2d(spec, overwrite=True):
@@ -246,7 +241,6 @@ def interpolate2d(spec, overwrite=True):
         spec_sub.freq_axis = ynew
         spec_sub.data = znew[::-1]
 
-        # TODO
         # Update the FITS Header history => .header.set('Card_name', 'The content')
 
         spec_sub.header.set('HISTORY', ': The Interpolate data after using the constbacksub, elimwrongchannels.')
