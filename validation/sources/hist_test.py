@@ -1,7 +1,7 @@
 from validation import *
-import matplotlib.colors as colors
 
-for root, dirs, files in os.walk("."):
+Path = "fit_files"
+for root, dirs, files in os.walk(".."):
     for name in files:
         if name.endswith('.fit.gz'):
 
@@ -16,7 +16,6 @@ for root, dirs, files in os.walk("."):
 
             fig1, ax1 = plt.subplots(1, 4, figsize=(25, 7))
             ax1 = spec.plot()
-            plt.show()
 
             ax1.title.set_text(f"Original Data, \n std = {std_data_org}, mean = {mean_data_org}, snr = {snr_data_org}")
             plt.close()
@@ -29,8 +28,6 @@ for root, dirs, files in os.walk("."):
             std_data_elim = round(np.std(data_absolute3), 3)
             mean_data_elim = round(np.mean(data_absolute3), 3)
             snr_data_elim = round((mean_data_elim / std_data_elim), 3)
-
-
 
             fig2 = plt.subplots(1, 4, figsize=(25, 7))
             ax2 = spec2.plot()
