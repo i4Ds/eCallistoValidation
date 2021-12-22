@@ -18,7 +18,10 @@ import re
 
 from scipy import interpolate
 from copy import deepcopy
-os.path.join(os.path.dirname(__file__))
+sys.path.append(os.path.join(os.path.dirname(__file__), "../..", "radiospectra2"))
+
+import radiospectra2
+from radiospectra.sources import CallistoSpectrogram
 
 from matplotlib.backends.backend_pdf import PdfPages, FigureCanvasPdf, PdfFile
 import datetime
