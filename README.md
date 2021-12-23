@@ -11,66 +11,59 @@
 
 ## Einstieg:
 Dies ist ein schneller Überblick über die Ordnerstruktur:
-- Documents:
-    - Avg_of_std.xlsx
-    - Documentation.ipynb
 
-- Scripts:
-    - Spec_test
-    - packages:
+- radiospectra:
+- validation:
+    - configs:
+        - __init__.py
         - config.py
-        - main.py
-        - modules.py
-        - requirements.txt
-    - radiospectra
-    - interpolation.py
-    - save_to_sql.py
-    - spec_plot.py
-    - test_create_pdf.ipynb
-    - test_interpolation.ipynb
-    - update.py
-- eCallistoProject:
-    - plot_config.py
+    - fits_files
+    - source:
+        - validation.py
+        - update.py
+        - save_to_sql.py
+        - hist_test.py
+        - SNR_test.ipynb
+        - test_validation.ipynb
 
+- dokumentation.ipynb
+- requirements.txt
 
 Hier ist eine kurze Beschreibung für jede Datei:
 
-#### Documents: 
-- Enthält die Dokumente.
-#### Scripts:
-- Spec_test: Enthält alle Fits-Daten zum Testen.
-
-- packages: Enthält die Funktionen und die Modules für den Code.
+#### radiospectra: 
 
 - radiospectra: Submodul des github i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
 
-- interpolation.py: führt die Interpolation durch.
+#### validation:
 
-- Save_to_Sql:
-  - Aufruf der MetaData aus der Header_liste.
-  - Erstellen a DataFrame im Pandas.
-  - Hinzufügen die MetaDaten in der DatenBank
+- configs:
+    - config.py: Enthält informationen über die Datenbank und den Path.
 
-- spec_plot.py :
-  - Auswahl von 10 Spektrogrammen pro Station.
-  - Speichern als PDF Datei.
-  - Die PDF-Dateien enthält eine Liste mit 4 Spalten.
-    1. Die erste Spalte enthält die Originaldaten
-    2. Die zweite Spalte enthält (Constbacksub + elimwrongchannels)
-    3. Die dritte Spalte enthält (subtract_bg_sliding_window)
-    4. Die vierte Spalte enthält (Histogramme)
+- fits_files: Enthält alle Fits-Daten zum Testen.
 
-- test_create_pdf.ipynb: Dies ist zum Testen der Datei spec_plot.py.
+- source: Enthält die Funktionen und die Modules für den Code.
+    - SNR_test.ipynb: Dieser File ist zum testing der signal-to-noise.
+    
+    - hist_test.py: Dieses Skript soll das Spektrogramm mit 4 Spalten testen:
+        - Die erste Spalte ist das ursprüngliche Spektrogramm.
+        - die zweite Spalte ist das Spektrogramm mit der Funktion (constbacksub, elimwrongchannels).
+        - Die dritte Spalte ist das Spektrogramm mit der Funktion (subtract_bg_sliding_window).
+        - Die vierte Spalte ist das Histogramm für beide Funktionen, zeigt die Werte des Signal-Rausch-Verhältnisses +Standardabweichung an.
 
-- test_interpolation.ipynb: Dies ist zum Testen der Datei interpolation.py.
+    - Save_to_Sql:
+          - Aufruf der MetaData aus der Header_liste.
+          - Erstellen a DataFrame im Pandas.
+          - Hinzufügen die MetaDaten in der DatenBank
 
-- update.py:
-  - Subtrahiere den Hintergrund mit der Funktion („subtract_bg_sliding_window“)
-  - Berechnen die Standardabweichungen(STD) und dann Update in die Datenbank.
-
-
-
+    - update.py:
+      - Subtrahiere den Hintergrund mit der Funktion („subtract_bg_sliding_window“)
+      - Berechnen die Standardabweichungen(STD) und dann Update in die Datenbank.
 
 
+    - validation.py: Enthält alle Funktionen die wir zum testen brauchen.
 
 
+- dokumentation.ipynb: Enthält Beschreibung für alle Funktionen die wir haben.
+
+- requirements.txt: Enthält alle module die wir installieren müssen.
