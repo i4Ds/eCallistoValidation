@@ -26,3 +26,6 @@ os
 glob
 sys
 astropy.io.fits
+
+from scipy import interpolate
+from copy import deepcopy
