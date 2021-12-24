@@ -12,11 +12,9 @@
 ## Einstieg:
 Dies ist ein schneller Überblick über die Ordnerstruktur:
 
-- radiospectra:
+- radiospectra2:
 - validation:
-    - configs:
-        - __init__.py
-        - config.py
+    
     - fits_files
     - source:
         - validation.py
@@ -25,7 +23,9 @@ Dies ist ein schneller Überblick über die Ordnerstruktur:
         - hist_test.py
         - SNR_test.ipynb
         - test_validation.ipynb
-
+        
+    - config.py
+    
 - dokumentation.ipynb
 - requirements.txt
 
@@ -36,9 +36,6 @@ Hier ist eine kurze Beschreibung für jede Datei:
 - radiospectra: Submodul des github i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
 
 #### validation:
-
-- configs:
-    - config.py: Enthält informationen über die Datenbank und den Path.
 
 - fits_files: Enthält alle Fits-Daten zum Testen.
 
@@ -62,7 +59,8 @@ Hier ist eine kurze Beschreibung für jede Datei:
 
 
     - validation.py: Enthält alle Funktionen die wir zum testen brauchen.
-
+    
+    - config.py: Enthält informationen über die Datenbank und den Path.
 
 - dokumentation.ipynb: Enthält Beschreibung für alle Funktionen die wir haben.
 
