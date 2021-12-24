@@ -16,8 +16,22 @@ from sqlalchemy import create_engine
 import matplotlib.pyplot as plt
 import re
 
+
+sys.path.append('./config')
+import config as test_config
+
 from scipy import interpolate
 from copy import deepcopy
+
+# sys.path.append(os.path.join(os.path.dirname("__file__"), "...", "radiospectra2"))
+# module_path = os.path.abspath(os.path.join('radiospectra2'))
+# print(module_path)
+# if module_path not in sys.path:
+#     sys.path.append(module_path)
+
+# import radiospectra2   
+# from radiospectra.sources import CallistoSpectrogram
+
 sys.path.append(os.path.join(os.path.dirname(__file__), "../..", "radiospectra2"))
 
 import radiospectra2
@@ -26,7 +40,6 @@ from radiospectra.sources import CallistoSpectrogram
 from matplotlib.backends.backend_pdf import PdfPages, FigureCanvasPdf, PdfFile
 import datetime
 import warnings
-
 warnings.filterwarnings("ignore")
 
 
@@ -207,6 +220,7 @@ def update_all_values(rows):
             print(f"The Error message is: {err} and the file name is {file_name}")
 
 
+            
 def interpolate2d(spec, overwrite=True):
     """
     Interpolate the input data and it returns a new Spectrogram.
