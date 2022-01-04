@@ -65,7 +65,7 @@ Hier ist eine kurze Beschreibung für jede Datei:
 
 ## Installation
 
-Install eCallistoValidation with pip
+Herunterladen eCallistoValidation mit pip
 
 ```bash
   pip install eCallistoValidation
@@ -75,7 +75,7 @@ Install eCallistoValidation with pip
     
 ## Usage/Examples
 
-### Testing the function interpolate2d :
+### Test der Function interpolate2d :
 ```python
 from validation import *
 
@@ -90,7 +90,7 @@ print(spec_plot.data.shape)
 spec_plot.header
 ```
 
-### Testing the snr and std values :
+### Test die signal-noise-ratio und Standardabweichung Werte :
 
 ```python
 from validation import *
