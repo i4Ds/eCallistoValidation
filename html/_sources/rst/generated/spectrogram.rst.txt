@@ -1,0 +1,38 @@
+﻿spectrogram
+===========
+
+.. automodule:: spectrogram
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      figure
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      LinearTimeSpectrogram
+      SpectroFigure
+      Spectrogram
+      TimeFreq
+   
+   
+
+   
+   
+   
+
+
+
