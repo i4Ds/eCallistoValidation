@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import re
 
 
-sys.path.append('./config')
+sys.path.append('../')
 import config as test_config
 
 from scipy import interpolate
