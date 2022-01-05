@@ -63,15 +63,6 @@ Hier ist eine kurze Beschreibung für jede Datei:
 
 - requirements.txt: Enthält alle module die wir installieren müssen.
 
-## Installation
-
-Herunterladen eCallistoValidation mit pip
-
-```bash
-  pip install eCallistoValidation
-  cd eCallistoValidation
-```
-    
     
 ## Usage/Examples
 
