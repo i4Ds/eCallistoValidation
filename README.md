@@ -72,6 +72,7 @@ Der Path: eCallistoValidation\validation\sources\validation.py
 ```python
 from validation import *
 
+// Liest die Fits-Datei und dann der Funktion interpolate2d anwenden.
 spec = CallistoSpectrogram.read("..//fit_files//GREENLAND_20170906_115501_63.fit.gz")
 spec_plot = interpolate2d(spec)
 spec_plot.plot()
