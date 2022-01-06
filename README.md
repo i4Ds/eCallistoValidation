@@ -12,29 +12,28 @@ Dies ist ein schneller Überblick über die Ordnerstruktur:
 - radiospectra2:
 - validation:
     
-    - fits_files
+    - fit_files
     - source:
         - validation.py
         - update.py
         - save_to_sql.py
         - hist_test.py
-        - SNR_test.ipynb
         - test_validation.ipynb
         
     - config.py
     
-- dokumentation.ipynb
+- README.ipynb
 - requirements.txt
 
 Hier ist eine kurze Beschreibung für jede Datei:
 
 #### radiospectra: 
 
-- radiospectra: Submodul des github i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
+- radiospectra2: Submodul des github i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
 
 #### validation:
 
-- fits_files: Enthält alle Fits-Daten zum Testen.
+- fit_files: Enthält alle Fits-Daten zum Testen.
 
 - source: Enthält die Funktionen und die Modules für den Code.
     - SNR_test.ipynb: Dieser File ist zum testing der signal-to-noise.
@@ -67,6 +66,9 @@ Hier ist eine kurze Beschreibung für jede Datei:
 ## Usage/Examples
 
 ### Test der Function interpolate2d :
+
+Hier müssen wir from validation.py alle Funktionen importieren
+Der Path: eCallistoValidation\validation\sources\validation.py
 ```python
 from validation import *
 
@@ -112,7 +114,7 @@ spec2.plot()
 plt.show()
 ```
 
-Dieser Function erstellt 4 Spalten von Plots: 
+Dieser Function erstellt 4 Spalten von Plots mit (Original-Spektrogramm, Background subtracted ("constbacksub", "elimwrongchannels"), Gliding background subtracted, Histogramme: 
 ```python
 def get_plot(self):
     try:
