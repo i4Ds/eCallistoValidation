@@ -1,8 +1,8 @@
 
 # eCallisto Validation
 
-SSA eCallisto ist ein Webservice, der Daten aus dem International Network of Solar Radio Spectrometers bereitstellt.
-
+eCallisto-Validation konzentriert sich auf die Bewertung der Datenqualität: Für eine bestimmte Beobachtungsstation, wie „gut“ die Qualität der aufgezeichneten Daten ist. Berechnet das Signal-Rausch-Verhältnis und wie gut jede Station gemäß der Standardabweichung ist.
+Je das Signal-Rausch-Verhältnis größer, desto bessere Ergebnisse.
 
 ## Datenquelle :
 - Alle fits Dateien: [Hier](http://soleil80.cs.technik.fhnw.ch/solarradio/data/2002-20yy_Callisto/)
@@ -33,11 +33,12 @@ Hier ist eine kurze Beschreibung für jede Datei:
 
 #### validation:
 
+- html: Enthält die Sphinx Dokumentation. 
+
 - fit_files: Enthält alle Fits-Daten zum Testen.
 
-- source: Enthält die Funktionen und die Modules für den Code.
-    - SNR_test.ipynb: Dieser File ist zum testing der signal-to-noise.
-    
+- source: Enthält die Funktionen und die Modules für den Code: 
+
     - hist_test.py: Dieses Skript soll das Spektrogramm mit 4 Spalten testen:
         - Die erste Spalte ist das ursprüngliche Spektrogramm.
         - die zweite Spalte ist das Spektrogramm mit der Funktion (constbacksub, elimwrongchannels).
@@ -47,32 +48,40 @@ Hier ist eine kurze Beschreibung für jede Datei:
     - Save_to_Sql:
           - Aufruf der MetaData aus der Header_liste.
           - Erstellen a DataFrame im Pandas.
-          - Hinzufügen die MetaDaten in der DatenBank
+          - Hinzufügen die MetaDaten in der DatenBank. 
+      
+    - test_validation.ipynb: Hier testen wir alle Funktion, die in der Datein(validation.py) sind. 
 
     - update.py:
       - Subtrahiere den Hintergrund mit der Funktion („subtract_bg_sliding_window“)
-      - Berechnen die Standardabweichungen(STD) und dann Update in die Datenbank.
+      - Berechnen die Standardabweichungen(STD), die Signal-Rausch-Verhältnis(SNR), und dann Update in die Datenbank.
 
 
     - validation.py: Enthält alle Funktionen die wir zum testen brauchen.
     
-    - config.py: Enthält informationen über die Datenbank und den Path.
+    - config.py: Enthält alle Informationen über die Datenbank und den Path.
 
-- dokumentation.ipynb: Enthält Beschreibung für alle Funktionen die wir haben.
+- README.ipynb: Enthält die Beschreibung für alle Funktionen die wir haben.
 
-- requirements.txt: Enthält alle module die wir installieren müssen.
+- requirements.txt: Enthält alle Module, die wir installieren müssen.
+
 
     
+
 ## Usage/Examples
 
-### Test der Function interpolate2d :
+Der Path: eCallistoValidation\validation\sources\validation.py.
 
-Hier müssen wir from validation.py alle Funktionen importieren
-Der Path: eCallistoValidation\validation\sources\validation.py
+### Test die Function interpolate2d :
+In diesem Skript importieren wir aus der Dateivalidierung.py alle Funktionen, die wir für unser Programm benötigen.
+Zuerst lesen wir die Fits-Datei mit der Funktion "read" aus dem Class **CallistoSpectrogram**,
+dann wird die Funktion *interpolate2d* (Interpolation) aufgerufen
+
+#### CallistoSpectrogram ist eine Klasse im Submodul radiospectra in der Datei (spectrogram.py). 
+
 ```python
 from validation import *
 
-# Liest die Fits-Datei und dann der Funktion interpolate2d anwenden.
 spec = CallistoSpectrogram.read("..//fit_files//GREENLAND_20170906_115501_63.fit.gz")
 spec_plot = interpolate2d(spec)
 spec_plot.plot()
@@ -84,7 +93,12 @@ print(spec_plot.data.shape)
 spec_plot.header
 ```
 
-### Test die signal-noise-ratio und Standardabweichung Werte :
+### Test das Signal-Rausch-Verhältnis und die Standardabweichung Werte : 
+
+In diesem Skript prüfen wir den Unterschied im Signal-Rausch-Verhältnis ohne die Subtraktionsfunktion und dann mit.
+Das Signal-Rausch-Verhältnis wird mit Mittelwerten durch der Standardabweichung berechnet.
+
+Die Funktion **subtract_bg** befindet sich im Submodul radiospectra, die verwendet wird, um die Hintergrundsubtraktion durchzuführen
 
 ```python
 from validation import *
@@ -96,8 +110,8 @@ spec2 = spec.subtract_bg("constbacksub", "elimwrongchannels")
 data = abs(spec.data.flatten())
 data_bg = abs(spec2.data.flatten())
 
-data_mean = data.mean()
-data_std = np.std(data)
+data_mean = round(data.mean(), 3)
+data_std = round(np.std(data), 3)
 
 data_mean_bg = round(data_bg.mean(), 3)
 data_std_bg = round(np.std(data_bg), 3)
@@ -115,7 +129,7 @@ spec2.plot()
 plt.show()
 ```
 
-Dieser Function erstellt 4 Spalten von Plots mit (Original-Spektrogramm, Background subtracted ("constbacksub", "elimwrongchannels"), Gliding background subtracted, Histogramme: 
+Diese Function erstellt 4 Spalten von Plots mit (Original-Spektrogramm, Background subtracted ("constbacksub", "elimwrongchannels"), Gliding background subtracted, Histogramme: 
 ```python
 def get_plot(self):
     try:
@@ -205,7 +219,9 @@ for root, dirs, files in os.walk(".."):
         for file in files:
             if file.endswith('.fit.gz'):
                 full_path = os.path.join(root, file)
+
                 spec_pdf = get_plot(full_path)
+
                 pdf.savefig(spec_pdf)
                 plt.close()
 
