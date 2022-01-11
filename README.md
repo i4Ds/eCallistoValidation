@@ -27,41 +27,40 @@ Dies ist ein schneller Überblick über die Ordnerstruktur:
 
 Hier ist eine kurze Beschreibung für jede Datei:
 
-#### radiospectra: 
+#### radiospectra2: 
 
 - radiospectra2: Submodul des github i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
 
 #### validation:
 
-- html: Enthält die Sphinx Dokumentation. 
+- html: Enthält die Sphinx-Dokumentation. 
 
 - fit_files: Enthält alle Fits-Daten zum Testen.
 
-- source: Enthält die Funktionen und die Modules für den Code: 
+- source: Enthält alle Dateien, die wir für die Validierung benötigen: 
 
-    - hist_test.py: Dieses Skript soll das Spektrogramm mit 4 Spalten testen:
+    - hist_test.py: Dieses Skript soll das Spektrogramm mit 4 Spalten getestet werden:
         - Die erste Spalte ist das ursprüngliche Spektrogramm.
-        - die zweite Spalte ist das Spektrogramm mit der Funktion (constbacksub, elimwrongchannels).
+        - Die zweite Spalte ist das Spektrogramm mit der Funktion (constbacksub, elimwrongchannels).
         - Die dritte Spalte ist das Spektrogramm mit der Funktion (subtract_bg_sliding_window).
         - Die vierte Spalte ist das Histogramm für beide Funktionen, zeigt die Werte des Signal-Rausch-Verhältnisses +Standardabweichung an.
 
     - Save_to_Sql:
-          - Aufruf der MetaData aus der Header_liste.
-          - Erstellen a DataFrame im Pandas.
-          - Hinzufügen die MetaDaten in der DatenBank. 
+      - Aufruf der MetaData aus der Header_liste.
+      - Erstellen a DataFrame im Pandas.
+      - Hinzufügen die MetaDaten in der DatenBank. 
       
     - test_validation.ipynb: Hier testen wir alle Funktion, die in der Datein(validation.py) sind. 
 
     - update.py:
       - Subtrahiere den Hintergrund mit der Funktion („subtract_bg_sliding_window“)
       - Berechnen die Standardabweichungen(STD), die Signal-Rausch-Verhältnis(SNR), und dann Update in die Datenbank.
-
-
-    - validation.py: Enthält alle Funktionen die wir zum testen brauchen.
+      
+    - validation.py: Enthält alle Funktionen, die wir zum Testen brauchen.
     
     - config.py: Enthält alle Informationen über die Datenbank und den Path.
 
-- README.ipynb: Enthält die Beschreibung für alle Funktionen die wir haben.
+- README.ipynb: Enthält die Beschreibung für alle Funktionen, die wir haben.
 
 - requirements.txt: Enthält alle Module, die wir installieren müssen.
 
@@ -73,7 +72,7 @@ Hier ist eine kurze Beschreibung für jede Datei:
 Der Path: eCallistoValidation\validation\sources\validation.py.
 
 ### Test die Function interpolate2d :
-In diesem Skript importieren wir aus der Dateivalidierung.py alle Funktionen, die wir für unser Programm benötigen.
+In diesem Skript importieren wir aus der validation.py alle Funktionen, die wir für unser Programm benötigen.
 Zuerst lesen wir die Fits-Datei mit der Funktion "read" aus dem Class **CallistoSpectrogram**,
 dann wird die Funktion *interpolate2d* (Interpolation) aufgerufen
 
@@ -93,7 +92,7 @@ print(spec_plot.data.shape)
 spec_plot.header
 ```
 
-### Test das Signal-Rausch-Verhältnis und die Standardabweichung Werte : 
+### Test das Signal-Rausch-Verhältnis und die Standardabweichung Werte: 
 
 In diesem Skript prüfen wir den Unterschied im Signal-Rausch-Verhältnis ohne die Subtraktionsfunktion und dann mit.
 Das Signal-Rausch-Verhältnis wird mit Mittelwerten durch der Standardabweichung berechnet.
@@ -129,7 +128,8 @@ spec2.plot()
 plt.show()
 ```
 
-Diese Function erstellt 4 Spalten von Plots mit (Original-Spektrogramm, Background subtracted ("constbacksub", "elimwrongchannels"), Gliding background subtracted, Histogramme: 
+Diese Function erstellt 4 Spalten von Plots mit (Original-Spektrogramm, Background subtracted ("constbacksub", "elimwrongchannels"),
+Gliding background subtracted und Histogramm, zusätzlich werden die Standardabweichung und das Signal-Rausch-Verhältnis berechnet und dann dem Histogramm hinzugefügt: 
 ```python
 def get_plot(self):
     try:
