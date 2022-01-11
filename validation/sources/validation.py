@@ -103,7 +103,7 @@ def move_axes(fig, ax_source, ax_target):
     plt.close(old_fig)
 
 
-def get_all_instruments(database, sql_query):
+def get_database(database, sql_query):
     """Get the all instruments data from the Database.
 
      :param database: a database 'Validation'.
@@ -129,7 +129,10 @@ def get_plot(rows):
     """
     for row in rows:
         try:
-            spec = CallistoSpectrogram.read(test_config.DATA_PATH + row[1])
+            file_path = row[1]
+            file_name = row[1].split("/")[4]
+
+            spec = CallistoSpectrogram.read(test_config.DATA_PATH + file_path)
             fig1, axs1 = plt.subplots(1, 4, figsize=(27, 6))
             ax1 = spec.plot()
             ax1.title.set_text("Original Data")
@@ -158,16 +161,17 @@ def get_plot(rows):
             data_absolute3 = get_abs_data(spec2)
             data_absolute4 = get_abs_data(spec3)
 
-            n, bins, patches = ax4.hist([data_absolute3, data_absolute4], histtype='step', bins=25, log = True,
+            n, bins, patches = ax4.hist([data_absolute3, data_absolute4], histtype='step', bins=25, log=True,
                                         label=['Background subtracted', 'Gliding background subtracted'])
 
             # Calculate the standard deviation and signal-to-noise => rounded them to have 3 digits.
-            std_data = round(np.std(data_absolute4), 3)
-            snr_data = round(signal_to_noise(data_absolute4), 3)
+            std_data = round(row[6], 3)
+            snr_data = round(row[7], 3)
+            max_mean = round(row[8], 3)
 
             # Set title for the histograms and show the std/snr values.
             ax4.title.set_text(
-                f"Histograms, std = {std_data}, snr = {snr_data}")
+                f"Histograms, std = {std_data}, snr = {snr_data}, max_mean = {max_mean}")
             plt.legend()
             plt.close()
 
@@ -191,7 +195,7 @@ def get_plot(rows):
 
         except Exception as err:
 
-            print(f"The Error message is: {err} and the file name is {row[2]}")
+            print(f"The Error message is: {err} and the file name is {file_name}")
             # print("The Error message is: %s and the file name is %s" % (err, row[2]))
 
 
@@ -257,8 +261,3 @@ def interpolate2d(spec, overwrite=True):
         spec_sub.header.set('HISTORY', ': The Interpolate data after using the constbacksub, elimwrongchannels.')
 
     return spec_sub
-
-
-
-
-
