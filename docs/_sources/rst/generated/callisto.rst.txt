@@ -1,0 +1,37 @@
+﻿callisto
+========
+
+.. automodule:: callisto
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      download
+      parse_filename
+      query
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      CallistoSpectrogram
+   
+   
+
+   
+   
+   
+
+
+

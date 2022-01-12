@@ -1,0 +1,1199 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>callisto &#8212; eCallisto 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" href="../_static/sunpy_style.css" type="text/css" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+<script type="text/javascript" src="../_static/version.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon-32.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+<title> eCallisto 0.0.1 documentation </title>
+
+<meta name="robots" content="noindex, nofollow" >
+
+  </head><body>
+
+<div id="navbar"
+  class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sunpy.org/">
+        eCallisto</a>
+    </div>
+
+    <div class="collapse navbar-collapse nav-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">About<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="../about.html">Our Mission</a></li>
+            <li class="dropdown-submenu">
+              <a href="../about.html">Acknowledge SunPy</a></li>
+            <li class="dropdown-submenu">
+              <a href="../coc.html">Code of Conduct</a></li>
+          </ul>
+        </li>
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">Documentation<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/en/stable/">sunpy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/ndcube/">ndcube</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/drms/">drms</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://aiapy.readthedocs.io/en/stable/">aiapy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://pfsspy.readthedocs.io/en/stable/">pfsspy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunraster/en/stable/">sunraster</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunkit-instruments/en/stable/">sunkit-instruments</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunkit-image/en/stable/">sunkit-image</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/radiospectra/en/stable/">radiospectra</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://pyflct.readthedocs.io/en/stable/">pyflct</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://ablog.readthedocs.io/">ablog</a></li>
+          </ul>
+        </li>
+        
+        
+        <li><a href="../blog.html">Blog</a></li>
+        
+        
+        <li><a href="../contribute.html">Support Us</a></li>
+        
+        
+        <li><a href="../help.html">Get Help</a></li>
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">SunPy Project<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="../project/">SunPy Project</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/roles.html">Community Roles</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/affiliated.html">Affiliated Packages</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/former.html">Emeritus role holders</a></li>
+          </ul>
+        </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+
+
+  
+
+
+
+
+
+<div class="sidenologo"></div>
+
+<p class="doc-title">
+    <a style="padding-left: 0" href="../index.html">eCallisto 0.0.1</a>
+</p>
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+    <div class="form-group">
+        <label>
+            <input type="text" name="q" class="form-control" placeholder="Search" />
+        </label>
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+</form>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/validation.html">validation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/spectrogram.html">spectrogram module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/callisto.html">callisto module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/API.html">API</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <h1>Source code for callisto</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">ntpath</span>
+<span class="kn">from</span> <span class="nn">distutils.version</span> <span class="kn">import</span> <span class="n">LooseVersion</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter1d</span>
+
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">astropy.nddata.ccddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">leastsq</span>
+
+<span class="kn">from</span> <span class="nn">sunpy</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">sunpy.time</span> <span class="kn">import</span> <span class="n">parse_time</span>
+<span class="kn">from</span> <span class="nn">sunpy.util.net</span> <span class="kn">import</span> <span class="n">download_file</span>
+
+<span class="kn">from</span> <span class="nn">radiospectra.spectrogram</span> <span class="kn">import</span> <span class="n">REFERENCE</span><span class="p">,</span> <span class="n">LinearTimeSpectrogram</span><span class="p">,</span> <span class="n">_union</span>
+<span class="kn">from</span> <span class="nn">radiospectra.util</span> <span class="kn">import</span> <span class="n">ConditionalDispatch</span><span class="p">,</span> <span class="n">minimal_pairs</span><span class="p">,</span> <span class="n">run_cls</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CallistoSpectrogram&#39;</span><span class="p">]</span>
+
+<span class="n">SUNPY_LT_1</span> <span class="o">=</span> <span class="n">LooseVersion</span><span class="p">(</span><span class="n">__version__</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">LooseVersion</span><span class="p">(</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">TIME_STR</span> <span class="o">=</span> <span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">%H%M%S&quot;</span>
+<span class="n">DEFAULT_URL</span> <span class="o">=</span> <span class="s1">&#39;http://soleil.i4ds.ch/solarradio/data/2002-20yy_Callisto/&#39;</span>
+<span class="n">_DAY</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">DATA_SIZE</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">15</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">parse_filename</span><span class="p">(</span><span class="n">href</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">href</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">inst</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">no</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="n">dstart</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span> <span class="o">+</span> <span class="n">time</span><span class="p">,</span> <span class="n">TIME_STR</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="c1"># If the split fails, the file name does not match out</span>
+        <span class="c1"># format,so we skip it and continue to the next</span>
+        <span class="c1"># iteration of the loop.</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">inst</span><span class="p">,</span> <span class="n">no</span><span class="p">,</span> <span class="n">dstart</span>
+
+
+<span class="n">PARSERS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Everything starts with &quot;&quot;</span>
+    <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">parse_filename</span><span class="p">)</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">instruments</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">DEFAULT_URL</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get URLs for callisto data from instruments between start and end.</span>
+<span class="sd">    </span>
+<span class="sd">    :param start: sunpy.time.parse_time compatible.</span>
+<span class="sd">    :param end: sunpy.time.parse_time compatible.</span>
+<span class="sd">    :param sequence: Sequence of instruments whose data is requested.</span>
+<span class="sd">    :param str url: Base URL for the request.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">start</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">start</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">start</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">day</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="n">day</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y/%m/</span><span class="si">%d</span><span class="s1">/&#39;</span><span class="p">)</span>
+        <span class="n">opn</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">opn</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+                <span class="n">href</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">parser</span> <span class="ow">in</span> <span class="n">PARSERS</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">href</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+                        <span class="k">break</span>
+
+                <span class="n">result</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">href</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">inst</span><span class="p">,</span> <span class="n">no</span><span class="p">,</span> <span class="n">dstart</span> <span class="o">=</span> <span class="n">result</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">instruments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+                    <span class="n">inst</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">instruments</span> <span class="ow">and</span>
+                        <span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">no</span><span class="p">))</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">instruments</span><span class="p">):</span>
+                    <span class="k">continue</span>
+
+                <span class="n">dend</span> <span class="o">=</span> <span class="n">dstart</span> <span class="o">+</span> <span class="n">DATA_SIZE</span>
+                <span class="k">if</span> <span class="n">dend</span> <span class="o">&gt;</span> <span class="n">start</span> <span class="ow">and</span> <span class="n">dstart</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">directory</span> <span class="o">+</span> <span class="n">href</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">opn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">day</span> <span class="o">+=</span> <span class="n">_DAY</span>
+
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">directory</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download files from urls into directory.</span>
+
+<span class="sd">    :param list of str urls:  urls of the files to retrieve.</span>
+<span class="sd">    :param str: directory to save them in. </span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_parse_header_time</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns `~datetime.datetime` object from date and time fields of header.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">date</span> <span class="o">+</span> <span class="s1">&#39;T&#39;</span> <span class="o">+</span> <span class="n">time</span>
+
+    <span class="k">if</span> <span class="n">SUNPY_LT_1</span><span class="p">:</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">datetime</span>
+
+    <span class="k">return</span> <span class="n">time</span>
+
+
+<div class="viewcode-block" id="CallistoSpectrogram"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram">[docs]</a><span class="k">class</span> <span class="nc">CallistoSpectrogram</span><span class="p">(</span><span class="n">LinearTimeSpectrogram</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class used for dynamic spectra coming from the Callisto network.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    :param header: `~astropy.io.fits.Header`, main header of the FITS file.</span>
+<span class="sd">    :param axes_header: `~astropy.io.fits.Header`, header for the axes table.</span>
+<span class="sd">    :param bool swapped: flag that specifies whether originally in the file the x-axis was frequency.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># XXX: Determine those from the data.</span>
+    <span class="n">SIGMA_SUM</span> <span class="o">=</span> <span class="mi">75</span>
+    <span class="n">SIGMA_DELTA_SUM</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">_create</span> <span class="o">=</span> <span class="n">ConditionalDispatch</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">LinearTimeSpectrogram</span><span class="o">.</span><span class="n">_create</span><span class="p">)</span>
+    <span class="n">create</span> <span class="o">=</span> <span class="nb">classmethod</span><span class="p">(</span><span class="n">_create</span><span class="o">.</span><span class="n">wrapper</span><span class="p">())</span>
+    <span class="c1"># Contrary to what pylint may think, this is not an old-style class.</span>
+    <span class="c1"># pylint: disable=E1002,W0142,R0902</span>
+
+    <span class="c1"># This needs to list all attributes that need to be</span>
+    <span class="c1"># copied to maintain the object and how to handle them.</span>
+    <span class="n">COPY_PROPERTIES</span> <span class="o">=</span> <span class="n">LinearTimeSpectrogram</span><span class="o">.</span><span class="n">COPY_PROPERTIES</span> <span class="o">+</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">,</span> <span class="n">REFERENCE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;swapped&#39;</span><span class="p">,</span> <span class="n">REFERENCE</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;axes_header&#39;</span><span class="p">,</span> <span class="n">REFERENCE</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="c1"># List of instruments retrieved in July 2012 from</span>
+    <span class="c1"># http://soleil.i4ds.ch/solarradio/data/2002-20yy_Callisto/</span>
+    <span class="n">INSTRUMENTS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;ALASKA&#39;</span><span class="p">,</span> <span class="s1">&#39;ALMATY&#39;</span><span class="p">,</span> <span class="s1">&#39;BIR&#39;</span><span class="p">,</span> <span class="s1">&#39;DARO&#39;</span><span class="p">,</span> <span class="s1">&#39;HB9SCT&#39;</span><span class="p">,</span> <span class="s1">&#39;HUMAIN&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;HURBANOVO&#39;</span><span class="p">,</span> <span class="s1">&#39;KASI&#39;</span><span class="p">,</span> <span class="s1">&#39;KENYA&#39;</span><span class="p">,</span> <span class="s1">&#39;KRIM&#39;</span><span class="p">,</span> <span class="s1">&#39;MALAYSIA&#39;</span><span class="p">,</span> <span class="s1">&#39;MRT1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MRT2&#39;</span><span class="p">,</span> <span class="s1">&#39;OOTY&#39;</span><span class="p">,</span> <span class="s1">&#39;OSRA&#39;</span><span class="p">,</span> <span class="s1">&#39;SWMC&#39;</span><span class="p">,</span> <span class="s1">&#39;TRIEST&#39;</span><span class="p">,</span> <span class="s1">&#39;UNAM&#39;</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="CallistoSpectrogram.save"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save modified spectrogram back to filepath.</span>
+
+<span class="sd">        :param str filepath: path to save the spectrogram to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">filepath</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">filepath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span>
+
+        <span class="n">main_header</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_header</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">CCDData</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">main_header</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;Sun&#39;</span><span class="p">)</span>
+        <span class="c1"># XXX: Update axes header.</span>
+
+        <span class="n">data</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;BZERO&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;scaling offset&#39;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;BSCALE&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;scaling factor&#39;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">],</span> <span class="s1">&#39;length of data axis 1&#39;</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS2&#39;</span><span class="p">],</span> <span class="s1">&#39;length of data axis 2&#39;</span><span class="p">)</span>
+
+        <span class="n">freq_col</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FREQUENCY&quot;</span><span class="p">,</span>
+            <span class="nb">format</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">)</span><span class="si">}</span><span class="s2">D8.3&quot;</span><span class="p">,</span>
+            <span class="n">array</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">),</span>
+                             <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">)))</span>
+        <span class="p">)</span>
+        <span class="n">time_col</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;TIME&quot;</span><span class="p">,</span>
+            <span class="nb">format</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_axis</span><span class="p">)</span><span class="si">}</span><span class="s2">D8.3&quot;</span><span class="p">,</span>
+            <span class="n">array</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_axis</span><span class="p">),</span>
+                             <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_axis</span><span class="p">)))</span>
+        <span class="p">)</span>
+
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">ColDefs</span><span class="p">([</span><span class="n">time_col</span><span class="p">,</span> <span class="n">freq_col</span><span class="p">])</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">BinTableHDU</span><span class="o">.</span><span class="n">from_columns</span><span class="p">(</span>
+            <span class="n">cols</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">axes_header</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;AXES&#39;</span><span class="p">)</span>
+
+        <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TTYPE1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TTYPE1&#39;</span><span class="p">],</span> <span class="s1">&#39;label for field   1&#39;</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TFORM1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TFORM1&#39;</span><span class="p">],</span> <span class="s1">&#39;data format of field: 8-byte DOUBLE&#39;</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TTYPE2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TTYPE2&#39;</span><span class="p">],</span> <span class="s1">&#39;label for field   2&#39;</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TFORM2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TFORM2&#39;</span><span class="p">],</span> <span class="s1">&#39;data format of field: 8-byte DOUBLE&#39;</span><span class="p">)</span>
+
+        <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TSCAL1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TZERO1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TSCAL2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TZERO2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">hdulist</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_hdu</span><span class="p">()</span>
+        <span class="n">hdulist</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rfi_freq_axis</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Putting information, which frequencies channels were removed into the header</span>
+            <span class="n">freq_col</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;RFI_FREQUENCY&quot;</span><span class="p">,</span>
+                <span class="nb">format</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rfi_freq_axis</span><span class="p">)</span><span class="si">}</span><span class="s2">D8.3&quot;</span><span class="p">,</span>
+                <span class="n">array</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rfi_freq_axis</span><span class="p">),</span>
+                                 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rfi_freq_axis</span><span class="p">)))</span>
+            <span class="p">)</span>
+            <span class="n">rfi_freq_col</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">ColDefs</span><span class="p">([</span><span class="n">freq_col</span><span class="p">])</span>
+            <span class="n">rfi_table</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">BinTableHDU</span><span class="o">.</span><span class="n">from_columns</span><span class="p">(</span>
+                <span class="n">rfi_freq_col</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">axes_header</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;RFI_FREQ&#39;</span><span class="p">)</span>
+            <span class="n">hdulist</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">rfi_table</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+            <span class="n">hdulist</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">filepath</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">split</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="n">new_filepath</span> <span class="o">=</span> <span class="n">split</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">)&#39;</span> <span class="o">+</span> \
+                <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;.&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="k">while</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">new_filepath</span><span class="p">):</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">new_filepath</span> <span class="o">=</span> <span class="n">split</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">)&#39;</span> <span class="o">+</span> \
+                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;.&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> \
+                    <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="n">hdulist</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">new_filepath</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">new_filepath</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.get_header"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.get_header">[docs]</a>    <span class="k">def</span> <span class="nf">get_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the updated header.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">swapped</span><span class="p">:</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># pylint: disable=E1101</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># pylint: disable=E1101</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># pylint: disable=E1101</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># pylint: disable=E1101</span>
+        <span class="k">return</span> <span class="n">header</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.read"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.read">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reads in FITS file and return a new CallistoSpectrogram.</span>
+<span class="sd">        Any unknown (i.e. any except filename) keyword arguments get</span>
+<span class="sd">        passed to fits.open.</span>
+
+<span class="sd">        :param str filename: path of the file to read.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fl</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">ARRAY_TYPE</span><span class="p">,</span>
+                           <span class="n">mask</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">fl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">))]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">header</span> <span class="o">=</span> <span class="n">fl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+
+        <span class="c1"># not every fits file does provide axes in their header file</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="n">fl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">modified</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1"># simple patch for TIME-END issue</span>
+        <span class="k">if</span> <span class="n">header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">][</span><span class="mi">6</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;60&#39;</span><span class="p">:</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">][:</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span>
+                                  <span class="s1">&#39;59&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">.</span><span class="n">comments</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">])</span>
+            <span class="n">modified</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;24&#39;</span><span class="p">:</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;00&#39;</span> <span class="o">+</span> <span class="n">header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">]</span>
+                                  <span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">header</span><span class="o">.</span><span class="n">comments</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">])</span>
+            <span class="n">modified</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># since there are fits files where both cases of the &#39;60&#39; and &#39;24&#39; changes occurs,</span>
+        <span class="c1"># this makes sure only one time &#39;[modified]&#39; is written in the comments section</span>
+        <span class="k">if</span> <span class="n">modified</span><span class="p">:</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">],</span>
+                                  <span class="n">header</span><span class="o">.</span><span class="n">comments</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; [modified]&#39;</span><span class="p">)</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">_parse_header_time</span><span class="p">(</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;DATE-OBS&#39;</span><span class="p">],</span> <span class="n">header</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TIME-OBS&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TIME$_OBS&#39;</span><span class="p">))</span>
+        <span class="p">)</span>
+
+        <span class="n">end</span> <span class="o">=</span> <span class="n">_parse_header_time</span><span class="p">(</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;DATE-END&#39;</span><span class="p">],</span> <span class="n">header</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TIME$_END&#39;</span><span class="p">))</span>
+        <span class="p">)</span>
+
+        <span class="n">swapped</span> <span class="o">=</span> <span class="s2">&quot;time&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CTYPE1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="c1"># Swap dimensions so x-axis is always time.</span>
+        <span class="k">if</span> <span class="n">swapped</span><span class="p">:</span>
+            <span class="n">t_delt</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CDELT2&quot;</span><span class="p">]</span>
+            <span class="n">t_init</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRVAL2&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_delt</span> <span class="o">*</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRPIX2&quot;</span><span class="p">]</span>
+            <span class="n">t_label</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CTYPE2&quot;</span><span class="p">]</span>
+
+            <span class="n">f_delt</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CDELT1&quot;</span><span class="p">]</span>
+            <span class="n">f_init</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRVAL1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_delt</span> <span class="o">*</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRPIX1&quot;</span><span class="p">]</span>
+            <span class="n">f_label</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CTYPE1&quot;</span><span class="p">]</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t_delt</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CDELT1&quot;</span><span class="p">]</span>
+            <span class="n">t_init</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRVAL1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_delt</span> <span class="o">*</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRPIX1&quot;</span><span class="p">]</span>
+            <span class="n">t_label</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CTYPE1&quot;</span><span class="p">]</span>
+
+            <span class="n">f_delt</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CDELT2&quot;</span><span class="p">]</span>
+            <span class="n">f_init</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRVAL2&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_delt</span> <span class="o">*</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRPIX2&quot;</span><span class="p">]</span>
+            <span class="n">f_label</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CTYPE2&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Table may contain the axes data. If it does, the other way of doing</span>
+        <span class="c1"># it might be very wrong.</span>
+        <span class="n">tm</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">fq</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># It&#39;s not my fault. Neither supports __contains__ nor .get</span>
+                <span class="n">tm</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;TIME&#39;</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">tm</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">fq</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;FREQUENCY&#39;</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">fq</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">tm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Fix dimensions (whyever they are (1, x) in the first place)</span>
+            <span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">tm</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Otherwise, assume it&#39;s linear.</span>
+            <span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">t_delt</span>  <span class="c1"># pylint: disable=E1101</span>
+
+        <span class="k">if</span> <span class="n">fq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">freq_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">fq</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">freq_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">f_delt</span> <span class="o">+</span> <span class="n">f_init</span>  <span class="c1"># pylint: disable=E1101</span>
+
+        <span class="c1"># Remove duplicate entries on the borders</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">freq_axis</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="n">freq_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">freq_axis</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">==</span> <span class="n">freq_axis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="n">c_left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">c_right</span> <span class="o">=</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">2</span>
+
+        <span class="k">if</span> <span class="n">c_left</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">c_left</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">MISSING_VALUE</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[:</span><span class="n">c_left</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">c_right</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">freq_axis</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">c_right</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">MISSING_VALUE</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">c_right</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># mask the zigzag pattern</span>
+        <span class="n">zigzag</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">255</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">row_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">row_index</span><span class="p">,</span> <span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">zigzag</span><span class="p">)],</span> <span class="n">zigzag</span><span class="p">):</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">row_index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">MISSING_VALUE</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">row_index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">content</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CONTENT&quot;</span><span class="p">]</span>
+        <span class="n">instruments</span> <span class="o">=</span> <span class="p">{</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;INSTRUME&quot;</span><span class="p">]}</span>
+
+        <span class="n">axes_header</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">axes</span><span class="p">:</span>
+            <span class="n">axes_header</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">header</span>
+
+        <span class="n">fl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">time_axis</span><span class="p">,</span> <span class="n">freq_axis</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">t_init</span><span class="p">,</span> <span class="n">t_delt</span><span class="p">,</span>
+            <span class="n">t_label</span><span class="p">,</span> <span class="n">f_label</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">instruments</span><span class="p">,</span>
+            <span class="n">header</span><span class="p">,</span> <span class="n">axes_header</span><span class="p">,</span> <span class="n">swapped</span><span class="p">,</span> <span class="n">filename</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">time_axis</span><span class="p">,</span> <span class="n">freq_axis</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span>
+                 <span class="n">t_init</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t_delt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t_label</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">f_label</span><span class="o">=</span><span class="s2">&quot;Frequency&quot;</span><span class="p">,</span>
+                 <span class="n">content</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">instruments</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axes_header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">swapped</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Because of how object creation works, there is no avoiding</span>
+        <span class="c1"># unused arguments in this case.</span>
+        <span class="c1"># pylint: disable=W0613</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">MaskedArray</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ARRAY_TYPE</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">CallistoSpectrogram</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">time_axis</span><span class="p">,</span> <span class="n">freq_axis</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span>
+            <span class="n">t_init</span><span class="p">,</span> <span class="n">t_delt</span><span class="p">,</span> <span class="n">t_label</span><span class="p">,</span> <span class="n">f_label</span><span class="p">,</span>
+            <span class="n">content</span><span class="p">,</span> <span class="n">instruments</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">header</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes_header</span> <span class="o">=</span> <span class="n">axes_header</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">swapped</span> <span class="o">=</span> <span class="n">swapped</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="n">head</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">ntpath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">tail</span> <span class="ow">or</span> <span class="n">ntpath</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="CallistoSpectrogram.is_datasource_for"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.is_datasource_for">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">is_datasource_for</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">header</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if class supports data from the given FITS file.</span>
+
+<span class="sd">        :param header: `~astropy.io.fits.Header` main header of the FITS file</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">header</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;instrume&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">INSTRUMENTS</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.remove_border"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.remove_border">[docs]</a>    <span class="k">def</span> <span class="nf">remove_border</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove duplicate entries on the borders.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">left</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">right</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="p">:]</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.read_many"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.read_many">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">read_many</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filenames</span><span class="p">,</span> <span class="n">sort_by</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of CallistoSpectrogram objects read from filenames.</span>
+
+<span class="sd">        :param list of str filenames: list of paths to read from.</span>
+<span class="sd">        :param str sort_by: optional attribute of the resulting objects to sort from, e.g. start to sort by starting time.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">objs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">read</span><span class="p">,</span> <span class="n">filenames</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">sort_by</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">objs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sort_by</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">objs</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.from_range"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.from_range">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_range</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instrument</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Automatically download data from instrument between start and end and</span>
+<span class="sd">        join it together.</span>
+
+<span class="sd">        :param str instrument: instrument to retrieve the data from.</span>
+<span class="sd">        :param `~sunpy.time.parse_time` start: compatible start of the measurement.</span>
+<span class="sd">        :param `~sunpy.time.parse_time` end: compatible end of the measurement.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">SUNPY_LT_1</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">datetime</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">datetime</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="p">[</span><span class="n">instrument</span><span class="p">])</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">from_url</span><span class="p">,</span> <span class="n">urls</span><span class="p">))</span>
+        <span class="n">freq_buckets</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">freq_buckets</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">combine_frequencies</span><span class="p">(</span>
+                <span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">new_join_many</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">freq_buckets</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No data found.&quot;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_overlap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Find frequency and time overlap of two spectrograms.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">one</span><span class="p">,</span> <span class="n">two</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intersect_time</span><span class="p">([</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">])</span>
+        <span class="n">ovl</span> <span class="o">=</span> <span class="n">one</span><span class="o">.</span><span class="n">freq_overlap</span><span class="p">(</span><span class="n">two</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">one</span><span class="o">.</span><span class="n">clip_freq</span><span class="p">(</span><span class="o">*</span><span class="n">ovl</span><span class="p">),</span> <span class="n">two</span><span class="o">.</span><span class="n">clip_freq</span><span class="p">(</span><span class="o">*</span><span class="n">ovl</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_to_minimize</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to be minimized for matching to frequency channels.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">_fun</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.2</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">():</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">_fun</span>
+
+    <span class="k">def</span> <span class="nf">_homogenize_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">maxdiff</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return triple with a tuple of indices (in self and other,</span>
+<span class="sd">        respectively), factors and constants at these frequencies.</span>
+
+<span class="sd">        :param `radiospectra.CallistoSpectrogram` other: Spectrogram to be homogenized with the current one.</span>
+<span class="sd">        :param float maxdiff: Threshold for which frequencies are considered equal.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">pairs_indices</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">minimal_pairs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">maxdiff</span>
+        <span class="p">]</span>
+
+        <span class="n">pairs_data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">n_one</span><span class="p">,</span> <span class="p">:],</span> <span class="n">other</span><span class="p">[</span><span class="n">n_two</span><span class="p">,</span> <span class="p">:])</span> <span class="k">for</span> <span class="n">n_one</span><span class="p">,</span> <span class="n">n_two</span> <span class="ow">in</span> <span class="n">pairs_indices</span>
+        <span class="p">]</span>
+
+        <span class="c1"># XXX: Maybe unnecessary.</span>
+        <span class="n">pairs_data_gaussian</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">gaussian_filter1d</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">gaussian_filter1d</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">pairs_data</span>
+        <span class="p">]</span>
+
+        <span class="c1"># If we used integer arithmetic, we would accept more invalid</span>
+        <span class="c1"># values.</span>
+        <span class="n">pairs_data_gaussian64</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">pairs_data_gaussian</span><span class="p">)</span>
+        <span class="n">least</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">leastsq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_minimize</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">pairs_data_gaussian64</span>
+        <span class="p">]</span>
+
+        <span class="n">factors</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">least</span><span class="p">]</span>
+        <span class="n">constants</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">least</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">pairs_indices</span><span class="p">,</span> <span class="n">factors</span><span class="p">,</span> <span class="n">constants</span>
+
+<div class="viewcode-block" id="CallistoSpectrogram.homogenize"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.homogenize">[docs]</a>    <span class="k">def</span> <span class="nf">homogenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">maxdiff</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return overlapping part of self and other as (self, other) tuple.</span>
+<span class="sd">        Homogenize intensities so that the images can be used with</span>
+<span class="sd">        combine_frequencies. Note that this works best when most of the picture</span>
+<span class="sd">        is signal, so use :meth:`in_interval` to select the subset of your</span>
+<span class="sd">        image before applying this method.</span>
+
+<span class="sd">        :param `radiospectra.CallistoSpectrogram` other: Spectrogram to be homogenized with the current one.</span>
+<span class="sd">        :param float maxdiff: Threshold for which frequencies are considered equal.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">one</span><span class="p">,</span> <span class="n">two</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlap</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="n">pairs_indices</span><span class="p">,</span> <span class="n">factors</span><span class="p">,</span> <span class="n">constants</span> <span class="o">=</span> <span class="n">one</span><span class="o">.</span><span class="n">_homogenize_params</span><span class="p">(</span>
+            <span class="n">two</span><span class="p">,</span> <span class="n">maxdiff</span>
+        <span class="p">)</span>
+        <span class="c1"># XXX: Maybe (xd.freq_axis[x] + yd.freq_axis[y]) / 2.</span>
+        <span class="n">pairs_freqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">one</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pairs_indices</span><span class="p">]</span>
+
+        <span class="c1"># XXX: Extrapolation does not work this way.</span>
+        <span class="c1"># XXX: Improve.</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">pairs_freqs</span><span class="p">,</span> <span class="n">factors</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">f2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">pairs_freqs</span><span class="p">,</span> <span class="n">constants</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">one</span><span class="p">,</span>
+                <span class="n">two</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">two</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">two</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.extend"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.extend">[docs]</a>    <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Requests subsequent files from the server. If minutes is negative, retrieve preceding files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instruments</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+
+        <span class="n">instrument</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instruments</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">minutes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">load_from_range</span><span class="p">(</span>
+                <span class="n">instrument</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">minutes</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">minutes</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">load_from_range</span><span class="p">(</span>
+                <span class="n">instrument</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=-</span><span class="n">minutes</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="n">filtered_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">current_data</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">current_data</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;PWM_VAL&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;PWM_VAL&quot;</span><span class="p">]:</span>
+                <span class="n">filtered_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">new_join_many</span><span class="p">([</span><span class="bp">self</span><span class="p">]</span> <span class="o">+</span> <span class="n">filtered_data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.from_url"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.from_url">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_url</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns CallistoSpectrogram read from URL.</span>
+
+<span class="sd">        :param str url: URL to retrieve the data from</span>
+<span class="sd">        :returns: newSpectrogram  `radiospectra.CallistoSpectrogram`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">url</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.load_from_range"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.load_from_range">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load_from_range</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instrument</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Automatically download data from instrument between start and</span>
+<span class="sd">        end.</span>
+
+<span class="sd">        :param str instrument: instrument to retrieve the data from.</span>
+<span class="sd">        :param `~sunpy.time.parse_time` start: compatible start of the measurement.</span>
+<span class="sd">        :param `~sunpy.time.parse_time` end: compatible end of the measurement.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kw</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;maxgap&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s1">&#39;fill&#39;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">JOIN_REPEAT</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">kw</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">SUNPY_LT_1</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">datetime</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">datetime</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="p">[</span><span class="n">instrument</span><span class="p">])</span>
+        <span class="n">specs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">from_url</span><span class="p">,</span> <span class="n">urls</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">specs</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.new_join_many"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.new_join_many">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">new_join_many</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">specs</span> <span class="p">,</span> <span class="n">polarisations</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Produce new Spectrogram that contains spectrograms</span>
+<span class="sd">        joined together in time and frequency.</span>
+
+<span class="sd">        :param list specs: List of CallistoSpectrogram&#39;s to join together in time.</span>
+<span class="sd">        :param bool: TODO</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># checks</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">specs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Need at least one spectrogram.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">specs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># sorts specs</span>
+        <span class="n">specs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">specs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+
+        <span class="c1"># initiates combine_polarisations or gives separated spectrograms back</span>
+        <span class="k">if</span> <span class="n">polarisations</span><span class="p">:</span>
+            <span class="n">sorting_dict</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">detect_and_combine_polarisations</span><span class="p">(</span><span class="n">specs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pwm_val_list</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
+                <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;PWM_VAL&#39;</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">specs</span><span class="p">))</span>
+            <span class="n">sorting_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[]),</span> <span class="n">pwm_val_list</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
+                <span class="n">sorting_dict</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;PWM_VAL&#39;</span><span class="p">],</span> <span class="n">spec</span><span class="o">.</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">spec</span><span class="p">)</span>
+            <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorting_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">specs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">joined_spec_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">sorted_specs</span> <span class="ow">in</span> <span class="n">sorting_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">CallistoSpectrogram</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can only combine CallistoSpectrogram&#39;s.&quot;</span><span class="p">)</span>
+            <span class="n">instr</span> <span class="o">=</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;INSTRUME&#39;</span><span class="p">]</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">]</span>
+
+            <span class="n">first_time_point</span> <span class="o">=</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> \
+                <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">time_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">last_time_point</span> <span class="o">=</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> \
+                <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">time_axis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">CallistoSpectrogram</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can only combine CallistoSpectrogram&#39;s.&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;INSTRUME&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">instr</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Can only combine spectrogram&#39;s from the same instrument.&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">delta</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Can only combine spectrogram&#39;s with the same time delta (CDELT1).&quot;</span><span class="p">)</span>
+
+                <span class="n">cur_start</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> \
+                    <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="n">time_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">cur_end</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> \
+                    <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="n">time_axis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="n">cur_start</span> <span class="o">&lt;</span> <span class="n">first_time_point</span><span class="p">:</span>
+                    <span class="n">first_time_point</span> <span class="o">=</span> <span class="n">cur_start</span>
+                <span class="k">if</span> <span class="n">cur_end</span> <span class="o">&gt;</span> <span class="n">last_time_point</span><span class="p">:</span>
+                    <span class="n">last_time_point</span> <span class="o">=</span> <span class="n">cur_end</span>
+
+            <span class="n">new_header</span> <span class="o">=</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_header</span><span class="p">()</span>
+            <span class="n">new_axes_header</span> <span class="o">=</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axes_header</span>
+
+            <span class="n">borderless_specs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">mark_border</span><span class="p">()</span> <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">]</span>
+
+            <span class="n">new_freq_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">_union</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">)</span> <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="n">borderless_specs</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="o">-</span><span class="n">y</span><span class="p">))</span>
+            <span class="n">new_time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">last_time_point</span> <span class="o">-</span> <span class="n">first_time_point</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.00001</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">:</span>
+                <span class="n">curr_start</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> \
+                    <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="n">time_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_start</span> <span class="o">-</span> <span class="n">first_time_point</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+                <span class="n">diff_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">diff</span> <span class="o">/</span> <span class="n">delta</span><span class="p">)</span>
+                <span class="n">new_time_axis</span><span class="p">[</span><span class="n">diff_index</span><span class="p">:</span><span class="n">diff_index</span> <span class="o">+</span>
+                              <span class="n">spec</span><span class="o">.</span><span class="n">time_axis</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">time_axis</span> <span class="o">+</span> <span class="n">diff</span><span class="p">)</span>
+
+            <span class="n">nan_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">new_freq_axis</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span>
+                <span class="n">new_time_axis</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">ARRAY_TYPE</span><span class="p">)</span>
+            <span class="n">nan_arr</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">MISSING_VALUE</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nan_arr</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># fill new data array</span>
+            <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="n">borderless_specs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">new_freq_axis</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">):</span>
+                    <span class="n">c_start_time</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">time_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">-</span> <span class="n">first_time_point</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+                    <span class="n">temp_pos_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">new_time_axis</span> <span class="o">==</span> <span class="n">c_start_time</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_pos_time</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">new_pos_time</span> <span class="o">=</span> <span class="n">temp_pos_time</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+                        <span class="n">new_data</span><span class="p">[:,</span> <span class="n">new_pos_time</span><span class="p">:</span><span class="n">new_pos_time</span> <span class="o">+</span>
+                                 <span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:]</span>
+                        <span class="n">new_data</span><span class="o">.</span><span class="n">mask</span><span class="p">[:,</span> <span class="n">new_pos_time</span><span class="p">:</span><span class="n">new_pos_time</span> <span class="o">+</span>
+                                      <span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[:,</span> <span class="p">:]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">pos_freq</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                        <span class="n">c_freq</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="n">pos_freq</span><span class="p">]</span>
+                        <span class="n">new_pos_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">new_freq_axis</span> <span class="o">==</span> <span class="n">c_freq</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+                        <span class="n">c_start_time</span> <span class="o">=</span> <span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span>
+                            <span class="n">seconds</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">time_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">-</span> <span class="n">first_time_point</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+
+                        <span class="n">temp_pos_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">new_time_axis</span> <span class="o">==</span> <span class="n">c_start_time</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_pos_time</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="n">new_pos_time</span> <span class="o">=</span> <span class="n">temp_pos_time</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+                            <span class="n">new_data</span><span class="p">[</span><span class="n">new_pos_freq</span><span class="p">,</span> <span class="n">new_pos_time</span><span class="p">:</span><span class="n">new_pos_time</span> <span class="o">+</span>
+                                     <span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">pos_freq</span><span class="p">,</span> <span class="p">:]</span>
+                            <span class="n">new_data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">new_pos_freq</span><span class="p">,</span> <span class="n">new_pos_time</span><span class="p">:</span><span class="n">new_pos_time</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span>
+                                <span class="n">pos_freq</span><span class="p">,</span> <span class="p">:]</span>
+
+            <span class="n">ftp_time</span> <span class="o">=</span> <span class="n">first_time_point</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">second_of_day</span> <span class="o">=</span> <span class="n">ftp_time</span><span class="o">.</span><span class="n">hour</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="n">ftp_time</span><span class="o">.</span><span class="n">minute</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">ftp_time</span><span class="o">.</span><span class="n">second</span>
+
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;time_axis&#39;</span><span class="p">:</span> <span class="n">new_time_axis</span><span class="p">,</span>
+                <span class="s1">&#39;freq_axis&#39;</span><span class="p">:</span> <span class="n">new_freq_axis</span><span class="p">,</span>
+                <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="n">first_time_point</span><span class="p">,</span>
+                <span class="s1">&#39;end&#39;</span><span class="p">:</span> <span class="n">last_time_point</span><span class="p">,</span>
+                <span class="s1">&#39;t_delt&#39;</span><span class="p">:</span> <span class="n">delta</span><span class="p">,</span>
+                <span class="s1">&#39;t_init&#39;</span><span class="p">:</span> <span class="n">second_of_day</span><span class="p">,</span>
+                <span class="s1">&#39;t_label&#39;</span><span class="p">:</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">t_label</span><span class="p">,</span>
+                <span class="s1">&#39;f_label&#39;</span><span class="p">:</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">f_label</span><span class="p">,</span>
+                <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="s1">&#39;instruments&#39;</span><span class="p">:</span> <span class="n">_union</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">instruments</span> <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">),</span>
+                <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;JOINED_</span><span class="si">{</span><span class="n">sorted_specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="p">}</span>
+
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;DATE-OBS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">get_header</span><span class="p">()[</span><span class="s1">&#39;DATE-OBS&#39;</span><span class="p">]</span>
+                                          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">])</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;TIME-OBS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">get_header</span><span class="p">()[</span><span class="s1">&#39;TIME-OBS&#39;</span><span class="p">]</span>
+                                          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">])</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;DATE-END&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">get_header</span><span class="p">()[</span><span class="s1">&#39;DATE-END&#39;</span><span class="p">]</span>
+                                          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">])</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">get_header</span><span class="p">()[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">]</span>
+                                          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">])</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;DATAMIN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">get_header</span><span class="p">()[</span><span class="s1">&#39;DATAMIN&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">])</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;DATAMAX&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">get_header</span><span class="p">()[</span><span class="s1">&#39;DATAMAX&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sorted_specs</span><span class="p">])</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;CRVAL1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">second_of_day</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;CRVAL2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_freq_axis</span><span class="p">)</span>
+
+            <span class="n">new_axes_header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+                <span class="n">new_axes_header</span><span class="p">[</span><span class="s1">&#39;BITPIX&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_time_axis</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_freq_axis</span><span class="p">))</span>
+            <span class="n">new_axes_header</span><span class="p">[</span><span class="s1">&#39;TFORM1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_time_axis</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;D8.3&quot;</span>
+            <span class="n">new_axes_header</span><span class="p">[</span><span class="s1">&#39;TFORM2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_freq_axis</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;D8.3&quot;</span>
+
+            <span class="n">joined_spec</span> <span class="o">=</span> <span class="n">CallistoSpectrogram</span><span class="p">(</span>
+                <span class="n">new_data</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">new_header</span><span class="p">,</span> <span class="n">axes_header</span><span class="o">=</span><span class="n">new_axes_header</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">joined_spec</span><span class="o">.</span><span class="n">adjust_header</span><span class="p">()</span>
+            <span class="n">joined_spec_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">joined_spec</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">joined_spec_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">joined_spec_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">joined_spec_list</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.detect_and_combine_polarisations"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.detect_and_combine_polarisations">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">detect_and_combine_polarisations</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">specs</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Takes a list of spectrogram and evaluates and processes all polarisations.</span>
+
+<span class="sd">        :param specs: A list of spectrograms.</span>
+<span class="sd">        :returns: A dictionary of all spectrograms sorted by there PWM_VAL and lists for all combined polarisations.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pwm_val_list</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;PWM_VAL&#39;</span><span class="p">],</span> <span class="n">specs</span><span class="p">))</span>
+        <span class="n">sorted_work_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[]),</span> <span class="n">pwm_val_list</span><span class="p">))</span>
+        <span class="n">pwm_val_list</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
+            <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;PWM_VAL&#39;</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">specs</span><span class="p">))</span>
+        <span class="n">sorting_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[]),</span> <span class="n">pwm_val_list</span><span class="p">))</span>
+        <span class="n">pol_val_list</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;PWM_VAL&#39;</span><span class="p">],</span> <span class="s2">&quot;Pol&quot;</span><span class="p">),</span> <span class="n">specs</span><span class="p">))</span>
+        <span class="n">sorting_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[]),</span> <span class="n">pol_val_list</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
+            <span class="n">sorting_dict</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;PWM_VAL&#39;</span><span class="p">],</span> <span class="n">spec</span><span class="o">.</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">spec</span><span class="p">)</span>
+            <span class="n">sorted_work_dict</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;PWM_VAL&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+        <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorting_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="k">for</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">specs_list</span> <span class="ow">in</span> <span class="n">sorted_work_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">spec1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">specs_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">spec2</span> <span class="o">=</span> <span class="n">specs_list</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">delta1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">])</span>
+                <span class="n">delta2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">])</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta1</span> <span class="o">-</span> <span class="n">delta2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.000001</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">spec1</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;INSTRUME&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">spec2</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;INSTRUME&#39;</span><span class="p">]:</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">spec1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">spec2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">((</span><span class="n">spec1</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">spec2</span><span class="o">.</span><span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span> <span class="o">&gt;</span> <span class="n">delta1</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">,</span> <span class="n">spec2</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">spec2</span><span class="o">.</span><span class="n">time_axis</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="n">merged_spec</span> <span class="o">=</span> <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">combine_polarisation</span><span class="p">(</span>
+                    <span class="n">specs</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">specs</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+                <span class="n">sorting_dict</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">merged_spec</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;PWM_VAL&#39;</span><span class="p">],</span> <span class="s2">&quot;Pol&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">merged_spec</span><span class="p">)</span>
+        <span class="n">del_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">specs_list</span> <span class="ow">in</span> <span class="n">sorting_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">specs_list</span><span class="p">:</span>
+                <span class="n">del_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PWM</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">del_list</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">sorting_dict</span><span class="p">[</span><span class="n">val</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">sorting_dict</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.combine_polarisation"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.combine_polarisation">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">combine_polarisation</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">spec1</span><span class="p">,</span> <span class="n">spec2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compares and combines two spectrograms that are polarisations of the same event</span>
+
+<span class="sd">        :param spec1: CallistoSpectrogram, The first polarized spectrogram.</span>
+<span class="sd">        :param spec2: CallistoSpectrogram, The second polarized spectrogram.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">pythagoras_combine</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+        <span class="c1"># checks</span>
+        <span class="n">delta1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">])</span>
+        <span class="n">delta2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta1</span> <span class="o">-</span> <span class="n">delta2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.000001</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;CDELT1 of spectrograms are not the same&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">spec1</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;INSTRUME&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">spec2</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;INSTRUME&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Instruments of spectrograms are not the same&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">spec1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">spec2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Shapes of spectrograms not the same&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">((</span><span class="n">spec1</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">spec2</span><span class="o">.</span><span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span> <span class="o">&gt;</span> <span class="n">delta1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;Start times of spectrograms are too far from each other&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">,</span> <span class="n">spec2</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Frequency axes of spectrograms are not the same&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">spec2</span><span class="o">.</span><span class="n">time_axis</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Time axes of spectrograms are not the same&#39;</span><span class="p">)</span>
+
+        <span class="n">merge_funk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span>
+            <span class="n">pythagoras_combine</span><span class="p">,</span> <span class="n">excluded</span><span class="o">=</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">MISSING_VALUE</span><span class="p">])</span>
+        <span class="n">merged_matrix</span> <span class="o">=</span> <span class="n">merge_funk</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">spec2</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">spec1</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">spec2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">merged_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">merged_matrix</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">merged_spec</span> <span class="o">=</span> <span class="n">spec1</span><span class="o">.</span><span class="n">_with_data</span><span class="p">(</span><span class="n">merged_matrix</span><span class="p">)</span>
+        <span class="n">merged_spec</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;DATAMIN&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_matrix</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">merged_spec</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;DATAMAX&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_matrix</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">merged_spec</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.remove_single_freq_rfi"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.remove_single_freq_rfi">[docs]</a>    <span class="k">def</span> <span class="nf">remove_single_freq_rfi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">row_window_height</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detects rfi in single frequencies and masks the data</span>
+
+<span class="sd">        :param Num threshold: Minimal Intensity difference between the row and the mean of the surrounding rows to be flagged as rfi.</span>
+<span class="sd">        :param int row_window_height: The amount of rows before and after should be considered for the surrounding rows.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rfi_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">row_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">aff_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">row_index</span><span class="p">]</span>
+            <span class="n">rows_before</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span>
+                <span class="n">row_index</span> <span class="o">-</span> <span class="n">row_window_height</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span><span class="n">row_index</span><span class="p">]</span>
+            <span class="n">rows_after</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">row_index</span> <span class="o">+</span>
+                                   <span class="mi">1</span><span class="p">:</span><span class="nb">min</span><span class="p">(</span><span class="n">row_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">row_window_height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+            <span class="n">window_rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">rows_before</span><span class="p">,</span> <span class="n">rows_after</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="n">window_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">window_rows</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">aff_row</span> <span class="o">-</span> <span class="n">window_mean</span><span class="p">)</span>
+
+            <span class="n">rfi_mask</span><span class="p">[</span><span class="n">row_index</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">new_data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">rfi_mask</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">new_data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">rfi_mask</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MISSING_VALUE</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_with_data</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.mark_border"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.mark_border">[docs]</a>    <span class="k">def</span> <span class="nf">mark_border</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Mark duplicate entries on the borders.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="n">c_left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">c_right</span> <span class="o">=</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">2</span>
+
+        <span class="k">if</span> <span class="n">c_left</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">c_left</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MISSING_VALUE</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[:</span><span class="n">c_left</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">c_right</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">c_right</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MISSING_VALUE</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">c_right</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="CallistoSpectrogram.adjust_header"><a class="viewcode-back" href="../rst/callisto.html#callisto.CallistoSpectrogram.adjust_header">[docs]</a>    <span class="k">def</span> <span class="nf">adjust_header</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_obs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time_obs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">date_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time_end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># data header</span>
+        <span class="n">new_header</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_header</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">date_obs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;DATE-OBS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_obs</span>
+        <span class="k">if</span> <span class="n">time_obs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;TIME-OBS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_obs</span>
+        <span class="k">if</span> <span class="n">date_end</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;DATE-END&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_end</span>
+        <span class="k">if</span> <span class="n">time_end</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;TIME-END&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_end</span>
+
+        <span class="n">data_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">data_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;DATAMIN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data_min</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data_min</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">new_header</span><span class="p">[</span><span class="s1">&#39;DATAMAX&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data_max</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data_max</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">new_header</span>
+
+        <span class="c1"># axes header</span>
+        <span class="n">new_axes_header</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes_header</span>
+
+        <span class="n">new_axes_header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">new_axes_header</span><span class="p">[</span><span class="s1">&#39;BITPIX&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_axis</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">))</span>
+        <span class="n">new_axes_header</span><span class="p">[</span><span class="s1">&#39;TFORM1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_axis</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;D8.3&quot;</span>
+        <span class="n">new_axes_header</span><span class="p">[</span><span class="s1">&#39;TFORM2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_axis</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;D8.3&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes_header</span> <span class="o">=</span> <span class="n">new_axes_header</span></div></div>
+
+
+<span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">_create</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">run_cls</span><span class="p">(</span><span class="s1">&#39;from_range&#39;</span><span class="p">),</span>
+    <span class="k">lambda</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">instrument</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">check</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="vm">__func__</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="p">(</span>
+        
+        <span class="sd">&quot;&quot;&quot; Create CallistoSpectrogram from given input dispatching to the</span>
+<span class="sd">            appropriate from_* function.</span>
+
+<span class="sd">            Possible signatures: &quot;&quot;&quot;</span> <span class="o">+</span> <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">_create</span><span class="o">.</span><span class="n">generate_docs</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+    <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">create</span><span class="o">.</span><span class="vm">__func__</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="p">(</span>
+
+        <span class="sd">&quot;&quot;&quot; Create CallistoSpectrogram from given input dispatching to the</span>
+<span class="sd">        appropriate from_* function.</span>
+
+<span class="sd">        Possible signatures: &quot;&quot;&quot;</span> <span class="o">+</span> <span class="n">CallistoSpectrogram</span><span class="o">.</span><span class="n">_create</span><span class="o">.</span><span class="n">generate_docs</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="left-footer">
+            <p>
+                &copy; 2021, Delberin Ali 
+                
+            </p>
+        </div>
+        <div class="right-footer">
+            Built with <a href="http://sphinx-doc.org/">Sphinx
+                4.2.0.</a>
+        </div>
+        <div class="center-footer ">
+            
+            <a href="https://github.com/sunpy/sunpy">Github</a>
+            
+            <span> • </span>
+            
+            <a href="https://twitter.com/SunPyProject">Twitter</a>
+            
+            <span> • </span>
+            
+            <a href="https://app.element.io/#/room/#sunpy:openastronomy.org">Matrix</a>
+            
+            
+        </div>
+    </div>
+</footer>
+  </body>
+</html>

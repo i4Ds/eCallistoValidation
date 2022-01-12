@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>callisto module &#8212; eCallisto 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" href="../_static/sunpy_style.css" type="text/css" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+<script type="text/javascript" src="../_static/version.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon-32.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API" href="API.html" />
+    <link rel="prev" title="spectrogram module" href="spectrogram.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+<title> eCallisto 0.0.1 documentation </title>
+
+<meta name="robots" content="noindex, nofollow" >
+
+  </head><body>
+
+<div id="navbar"
+  class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://sunpy.org/">
+        eCallisto</a>
+    </div>
+
+    <div class="collapse navbar-collapse nav-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">About<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="../about.html">Our Mission</a></li>
+            <li class="dropdown-submenu">
+              <a href="../about.html">Acknowledge SunPy</a></li>
+            <li class="dropdown-submenu">
+              <a href="../coc.html">Code of Conduct</a></li>
+          </ul>
+        </li>
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">Documentation<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/en/stable/">sunpy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/ndcube/">ndcube</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/drms/">drms</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://aiapy.readthedocs.io/en/stable/">aiapy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://pfsspy.readthedocs.io/en/stable/">pfsspy</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunraster/en/stable/">sunraster</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunkit-instruments/en/stable/">sunkit-instruments</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/sunkit-image/en/stable/">sunkit-image</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://docs.sunpy.org/projects/radiospectra/en/stable/">radiospectra</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://pyflct.readthedocs.io/en/stable/">pyflct</a></li>
+            <li class="dropdown-submenu">
+              <a href="https://ablog.readthedocs.io/">ablog</a></li>
+          </ul>
+        </li>
+        
+        
+        <li><a href="../blog.html">Blog</a></li>
+        
+        
+        <li><a href="../contribute.html">Support Us</a></li>
+        
+        
+        <li><a href="../help.html">Get Help</a></li>
+        
+        
+        <li class="dropdown">
+          <a role="button" data-toggle="dropdown" data-target="" href="">SunPy Project<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a href="../project/">SunPy Project</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/roles.html">Community Roles</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/affiliated.html">Affiliated Packages</a></li>
+            <li class="dropdown-submenu">
+              <a href="../project/former.html">Emeritus role holders</a></li>
+          </ul>
+        </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+
+
+  
+
+
+
+
+
+<div class="sidenologo"></div>
+
+<p class="doc-title">
+    <a style="padding-left: 0" href="../index.html">eCallisto 0.0.1</a>
+</p>
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+    <div class="form-group">
+        <label>
+            <input type="text" name="q" class="form-control" placeholder="Search" />
+        </label>
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+</form>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="validation.html">validation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectrogram.html">spectrogram module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">callisto module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API.html">API</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="callisto-module">
+<h1>callisto module<a class="headerlink" href="#callisto-module" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">callisto.</span></span><span class="sig-name descname"><span class="pre">CallistoSpectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_delt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Time'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Frequency'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instruments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes_header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swapped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">radiospectra.spectrogram.LinearTimeSpectrogram</span></code></p>
+<p>Class used for dynamic spectra coming from the Callisto network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>header</strong> – <cite>~astropy.io.fits.Header</cite>, main header of the FITS file.</p></li>
+<li><p><strong>axes_header</strong> – <cite>~astropy.io.fits.Header</cite>, header for the axes table.</p></li>
+<li><p><strong>swapped</strong> (<em>bool</em>) – flag that specifies whether originally in the file the x-axis was frequency.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">COPY_PROPERTIES</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[('time_axis',</span> <span class="pre">1),</span> <span class="pre">('freq_axis',</span> <span class="pre">1),</span> <span class="pre">('instruments',</span> <span class="pre">1),</span> <span class="pre">('start',</span> <span class="pre">0),</span> <span class="pre">('end',</span> <span class="pre">0),</span> <span class="pre">('t_label',</span> <span class="pre">0),</span> <span class="pre">('f_label',</span> <span class="pre">0),</span> <span class="pre">('content',</span> <span class="pre">0),</span> <span class="pre">('t_init',</span> <span class="pre">0),</span> <span class="pre">('t_delt',</span> <span class="pre">0),</span> <span class="pre">('header',</span> <span class="pre">0),</span> <span class="pre">('swapped',</span> <span class="pre">0),</span> <span class="pre">('axes_header',</span> <span class="pre">0)]</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">INSTRUMENTS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'ALASKA',</span> <span class="pre">'ALMATY',</span> <span class="pre">'BIR',</span> <span class="pre">'DARO',</span> <span class="pre">'HB9SCT',</span> <span class="pre">'HUMAIN',</span> <span class="pre">'HURBANOVO',</span> <span class="pre">'KASI',</span> <span class="pre">'KENYA',</span> <span class="pre">'KRIM',</span> <span class="pre">'MALAYSIA',</span> <span class="pre">'MRT1',</span> <span class="pre">'MRT2',</span> <span class="pre">'OOTY',</span> <span class="pre">'OSRA',</span> <span class="pre">'SWMC',</span> <span class="pre">'TRIEST',</span> <span class="pre">'UNAM'}</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">SIGMA_DELTA_SUM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">20</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">SIGMA_SUM</span></span><em class="property"> <span class="pre">=</span> <span class="pre">75</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">adjust_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_obs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_obs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.adjust_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">combine_polarisation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.combine_polarisation"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Compares and combines two spectrograms that are polarisations of the same event</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spec1</strong> – CallistoSpectrogram, The first polarized spectrogram.</p></li>
+<li><p><strong>spec2</strong> – CallistoSpectrogram, The second polarized spectrogram.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><dl>
+<dt>Create CallistoSpectrogram from given input dispatching to the</dt><dd><p>appropriate from_* function.</p>
+<p>Possible signatures: create(filename: str) -&gt; <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_file()</span></code></p>
+</dd>
+</dl>
+<p>create(directory: str) -&gt; <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_dir()</span></code></p>
+<p>create(singlepattern: str) -&gt; <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_single_glob()</span></code></p>
+<p>create(pattern: str) -&gt; <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_glob()</span></code></p>
+<p>create(filenames: list) -&gt; <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_files()</span></code></p>
+<p>create(url: str) -&gt; <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_url()</span></code></p>
+<p>create(cls, *args, **kwargs) -&gt; <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_range()</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">detect_and_combine_polarisations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">specs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.detect_and_combine_polarisations"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Takes a list of spectrogram and evaluates and processes all polarisations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>specs</strong> – A list of spectrograms.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary of all spectrograms sorted by there PWM_VAL and lists for all combined polarisations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minutes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.extend"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Requests subsequent files from the server. If minutes is negative, retrieve preceding files.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instrument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.from_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Automatically download data from instrument between start and end and
+join it together.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instrument</strong> (<em>str</em>) – instrument to retrieve the data from.</p></li>
+<li><p><strong>start</strong> (<em>parse_time</em>) – compatible start of the measurement.</p></li>
+<li><p><strong>end</strong> (<em>parse_time</em>) – compatible end of the measurement.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.from_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns CallistoSpectrogram read from URL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>str</em>) – URL to retrieve the data from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>newSpectrogram  <cite>radiospectra.CallistoSpectrogram</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.get_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns the updated header.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">homogenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxdiff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.homogenize"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Return overlapping part of self and other as (self, other) tuple.
+Homogenize intensities so that the images can be used with
+combine_frequencies. Note that this works best when most of the picture
+is signal, so use <code class="xref py py-meth docutils literal notranslate"><span class="pre">in_interval()</span></code> to select the subset of your
+image before applying this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<em>radiospectra.CallistoSpectrogram</em>) – Spectrogram to be homogenized with the current one.</p></li>
+<li><p><strong>maxdiff</strong> (<em>float</em>) – Threshold for which frequencies are considered equal.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">is_datasource_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.is_datasource_for"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Check if class supports data from the given FITS file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>header</strong> – <cite>~astropy.io.fits.Header</cite> main header of the FITS file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">load_from_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instrument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.load_from_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Automatically download data from instrument between start and
+end.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instrument</strong> (<em>str</em>) – instrument to retrieve the data from.</p></li>
+<li><p><strong>start</strong> (<em>parse_time</em>) – compatible start of the measurement.</p></li>
+<li><p><strong>end</strong> (<em>parse_time</em>) – compatible end of the measurement.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">mark_border</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.mark_border"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Mark duplicate entries on the borders.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">new_join_many</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">specs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polarisations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.new_join_many"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Produce new Spectrogram that contains spectrograms
+joined together in time and frequency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>specs</strong> (<em>list</em>) – List of CallistoSpectrogram’s to join together in time.</p></li>
+<li><p><strong>bool</strong> – TODO</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Reads in FITS file and return a new CallistoSpectrogram.
+Any unknown (i.e. any except filename) keyword arguments get
+passed to fits.open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – path of the file to read.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read_many</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.read_many"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns a list of CallistoSpectrogram objects read from filenames.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>list of str</em>) – list of paths to read from.</p></li>
+<li><p><strong>sort_by</strong> (<em>str</em>) – optional attribute of the resulting objects to sort from, e.g. start to sort by starting time.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remove_border</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.remove_border"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Remove duplicate entries on the borders.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remove_single_freq_rfi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">17</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_window_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.remove_single_freq_rfi"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Detects rfi in single frequencies and masks the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<em>Num</em>) – Minimal Intensity difference between the row and the mean of the surrounding rows to be flagged as rfi.</p></li>
+<li><p><strong>row_window_height</strong> (<em>int</em>) – The amount of rows before and after should be considered for the surrounding rows.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/callisto.html#CallistoSpectrogram.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Save modified spectrogram back to filepath.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – path to save the spectrogram to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="left-footer">
+            <p>
+                &copy; 2021, Delberin Ali 
+                
+            </p>
+        </div>
+        <div class="right-footer">
+            Built with <a href="http://sphinx-doc.org/">Sphinx
+                4.2.0.</a>
+        </div>
+        <div class="center-footer ">
+            
+            <a href="https://github.com/sunpy/sunpy">Github</a>
+            
+            <span> • </span>
+            
+            <a href="https://twitter.com/SunPyProject">Twitter</a>
+            
+            <span> • </span>
+            
+            <a href="https://app.element.io/#/room/#sunpy:openastronomy.org">Matrix</a>
+            
+            
+        </div>
+    </div>
+</footer>
+  </body>
+</html>
