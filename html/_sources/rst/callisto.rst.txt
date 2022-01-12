@@ -1,8 +1,0 @@
-callisto module
-===============
-
-.. automodule:: callisto
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :noindex:
