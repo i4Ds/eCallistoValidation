@@ -157,6 +157,7 @@ rows, cursor = get_database(database, sql_query)
 ```
 Diese Function erstellt eine PDF-Datei mit 4 Spalten von Plots (Original-Spektrogramm, Background subtracted ("constbacksub", "elimwrongchannels"),
 Gliding background subtracted und Histogramm, zusätzlich werden die Standardabweichung und das Signal-Rausch-Verhältnis berechnet und dann dem Histogramm hinzugefügt: 
+
 ```python
 def get_plot(rows):
     with PdfPages('bg_sub_images.pdf') as pdf:
@@ -231,4 +232,4 @@ def get_plot(rows):
             except Exception as err:
                 print(f"The Error message is: {err} and the file name is {file_name}")
                
-    ```
+```
