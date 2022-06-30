@@ -121,14 +121,21 @@ def convert_to_stars(score):
 def get_star_scoring(start_time, end_time):
     database = get_db()
     database.cursor()
+
     sql_query ="select instrument_name, avg(snr_values) as avg_snr, avg(std_values) as avg_std  from validation_data where start_time between '%s' AND '%s' group by instrument_name order by avg_snr desc ;" % (start_time, end_time)
     pd.set_option('display.max_rows', None)
     df = pd.read_sql_query(sql_query , database )
+
+    # round the decimal to 2 digits
     df["avg_snr"] = df["avg_snr"].round( decimals=2 )
     df["avg_std"] = df["avg_std"].round( decimals=2 )
 
+    # adding new columns to the df with the function "convert_to_stars" as values
     df["snr_rating"] = convert_to_stars(df["avg_snr"])
     df["std_rating"] = convert_to_stars( df["avg_std"] )
+
+    # converting the values to stars *
+    df["snr_stars"] = [int( star ) * "*" for star in df["snr_rating"]]
 
     print(df)
 
