@@ -42,6 +42,24 @@ import datetime
 import warnings
 warnings.filterwarnings("ignore")
 
+def get_db():
+    database = psycopg2.connect(host=test_config.DB_HOST,
+                                user=test_config.DB_USER,
+                                database=test_config.DB_DATABASE,
+                                port=test_config.DB_PORT,
+                                password=test_config.DB_PASSWORD)
+
+    return database
+
+def get_all_instruments(database, sql_query):
+
+    sql_query_instruments = sql_query
+    cursor = database.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute(sql_query_instruments)
+    instruments = [row for row in cursor.fetchall()]
+
+    return instruments
+
 
 def signal_to_noise(arr):
     """Calculate the signal-to-noise ratio of the input data.
@@ -161,8 +179,8 @@ def get_plot(rows):
             data_absolute3 = get_abs_data(spec2)
             data_absolute4 = get_abs_data(spec3)
 
-            n, bins, patches = ax4.hist([data_absolute3, data_absolute4], histtype='step', bins=25, log=True,
-                                        label=['Background subtracted', 'Gliding background subtracted'])
+            n, bins, _ = ax4.hist([data_absolute3, data_absolute4], histtype='step', bins=25, log=True,
+                                  label=['Background subtracted', 'Gliding background subtracted'])
 
             # Calculate the standard deviation and signal-to-noise => rounded them to have 3 digits.
             std_data = round(row[6], 3)

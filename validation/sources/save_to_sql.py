@@ -1,5 +1,4 @@
-#from packages.modules import *
-#from packages.main import *
+
 from validation import *
 
 def __to_timestamp(date_string, time_string):
@@ -27,7 +26,7 @@ def __to_timestamp(date_string, time_string):
     return ts
 
 
-path = '/data/radio//2002-20yy_Callisto//2017/09//01'
+path = '/data/radio//2002-20yy_Callisto//2017'
 
 engine = create_engine("postgresql+psycopg2://" + 'postgres' + ":" + 'ecallistohackorange' + "@" + 'localhost' + "/" + 'validation')
 
