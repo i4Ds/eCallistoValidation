@@ -8,11 +8,23 @@ Je das Signal-Rausch-Verhältnis größer, desto bessere Ergebnisse.
 - Alle fits Dateien: [Hier](http://soleil80.cs.technik.fhnw.ch/solarradio/data/2002-20yy_Callisto/)
 
 Dies ist ein schneller Überblick über die Ordnerstruktur:
-
+- docs
 - radiospectra2:
 - validation:
-    
-    - fit_files
+
+    - Orfees:
+        - eca_files
+        - Orfees_files
+        - Orfees_read.py
+        - Test_orfees.ipynb
+
+    - rating_stars:
+        - config.py
+        - convert_to_stars
+        - rating.py
+        - test_rating.py
+        - final_rate.xlsx
+
     - source:
         - validation.py
         - update.py
@@ -20,45 +32,28 @@ Dies ist ein schneller Überblick über die Ordnerstruktur:
         - hist_test.py
         - test_validation.ipynb
         
-    - config.py
     
 - README.ipynb
 - requirements.txt
 
 Hier ist eine kurze Beschreibung für jede Datei:
 
+#### docs:
+Enthält die Sphinx-Dokumentation. 
+
 #### radiospectra2: 
 
 - radiospectra2: Submodul des github i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
 
+
 #### validation:
 
-- html: Enthält die Sphinx-Dokumentation. 
+- Orfees: Enthält alle Orfees Dateien und Skripte.
 
-- fit_files: Enthält alle Fits-Daten zum Testen.
+- rating_stars: Enthält die Skripte für die Rating system.
 
 - source: Enthält alle Dateien, die wir für die Validierung benötigen: 
 
-    - hist_test.py: Dieses Skript soll das Spektrogramm mit 4 Spalten getestet werden:
-        - Die erste Spalte ist das ursprüngliche Spektrogramm.
-        - Die zweite Spalte ist das Spektrogramm mit der Funktion (constbacksub, elimwrongchannels).
-        - Die dritte Spalte ist das Spektrogramm mit der Funktion (subtract_bg_sliding_window).
-        - Die vierte Spalte ist das Histogramm für beide Funktionen, zeigt die Werte des Signal-Rausch-Verhältnisses +Standardabweichung an.
-
-    - Save_to_Sql:
-      - Aufruf der MetaData aus der Header_liste.
-      - Erstellen a DataFrame im Pandas.
-      - Hinzufügen die MetaDaten in der DatenBank. 
-      
-    - test_validation.ipynb: Hier testen wir alle Funktion, die in der Datein(validation.py) sind. 
-
-    - update.py:
-      - Subtrahiere den Hintergrund mit der Funktion („subtract_bg_sliding_window“)
-      - Berechnen die Standardabweichungen(STD), die Signal-Rausch-Verhältnis(SNR), und dann Update in die Datenbank.
-      
-    - validation.py: Enthält alle Funktionen, die wir zum Testen brauchen.
-    
-    - config.py: Enthält alle Informationen über die Datenbank und den Path.
 
 - README.ipynb: Enthält die Beschreibung für alle Funktionen, die wir haben.
 
