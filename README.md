@@ -1,41 +1,44 @@
-
 # eCallisto Validation
 
 The e-Callisto Validation project aims to evaluate the performance of the actual e-Callisto product. The project consists of two independent validation campaigns. The first campaign is focused on assessing the data quality, while the second is focused on each station's availability and cross-comparison level. The e-Callisto network, which consists of multiple CALLISTO spectrometers deployed worldwide, can continuously observe the solar radio spectrum 24/7. The e-Callisto provides radio spectrograms, which are time series of radio flux measurements at a relatively high number of radio frequencies, and the purpose of the validation campaign is to determine the intended cross-comparison within the e-Callisto network and test cases. The project aims to validate the e-Callisto product's ability to observe different types of solar radio bursts, such as type II, type III, or type IV, and to classify bursts and perform long-term trend analyses. The two main use cases for the validation of the product are the determination of the speed of accelerated electron beams, as they appear in Type III bursts, and the provision of spectrograms as complementary information for analysis of events observed by instruments on spacecraft that look at the same events, but in different wavelengths.
 
 ## Data Source:
+
 - The entire Data: [Hier](http://soleil80.cs.technik.fhnw.ch/solarradio/data/2002-20yy_Callisto/)
 
 This is a quick overview of the folder structure:
+
 - docs
 - radiospectra2:
 - validation:
-    - Orfees:
-        - eca_files
-        - Orfees_files
-        - Orfees_read.py
-        - Test_orfees.ipynb
-    - rating_stars:
-        - config.py
-        - convert_to_stars
-        - rating.py
-        - test_rating.py
-        - final_rate.xlsx
-    - source:
-        - validation.py
-        - update.py
-        - save_to_sql.py
-        - hist_test.py
-        - test_validation.ipynb
+  - Orfees:
+    - eca_files
+    - Orfees_files
+    - Orfees_read.py
+    - Test_orfees.ipynb
+  - rating_stars:
+    - config.py
+    - convert_to_stars
+    - rating.py
+    - test_rating.py
+    - final_rate.xlsx
+  - source:
+    - validation.py
+    - update.py
+    - save_to_sql.py
+    - hist_test.py
+    - test_validation.ipynb
 - README.ipynb
 - requirements.txt
 
 Here is a brief description for each file:
 
 ### Sphinx documentation:
+
 Contains the documentation of the project. [eCallistoValidation Dokumentation](https://i4ds.github.io/eCallistoValidation/)
 
-### radiospectra2: 
+### radiospectra2:
+
 - radiospectra2: submodule of i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
 
 # validation:
@@ -44,18 +47,17 @@ Contains the documentation of the project. [eCallistoValidation Dokumentation](h
 - rating_stars: Contains the scripts for the Rating system.
 - source: Contains all files we need for validation.
 
-
 - requirements.txt: Contains all the modules we need to install.
 
+# Usage/Examples
 
-## Usage/Examples
+## _OrfeesSpectrogram_:
 
-### OrfeesSpectrogram:
 This class reads data from Orfees spectrograms and allows the user to manipulate the data in various ways.
 
 ### Reading data from an Orfees spectrogram:
-To read data from an Orfees spectrogram, use the read_orfees() method. The method takes a filename as a parameter and returns a dictionary containing the spectrogram data, as well as various other metadata. For example:
 
+To read data from an Orfees spectrogram, use the read_orfees() method. The method takes a filename as a parameter and returns a dictionary containing the spectrogram data, as well as various other metadata. For example:
 
 ```python
 from ecallisto_validation import OrfeesSpectrogram
@@ -64,8 +66,8 @@ spec = OrfeesSpectrogram('data/spec.fits')
 ```
 
 ### Resizing a spectrogram:
-To resize the spectrogram, use the resize() method. The method takes a target shape (in the form of a tuple) as a parameter and returns the resized spectrogram. For example:
 
+To resize the spectrogram, use the resize() method. The method takes a target shape (in the form of a tuple) as a parameter and returns the resized spectrogram. For example:
 
 ```python
 orfees = OrfeesSpectrogram('path to orfees files')
@@ -78,6 +80,7 @@ plt.show()
 ```
 
 ### Selecting a time range:
+
 To select a time range from the spectrogram, use the time_range() method. The method takes a start time and an end time (in the format HH:MM:SS) as parameters and returns the subset of the spectrogram that falls within the specified time range. For example:
 
 ```python
@@ -86,6 +89,7 @@ subset_spec = spec.time_range(start_time, end_time)
 ```
 
 ### Plotting the spectrogram:
+
 To plot the spectrogram, use the peek() method. The method takes a start time and an end time (in the format HH:MM:SS) as optional parameters and plots the spectrogram for the specified time range. If no time range is specified, the entire spectrogram is plotted. For example:
 
 ```python
@@ -100,34 +104,24 @@ orfees.peek(start_time='06:00:00', end_time='06:30:00')
 orfees.plot_range_freq(spec)
 ```
 
-### Rating System:
-This system rates the stations based on their SNR and standard deviation values. The rating is done on a scale of 1 to 5, and the data is sorted into different bins to assign a specific rating to each station. The results are displayed in a tabular format that shows the SNR, SNR rating, standard deviation, standard deviation rating, and the number of files for each station.
+## _Rating System_:
 
+The Rating System provides a way to rate stations based on the signal-to-noise ratio (SNR) and standard deviation (std) of their data. The class uses a quantile normalization method to sort the data into different bins, with each bin representing a certain rating between 1 and 5 stars. The class takes in a start and end time and returns a pandas DataFrame containing the station name, SNR, SNR rating, std, std rating, and
 
-This script connects to a database and retrieves data for a specific time range and returns a database object:
+How to use it?
+To use the Rating system, you first need to import it into your Python script:
+
 ```python
-from validation import *
-
-database = psycopg2.connect(host=test_config.DB_HOST,
-                            user=test_config.DB_USER,
-                            database=test_config.DB_DATABASE,
-                            port=test_config.DB_PORT,
-                            password=test_config.DB_PASSWORD)
-
-sql_query = "select * from validation_data"
-
-def get_database(database, sql_query):
-
-    sql_query_instruments = sql_query
-    cursor = database.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    cursor.execute(sql_query_instruments)
-    index = [row for row in cursor.fetchall()]
-
-    return index, cursor
-
-
-rows, cursor = get_database(database, sql_query)
+from eCallistoValidation/validation/rating_stars import Rating
+# create an instance of the Rating class and call its rate_stations method, passing in a start and end time as arguments. For example:
+rating = Rating()
+df = rating.rate_stations('2022-02-10 08:00:00', '2022-02-10 18:00:00')
+print(df)
 ```
+
+## _Other Functions_:
+
+### get_plot(rows):
 
 This function generates a PDF report containing 4 spectrogram plots for each input row. Each row is expected to contain the path of a spectrogram file and some metadata, which is used to calculate and display the standard deviation, signal-to-noise ratio, and maximum mean values of the spectrogram.
 
@@ -206,5 +200,5 @@ def get_plot(rows):
 
             except Exception as err:
                 print(f"The Error message is: {err} and the file name is {file_name}")
-               
+
 ```
