@@ -1,132 +1,110 @@
 
 # eCallisto Validation
 
-eCallisto-Validation konzentriert sich auf die Bewertung der Datenqualität: Für eine bestimmte Beobachtungsstation, wie „gut“ die Qualität der aufgezeichneten Daten ist. Berechnet das Signal-Rausch-Verhältnis und wie gut jede Station gemäß der Standardabweichung ist.
-Je das Signal-Rausch-Verhältnis größer, desto bessere Ergebnisse.
+The e-Callisto Validation project aims to evaluate the performance of the actual e-Callisto product. The project consists of two independent validation campaigns. The first campaign is focused on assessing the data quality, while the second is focused on each station's availability and cross-comparison level. The e-Callisto network, which consists of multiple CALLISTO spectrometers deployed worldwide, can continuously observe the solar radio spectrum 24/7. The e-Callisto provides radio spectrograms, which are time series of radio flux measurements at a relatively high number of radio frequencies, and the purpose of the validation campaign is to determine the intended cross-comparison within the e-Callisto network and test cases. The project aims to validate the e-Callisto product's ability to observe different types of solar radio bursts, such as type II, type III, or type IV, and to classify bursts and perform long-term trend analyses. The two main use cases for the validation of the product are the determination of the speed of accelerated electron beams, as they appear in Type III bursts, and the provision of spectrograms as complementary information for analysis of events observed by instruments on spacecraft that look at the same events, but in different wavelengths.
 
-## Datenquelle :
-- Alle fits Dateien: [Hier](http://soleil80.cs.technik.fhnw.ch/solarradio/data/2002-20yy_Callisto/)
+## Data Source:
+- The entire Data: [Hier](http://soleil80.cs.technik.fhnw.ch/solarradio/data/2002-20yy_Callisto/)
 
-Dies ist ein schneller Überblick über die Ordnerstruktur:
+This is a quick overview of the folder structure:
 - docs
 - radiospectra2:
 - validation:
-
     - Orfees:
         - eca_files
         - Orfees_files
         - Orfees_read.py
         - Test_orfees.ipynb
-
     - rating_stars:
         - config.py
         - convert_to_stars
         - rating.py
         - test_rating.py
         - final_rate.xlsx
-
     - source:
         - validation.py
         - update.py
         - save_to_sql.py
         - hist_test.py
         - test_validation.ipynb
-        
-    
 - README.ipynb
 - requirements.txt
 
-Hier ist eine kurze Beschreibung für jede Datei:
+Here is a brief description for each file:
 
-#### docs:
-Enthält die Sphinx-Dokumentation. 
+### Sphinx documentation:
+Contains the documentation of the project. [eCallistoValidation Dokumentation](https://i4ds.github.io/eCallistoValidation/)
 
-#### radiospectra2: 
+### radiospectra2: 
+- radiospectra2: submodule of i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
 
-- radiospectra2: Submodul des github i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
+# validation:
 
-
-#### validation:
-
-- Orfees: Enthält alle Orfees Dateien und Skripte.
-
-- rating_stars: Enthält die Skripte für die Rating system.
-
-- source: Enthält alle Dateien, die wir für die Validierung benötigen: 
+- Orfees: Contains all Orfees files and scripts.
+- rating_stars: Contains the scripts for the Rating system.
+- source: Contains all files we need for validation.
 
 
-- README.ipynb: Enthält die Beschreibung für alle Funktionen, die wir haben.
-
-- requirements.txt: Enthält alle Module, die wir installieren müssen.
-
-
-## Documentation
-Hier finden sie die Dokumentation: 
-[eCallistoValidation Dokumentation](https://i4ds.github.io/eCallistoValidation/)
-    
+- requirements.txt: Contains all the modules we need to install.
 
 
 ## Usage/Examples
 
-### Test die Function interpolate2d :
-In diesem Skript importieren wir aus der Dateivalidierung.py alle Funktionen, die wir für unser Programm benötigen.
-Zuerst lesen wir die Fits-Datei mit der Funktion "read" aus dem Class **CallistoSpectrogram**,
-dann wird die Funktion *interpolate2d* (Interpolation) aufgerufen.
-#### CallistoSpectrogram ist eine Klasse im Submodul radiospectra in der Datei (spectrogram.py). 
+### OrfeesSpectrogram:
+This class reads data from Orfees spectrograms and allows the user to manipulate the data in various ways.
+
+### Reading data from an Orfees spectrogram:
+To read data from an Orfees spectrogram, use the read_orfees() method. The method takes a filename as a parameter and returns a dictionary containing the spectrogram data, as well as various other metadata. For example:
+
 
 ```python
-from validation import *
+from ecallisto_validation import OrfeesSpectrogram
 
-spec = CallistoSpectrogram.read("..//fit_files//GREENLAND_20170906_115501_63.fit.gz")
-spec_plot = interpolate2d(spec)
-spec_plot.plot()
-
-print(spec_plot.time_axis.shape)
-print(spec_plot.freq_axis.shape)
-
-print(spec_plot.data.shape)
-spec_plot.header
+spec = OrfeesSpectrogram('data/spec.fits')
 ```
 
-### Test das Signal-Rausch-Verhältnis und die Standardabweichung Werte : 
+### Resizing a spectrogram:
+To resize the spectrogram, use the resize() method. The method takes a target shape (in the form of a tuple) as a parameter and returns the resized spectrogram. For example:
 
-In diesem Skript prüfen wir den Unterschied im Signal-Rausch-Verhältnis ohne die Subtraktionsfunktion und dann mit.
-Das Signal-Rausch-Verhältnis wird mit Mittelwerten durch der Standardabweichung berechnet.
-
-Die Funktion **subtract_bg** befindet sich im Submodul radiospectra, die verwendet wird, um die Hintergrundsubtraktion durchzuführen
 
 ```python
-from validation import *
+orfees = OrfeesSpectrogram('path to orfees files')
 
-spec = CallistoSpectrogram.read("..//fit_files//GREENLAND_20170906_115501_63.fit.gz")
+spec=CallistoSpectrogram.from_url('http://soleil.i4ds.ch/solarradio/data/200220yy_Callisto/2017/09/06/GREENLAND_20170906_115514_62.fit.gz')
 
-spec2 = spec.subtract_bg("constbacksub", "elimwrongchannels")
-
-data = abs(spec.data.flatten())
-data_bg = abs(spec2.data.flatten())
-
-data_mean = round(data.mean(), 3)
-data_std = round(np.std(data), 3)
-
-data_mean_bg = round(data_bg.mean(), 3)
-data_std_bg = round(np.std(data_bg), 3)
-
-print(f"Std for original Spec: {data_std}")
-print(f"Mean for original Spec: {data_mean}")
-print(f"SNR for original Spec: {data_mean / data_std}")
-
-print("\n")
-
-print(f"Std for subtracted Spec: {data_std_bg}")
-print(f"Mean for subtracted Spec: {data_mean_bg}")
-print(f"SNR for subtracted Spec: {data_mean_bg / data_std_bg}")
-spec2.plot()
+resized_spec = orfees_2.resize((spec.shape[1],spec.shape[0]))
+plt.imshow(data,vmin=100, vmax=1000, aspect="auto")
 plt.show()
 ```
 
+### Selecting a time range:
+To select a time range from the spectrogram, use the time_range() method. The method takes a start time and an end time (in the format HH:MM:SS) as parameters and returns the subset of the spectrogram that falls within the specified time range. For example:
+
+```python
+orfees = OrfeesSpectrogram('path to orfees files')
+subset_spec = spec.time_range(start_time, end_time)
+```
+
+### Plotting the spectrogram:
+To plot the spectrogram, use the peek() method. The method takes a start time and an end time (in the format HH:MM:SS) as optional parameters and plots the spectrogram for the specified time range. If no time range is specified, the entire spectrogram is plotted. For example:
+
+```python
+orfees = OrfeesSpectrogram('path to orfees files')
+spec =CallistoSpectrogram.from_url('http://soleil.i4ds.ch/solarradio/data/2002-20yy_Callisto/2015/11/04/BIR_20151104_120000_03.fit.gz')
+
+# plot without parameters:
+orfees.peek()
+# plot with parameters:
+orfees.peek(start_time='06:00:00', end_time='06:30:00')
+# plot with the frequency range of ecallisto frequency:
+orfees.plot_range_freq(spec)
+```
+
+### Rating System:
+This system rates the stations based on their SNR and standard deviation values. The rating is done on a scale of 1 to 5, and the data is sorted into different bins to assign a specific rating to each station. The results are displayed in a tabular format that shows the SNR, SNR rating, standard deviation, standard deviation rating, and the number of files for each station.
 
 
-Hier erstellen wir eine Verbindung mit der Datenbank und dann eine SQL Query:
+This script connects to a database and retrieves data for a specific time range and returns a database object:
 ```python
 from validation import *
 
@@ -137,10 +115,7 @@ database = psycopg2.connect(host=test_config.DB_HOST,
                             password=test_config.DB_PASSWORD)
 
 sql_query = "select * from validation_data"
-```
 
-Hier rufen wir die Daten von der Datenbank:
-```python
 def get_database(database, sql_query):
 
     sql_query_instruments = sql_query
@@ -153,8 +128,10 @@ def get_database(database, sql_query):
 
 rows, cursor = get_database(database, sql_query)
 ```
-Diese Function erstellt eine PDF-Datei mit 4 Spalten von Plots (Original-Spektrogramm, Background subtracted ("constbacksub", "elimwrongchannels"),
-Gliding background subtracted und Histogramm, zusätzlich werden die Standardabweichung und das Signal-Rausch-Verhältnis berechnet und dann dem Histogramm hinzugefügt: 
+
+This function generates a PDF report containing 4 spectrogram plots for each input row. Each row is expected to contain the path of a spectrogram file and some metadata, which is used to calculate and display the standard deviation, signal-to-noise ratio, and maximum mean values of the spectrogram.
+
+To use this function, provide a list of rows where each row is a list containing the spectrogram file path and the corresponding metadata. The PDF report will be saved in the same directory as the script with the name 'bg_sub_images.pdf'.
 
 ```python
 def get_plot(rows):
