@@ -62,7 +62,7 @@ To read data from an Orfees spectrogram, use the read_orfees() method. The metho
 ```python
 from ecallisto_validation import OrfeesSpectrogram
 
-spec = OrfeesSpectrogram('data/spec.fits')
+spec = OrfeesSpectrogram('path to orfees files')
 ```
 
 ### Resizing a spectrogram:
@@ -85,7 +85,7 @@ To select a time range from the spectrogram, use the time_range() method. The me
 
 ```python
 orfees = OrfeesSpectrogram('path to orfees files')
-subset_spec = spec.time_range(start_time, end_time)
+subset_spec = orfees.time_range(start_time, end_time)
 ```
 
 ### Plotting the spectrogram:
@@ -94,12 +94,11 @@ To plot the spectrogram, use the peek() method. The method takes a start time an
 
 ```python
 orfees = OrfeesSpectrogram('path to orfees files')
-spec =CallistoSpectrogram.from_url('http://soleil.i4ds.ch/solarradio/data/2002-20yy_Callisto/2015/11/04/BIR_20151104_120000_03.fit.gz')
+spec = CallistoSpectrogram.from_url('http://soleil.i4ds.ch/solarradio/data/2002-20yy_Callisto/2015/11/04/BIR_20151104_120000_03.fit.gz')
 
 # plot without parameters:
 orfees.peek()
-# plot with parameters:
-orfees.peek(start_time='06:00:00', end_time='06:30:00')
+
 # plot with the frequency range of ecallisto frequency:
 orfees.plot_range_freq(spec)
 ```
