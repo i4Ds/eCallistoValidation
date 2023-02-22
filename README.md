@@ -1,4 +1,4 @@
-# eCallisto Validation
+# e-Callisto Validation
 
 The e-Callisto Validation project aims to evaluate the performance of the actual e-Callisto product. The project consists of two independent validation campaigns. The first campaign is focused on assessing the data quality, while the second is focused on each station's availability and cross-comparison level. The e-Callisto network, which consists of multiple CALLISTO spectrometers deployed worldwide, can continuously observe the solar radio spectrum 24/7. The e-Callisto provides radio spectrograms, which are time series of radio flux measurements at a relatively high number of radio frequencies, and the purpose of the validation campaign is to determine the intended cross-comparison within the e-Callisto network and test cases. The project aims to validate the e-Callisto product's ability to observe different types of solar radio bursts, such as type II, type III, or type IV, and to classify bursts and perform long-term trend analyses. The two main use cases for the validation of the product are the determination of the speed of accelerated electron beams, as they appear in Type III bursts, and the provision of spectrograms as complementary information for analysis of events observed by instruments on spacecraft that look at the same events, but in different wavelengths.
 
@@ -60,9 +60,9 @@ This class reads data from Orfees spectrograms and allows the user to manipulate
 To read data from an Orfees spectrogram, use the read_orfees() method. The method takes a filename as a parameter and returns a dictionary containing the spectrogram data, as well as various other metadata. For example:
 
 ```python
-from ecallisto_validation import OrfeesSpectrogram
+from validation.Orfees.Orfees_read import *
 
-spec = OrfeesSpectrogram('path to orfees files')
+orfees = OrfeesSpectrogram('path to orfees files')
 ```
 
 ### Resizing a spectrogram:
