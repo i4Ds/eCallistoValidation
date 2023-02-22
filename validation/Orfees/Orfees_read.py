@@ -2,11 +2,13 @@ import numpy as np
 from astropy.io import fits
 import datetime 
 import matplotlib.pyplot as plt
-import sys
-sys.path.append('../radiospectra2')
-from radiospectra.sources import CallistoSpectrogram
+# import sys
+# sys.path.append('../radiospectra2')
+# from radiospectra.sources import CallistoSpectrogram
 from matplotlib.ticker import MaxNLocator
 import cv2
+
+print("the Orfees methods are imported....")
 
 
 class OrfeesSpectrogram():
