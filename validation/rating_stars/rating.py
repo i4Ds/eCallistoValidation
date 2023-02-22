@@ -16,13 +16,33 @@ from collections import Counter
 
 
 class Rating:
+    """
+    Class to get data from the database
+    
+    :param start_time: The start time of the data
+    :param end_time: The end time of the data
+    
+    :Example:
+    
+    >>> import sources.rating
+    >>> import matplotlib.pyplot as plt
+    >>> rating = sources.rating.Rating(start_time='2020-01-01 00:00:00', end_time='2020-01-01 23:59:59')
+    >>> df = rating.rate_stations()
+    >>> df
+
+    """
+
     def __init__(self, start_time, end_time):
         self.start_time = start_time
         self.end_time = end_time
         self.database = self.get_db()
 
     def get_db(self):
-        """Connect to the database"""
+        """
+        Get the database connection
+        :return: The database connection
+        """
+       
         database = psycopg2.connect(host=ecallisto_config.DB_HOST,
                                     user=ecallisto_config.DB_USER,
                                     database=ecallisto_config.DB_DATABASE,
@@ -31,7 +51,11 @@ class Rating:
         return database
 
     def get_all_instruments(self):
-        """Get all data from the database"""
+        """
+        Get all instruments from the database
+        :return: The instruments
+        """
+   
         sql_query_instruments = f"SELECT path, snr, std FROM test WHERE start_time BETWEEN '{self.start_time}' AND '{self.end_time}' AND snr IS NOT NULL ORDER BY snr DESC;"
         cursor = self.database.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cursor.execute(sql_query_instruments)
@@ -39,6 +63,11 @@ class Rating:
         return instruments
 
     def convert_to_stars(self, score):
+        """
+        Convert the score to a rating.
+        :param score: The score
+        :return: The rating
+        """
         ranking = [1.0, 2.0, 3.0, 4.0, 5.0]
 
         # Compute the percentile of the data
@@ -49,6 +78,10 @@ class Rating:
         return rating
 
     def rate_stations(self):
+        """
+        Rate the stations
+        :return: The rating
+        """
         instruments = self.get_all_instruments()
 
         df = pd.DataFrame(instruments, columns=["path", "snr", "std"])
