@@ -2,28 +2,30 @@ import numpy as np
 from astropy.io import fits
 import datetime 
 import matplotlib.pyplot as plt
-# from matplotlib import cm
-##from validation import *
-from matplotlib.dates import DateFormatter
-from matplotlib.ticker import FuncFormatter
-#from skimage.transform import resize
-import os
 import sys
 sys.path.append('../radiospectra2')
-
-# import radiospectra2
 from radiospectra.sources import CallistoSpectrogram
+from matplotlib.ticker import MaxNLocator
+import cv2
 
-from matplotlib.ticker import MaxNLocator, IndexLocator
-from scipy import interpolate
-from copy import deepcopy
-import matplotlib.ticker as ticker
-from matplotlib.dates import MinuteLocator
-# #import julian
 
-# final Version
+class OrfeesSpectrogram():
+    """
+    Class to read Orfees data files and plot the data
+    
+    :param file: The filename of the Orfees data file
+    :param t_label: The label for the time axis
+    :param f_label: The label for the frequency axis
+    
+    :Example:
+    
+    >>> import sources.orfees
+    >>> import matplotlib.pyplot as plt
+    >>> orfees = sources.orfees.OrfeesSpectrogram(file="orfees.fits")
+    >>> orfees.plot()
+    >>> plt.show()
 
-class OrfeesSpectrogram(CallistoSpectrogram):
+    """
     
     def __init__(self, file=None,  t_label="Time",  f_label="Frequency"):
         data = {}
@@ -46,6 +48,14 @@ class OrfeesSpectrogram(CallistoSpectrogram):
   
 
     def read_orfees(self, filename):
+        """
+        Read the Orfees data file and return a dictionary with the data, time and frequency axis
+
+        :param filename: The filename of the Orfees data file
+        :return: A dictionary with the data, time and frequency axis
+        """
+
+
         hdulist=fits.open(filename)
 
         h_file = hdulist[0].header   # Header file
@@ -65,7 +75,7 @@ class OrfeesSpectrogram(CallistoSpectrogram):
         data_SI_B4 = h_data.STOKESI_B4
         data_SI_B5 = h_data.STOKESI_B5
 
-        # TIME_B: Time in seconn per bann
+        # TIME_B: Time in seconn per band
         time_1 = h_data.TIME_B1
         time_2 = h_data.TIME_B2
         time_3 = h_data.TIME_B3
@@ -85,42 +95,179 @@ class OrfeesSpectrogram(CallistoSpectrogram):
         data = np.concatenate([data_SI_B1,data_SI_B2,data_SI_B3,data_SI_B4,data_SI_B5],axis=1)
 
         return {
-            "data": data,
+            "data": data,  #[:, 240:370],
             "time_axis": time_axis,
             "freq_axis": freq_axis,
             "date_obs": date_obs,
             "time_start_obs": time_start_obs,
             "time_end_obs": time_end_obs
         }
-    
-    
-    def convert_ms_to_date(self):
-        # this function get the time axis from orfees file as miliseconds and convert it to date, return a list.(12:00:04.932000)
 
-        times = self.time_axis
+
+    def resize(self, target_shape):
+        """
+        Resize the spectrogram to the target shape
         
-        list_of_times= []
-        for time in times:
+        :param target_shape: The target shape
+        :return: The resized spectrogram
+        """
+
+        return cv2.resize(self.data.transpose(), target_shape, cv2.INTER_CUBIC)
+    
+
+    def convert_ms_to_date(self):
+        """
+        Convert the time axis from milliseconds to a date format
+        
+        :return: A list of dates
+        """
+        list_of_times = []
+        for time in self.time_axis:
             delta = datetime.timedelta(0, 0, 0, int(time))
             list_of_times.append(str(delta).split(".")[0])
 
         return list_of_times
     
+    
+    def time_range(self, start_time, end_time):
+        """
+        Return the data between the start and end time
+        
+        :param start_time: The start time
+        :param end_time: The end time
+        :return: The data between the start and end time
+        """
 
-    def peek(self):
+        converted_times = self.convert_ms_to_date()
+        start_index = converted_times.index(start_time)
+        end_index = converted_times.index(end_time)
+        return self.data[start_index:end_index+1]
+    
 
-        fig, ax = plt.subplots()
+    
+
+    def peek(self, start_time=None, end_time=None):
+            """
+            Plot the spectrogram
+            
+            :param start_time: The start time
+            :param end_time: The end time
+            :return: The plot
+            """
+            converted_times = self.convert_ms_to_date()
+            dates = self.convert_ms_to_date()
+            fig, ax = plt.subplots()
+            
+            if start_time is not None and end_time is not None:
+                data = self.time_range(start_time, end_time)
+                time_axis = self.time_axis[converted_times.index(start_time):converted_times.index(end_time)+1]
+            else:
+                data = self.data
+                time_axis = self.time_axis
+
+            ax.xaxis.set_major_locator(MaxNLocator(prune='both', nbins=6))
+            ax.set_xticklabels(dates[::int(len(dates)//30)], rotation=50, horizontalalignment="right")
+
+            xmin = min(time_axis)
+            xmax = max(time_axis)
+            ymin = min(self.freq_axis)
+            ymax = max(self.freq_axis)
+            
+            plt.imshow(data.T, vmin=data.min(), origin='lower', vmax=1000, aspect='auto', extent=[xmin, xmax, ymin, ymax])
+            plt.colorbar()
+            # ax.get_xlim(xmin, xmax)
+            plt.gca().set_ylim(ymax, ymin)
+            
+            plt.title(f"ORFEES, {self.date_obs}")
+            plt.xlabel('Time[UT]')
+            plt.ylabel('Frequency [MHz]')
+
+            plt.show()
+
+
+
+    def plot_range_freq(self, spec):
+
+        """
+        Plot the spectrogram in a range of frequencies
+        
+        :param spec: The spectrogram
+        :return: The plot
+        """
+
+        min_freq = spec.freq_axis.min()
+        max_freq= spec.freq_axis.max()
+
+        mask = (self.freq_axis > min_freq) & (self.freq_axis < max_freq)
+        range_freq = self.freq_axis[mask]
+
         dates = self.convert_ms_to_date()
-
+        range_pixels = self.data[:, mask]
+        
+        fig, ax = plt.subplots()
+        xmin = min(self.time_axis)
+        xmax = max(self.time_axis)
+        ymin = min(range_freq)
+        ymax = max(range_freq)
 
         ax.xaxis.set_major_locator(MaxNLocator(prune='both', nbins=6))
         ax.set_xticklabels(dates[::int(len(dates)//30 )], rotation = 50, horizontalalignment="right")
-    
-        plt.imshow(self.data[:, 240:370].transpose(), vmin = self.data.min(), vmax = 1000, aspect="auto")
-        plt.colorbar()
-       
-        plt.title(f"ORFEES, {self.date_obs}")
-        plt.xlabel('Time[UT]')
-        plt.ylabel('Frequency [MHz]')
 
+        plt.imshow(range_pixels.T,origin='lower', vmin=range_pixels.min(), vmax=1000, aspect='auto', extent=[xmin, xmax, ymin, ymax])
+        plt.gca().set_ylim(ymax, ymin)
+        plt.colorbar()
         plt.show()
+
+
+
+    def plot_subplots(self, spec): 
+        """
+        Plot the spectrogram in subplots
+        
+        :param spec: The spectrogram
+        :return: The plot
+        """
+        
+
+        fig, axs = plt.subplots(2, 2, figsize=(15, 10))
+        axs[0, 0].imshow(self.data.T,vmin=100, vmax=1000, aspect="auto")
+        axs[0, 0].set_title("Orfees")
+        axs[1, 0].imshow(spec.data[::-1], aspect="auto")
+        axs[1, 0].set_title("eCallisto_BIR")
+        axs[0, 1].plot(self.data[50])
+        axs[1, 1].plot(spec.data[50])
+
+
+
+    def plot_subplots_with_range(self, spec):
+        """
+        Plot the spectrogram in subplots with a range of frequencies
+        
+        :param spec: The spectrogram
+        :return: The plot
+        """
+
+        min_freq = spec.freq_axis.min()
+        max_freq= spec.freq_axis.max()
+        min_time = spec.time_axis.min()
+        max_time = spec.time_axis.max()
+
+        mask = (self.freq_axis > min_freq) & (self.freq_axis < max_freq)
+        range_freq = self.freq_axis[mask]
+
+        dates = self.convert_ms_to_date()
+        range_pixels = self.data[:, mask]
+        fig, ax = plt.subplots(2, 1, figsize=(10, 9))
+
+        xmin = min(self.time_axis)
+        xmax = max(self.time_axis)
+        ymin = min(range_freq)
+        ymax = max(range_freq)
+
+        
+        ax[0].imshow(range_pixels.T,origin='lower', vmax=1000, aspect='auto', extent=[xmin, xmax, ymin, ymax])
+        ax[0].set_ylim(ymax, ymin)
+        ax[0].set_title("Orfees")
+        ax[1].imshow(spec.data[::-1], origin='lower', aspect='auto', extent=[min_time, max_time, min_freq, max_freq])
+        ax[1].set_ylim(max_freq, min_freq)
+        ax[1].set_title("eCallisto_BIR")
