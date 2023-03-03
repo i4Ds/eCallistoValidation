@@ -2,16 +2,17 @@ import numpy as np
 from astropy.io import fits
 import datetime 
 import matplotlib.pyplot as plt
-# import sys
-# sys.path.append('../radiospectra2')
-# from radiospectra.sources import CallistoSpectrogram
+import sys
+sys.path.append('../radiospectra2')
+from radiospectra.sources import CallistoSpectrogram
 from matplotlib.ticker import MaxNLocator
 import cv2
+from scipy import signal
 
 print("the Orfees methods are imported....")
 
 
-class OrfeesSpectrogram():
+class OrfeesSpectrogram(CallistoSpectrogram):
     """
     Class to read Orfees data files and plot the data
     
@@ -97,7 +98,7 @@ class OrfeesSpectrogram():
         data = np.concatenate([data_SI_B1,data_SI_B2,data_SI_B3,data_SI_B4,data_SI_B5],axis=1)
 
         return {
-            "data": data,  #[:, 240:370],
+            "data": data.T,
             "time_axis": time_axis,
             "freq_axis": freq_axis,
             "date_obs": date_obs,
@@ -146,6 +147,21 @@ class OrfeesSpectrogram():
         return self.data[start_index:end_index+1]
     
 
+    def range_pix(self, spce):
+        """
+        Return the pixels in the range of the given spectrogram
+
+        :param spce: The spectrogram
+        :return: The pixels in the range of the given spectrogram
+        """
+
+        min_freq = spce.freq_axis.min()
+        max_freq = spce.freq_axis.max()
+        mask = (self.freq_axis > min_freq) & (self.freq_axis < max_freq)
+        range_freq = self.freq_axis[mask]
+        range_pixels = self.data[mask, :]
+        return range_pixels, min_freq, max_freq, range_freq
+
     
 
     def peek(self, start_time=None, end_time=None):
@@ -175,7 +191,7 @@ class OrfeesSpectrogram():
             ymin = min(self.freq_axis)
             ymax = max(self.freq_axis)
             
-            plt.imshow(data.T, vmin=data.min(), origin='lower', vmax=1000, aspect='auto', extent=[xmin, xmax, ymin, ymax])
+            plt.imshow(data, vmin=data.min(), origin='lower', vmax=1000, aspect='auto', extent=[xmin, xmax, ymin, ymax])
             plt.colorbar()
             # ax.get_xlim(xmin, xmax)
             plt.gca().set_ylim(ymax, ymin)
@@ -222,54 +238,39 @@ class OrfeesSpectrogram():
 
 
 
-    def plot_subplots(self, spec): 
-        """
-        Plot the spectrogram in subplots
-        
-        :param spec: The spectrogram
-        :return: The plot
-        """
-        
+    def plot_subplots(self, spec, dates):
+        _data, min_freq, max_freq, range = self.range_pix(spec)
+        filtered_data = signal.medfilt2d(_data, 3)
+
+        orfees_min = min(range)
+        orfees_max = max(range)
+
+        plt.rcParams["figure.autolayout"] = True
 
         fig, axs = plt.subplots(2, 2, figsize=(15, 10))
-        axs[0, 0].imshow(self.data.T,vmin=100, vmax=1000, aspect="auto")
+
+        # Set the same major locator and tick labels for both time axes
+        axs[0, 0].xaxis.set_major_locator(MaxNLocator(prune='both', nbins=6))
+        axs[0, 0].set_xticklabels(dates[::int(len(dates)//30)], rotation=50, horizontalalignment="right")
+
+        axs[0, 1].xaxis.set_major_locator(MaxNLocator(prune='both', nbins=6))
+        axs[0, 1].set_xticklabels(dates[::int(len(dates)//30)], rotation=50, horizontalalignment="right")
+
+        axs[0, 0].imshow(filtered_data, vmin=100, vmax=1000, aspect="auto")
         axs[0, 0].set_title("Orfees")
+        axs[0, 0].set_ylim(orfees_max, orfees_min)
+        axs[0, 0].set_xlabel('Time[UT]')
+        axs[0, 0].set_ylabel('Frequency [MHz]')
+
         axs[1, 0].imshow(spec.data[::-1], aspect="auto")
         axs[1, 0].set_title("eCallisto_BIR")
-        axs[0, 1].plot(self.data[50])
-        axs[1, 1].plot(spec.data[50])
+        axs[1, 0].set_xlabel('Time[UT]')
+        axs[1, 0].set_ylabel('Frequency [MHz]')
+
+        axs[0, 1].plot(filtered_data.sum(axis=0))
+        axs[1, 1].plot(spec.data.sum(axis=0))
+
+        return fig, axs
 
 
 
-    def plot_subplots_with_range(self, spec):
-        """
-        Plot the spectrogram in subplots with a range of frequencies
-        
-        :param spec: The spectrogram
-        :return: The plot
-        """
-
-        min_freq = spec.freq_axis.min()
-        max_freq= spec.freq_axis.max()
-        min_time = spec.time_axis.min()
-        max_time = spec.time_axis.max()
-
-        mask = (self.freq_axis > min_freq) & (self.freq_axis < max_freq)
-        range_freq = self.freq_axis[mask]
-
-        dates = self.convert_ms_to_date()
-        range_pixels = self.data[:, mask]
-        fig, ax = plt.subplots(2, 1, figsize=(10, 9))
-
-        xmin = min(self.time_axis)
-        xmax = max(self.time_axis)
-        ymin = min(range_freq)
-        ymax = max(range_freq)
-
-        
-        ax[0].imshow(range_pixels.T,origin='lower', vmax=1000, aspect='auto', extent=[xmin, xmax, ymin, ymax])
-        ax[0].set_ylim(ymax, ymin)
-        ax[0].set_title("Orfees")
-        ax[1].imshow(spec.data[::-1], origin='lower', aspect='auto', extent=[min_time, max_time, min_freq, max_freq])
-        ax[1].set_ylim(max_freq, min_freq)
-        ax[1].set_title("eCallisto_BIR")
