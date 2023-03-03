@@ -48,7 +48,7 @@ class Rating:
         Get all instruments from the database
         :return: The instruments
         """
-        sql_query_instruments = f"SELECT path, snr, std, lower(observation_times) AS start_time, upper(observation_times) AS end_time FROM test WHERE observation_times && tsrange('{start_time}', '{end_time}') AND snr IS NOT NULL ORDER BY snr DESC;"
+        sql_query_instruments = f"SELECT path, snr, std, lower(observation_times) AS start_time, upper(observation_times) AS end_time FROM fits WHERE observation_times && tsrange('{start_time}', '{end_time}') AND snr IS NOT NULL ORDER BY snr DESC;"
 
         cursor = self.database.cursor( cursor_factory=psycopg2.extras.DictCursor )
         cursor.execute( sql_query_instruments )
