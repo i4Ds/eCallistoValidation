@@ -111,10 +111,15 @@ How to use it?
 To use the Rating system, you first need to import it into your Python script:
 
 ```python
-from eCallistoValidation/validation/rating_stars import Rating
+from eCallistoValidation/validation/rating_system/rating import *
 # create an instance of the Rating class and call its rate_stations method, passing in a start and end time as arguments. For example:
-rating = Rating()
-df = rating.rate_stations('2022-02-10 08:00:00', '2022-02-10 18:00:00')
+# 1) Run the rating.py script.
+# 2) Enter the start time and end time as following:
+start_time = input( "Enter start time (YYYY-MM-DD HH:MM:SS): " )
+end_time = input( "Enter end time (YYYY-MM-DD HH:MM:SS): " )
+
+rating = Rating( start_time, end_time )
+df = rating.rate_stations()
 print(df)
 ```
 
