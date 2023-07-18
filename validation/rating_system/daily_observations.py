@@ -46,9 +46,9 @@ class DailyObservation:
         self.start_date = start_date
         self.end_date = end_date
         self.station_name = station_name
-        self.rows = self._get_all_instruments()
+        self.rows = self.get_instruments_by_station( start_date, end_date, station_name)
         self.data = self._process_stations()
-        self.duration_by_station = self.calculate_total_duration()
+        #self.duration_by_station = self.calculate_total_duration()
 
     @staticmethod
     def _get_db():
@@ -88,6 +88,43 @@ class DailyObservation:
 
         return instruments
 
+
+    @staticmethod
+    def get_instruments_by_station(start_date, end_date, station_name):
+        """
+        Retrieves instrument data from the database for the specified station.
+
+        Parameters:
+            start_date (str): The start date of the observation range in the format '%Y-%m-%d %H:%M:%S'.
+            end_date (str): The end date of the observation range in the format '%Y-%m-%d %H:%M:%S'.
+            station_name (str): The name of the station to filter the observation data.
+
+        Returns:
+            list: List of instrument data.
+        """
+        database = psycopg2.connect(
+            host=ecallisto_config.DB_HOST,
+            user=ecallisto_config.DB_USER,
+            database=ecallisto_config.DB_DATABASE,
+            port=ecallisto_config.DB_PORT,
+            password=ecallisto_config.DB_PASSWORD
+        )
+        sql_query_instruments = """
+        SELECT *, lower(observation_times) AS start_date, upper(observation_times) AS end_date
+        FROM test
+        WHERE observation_times && tsrange(%s, %s) AND snr IS NOT NULL
+            AND path LIKE %s
+        ORDER BY snr DESC;
+        """
+
+        station_path = f"%/{station_name}_%"
+
+        with database.cursor() as cursor:
+            cursor.execute(sql_query_instruments, (start_date, end_date, station_path))
+            instruments = cursor.fetchall()
+
+        return instruments
+
     @staticmethod
     def convert_to_stars(score):
         ranking = [1.0, 2.0, 3.0, 4.0, 5.0]
@@ -118,7 +155,8 @@ class DailyObservation:
         sunset = sun_times['sunset'].strftime('%H:%M:%S')
         return sunrise, sunset
 
-    def extract_station_name(self, file_path):
+    @staticmethod
+    def extract_station_name(file_path):
         """
         Extracts the station name from the file path.
 
@@ -170,8 +208,8 @@ class DailyObservation:
                 obs_date = datetime.strptime(f"{date_obs} {time_obs}", '%Y/%m/%d %H:%M:%S.%f')
 
                 # Check if the observation date matches the current date and station name matches
-                if obs_date.date() != current_date.date() or station_name != self.station_name:
-                #if obs_date.date() != current_date.date():
+               # if obs_date.date() != current_date.date() or station_name != self.station_name:
+                if obs_date.date() != current_date.date():
                     continue
 
                 sunrise, sunset = self._calculate_sunrise_sunset(latitude, longitude, obs_date)
@@ -256,8 +294,8 @@ class DailyObservation:
 
 
 start_date = '2022-03-08 14:30:03'
-end_date = '2022-03-09 14:30:03'
-station_name = 'MRT3_02'
+end_date = '2022-03-11 14:30:03'
+station_name = 'MRT3'
 
 
 #daily_observation = DailyObservation(start_date, end_date, station_name)
