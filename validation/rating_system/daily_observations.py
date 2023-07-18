@@ -1,7 +1,10 @@
+import re
 from datetime import datetime
 import psycopg2
 from astral import Observer
 from astral.sun import sun
+from matplotlib import pyplot as plt
+
 from radiospectra.sources import CallistoSpectrogram
 import pandas as pd
 import numpy as np
@@ -115,6 +118,25 @@ class DailyObservation:
         sunset = sun_times['sunset'].strftime('%H:%M:%S')
         return sunrise, sunset
 
+    def extract_station_name(self, file_path):
+        """
+        Extracts the station name from the file path.
+
+        Parameters:
+            file_path (str): The file path containing the station name.
+
+        Returns:
+            str: The extracted station name.
+        """
+        match = re.search(r"/(\w+[-\w]*)_(\d{8})_\d{6}_(\d{2})\.fit\.gz$", file_path)
+        if match:
+            station_name = match.group(1)
+            station_number = match.group(3)
+            return f"{station_name}_{station_number}"
+
+        return ""
+
+
     def _process_stations(self):
         """
         Processes the observation data for each day within the specified date range.
@@ -137,7 +159,7 @@ class DailyObservation:
             # Process each row
             for row in self.rows:
                 spec = CallistoSpectrogram.read(ecallisto_config.DATA_PATH + row[6])
-                station_name = spec.header['INSTRUME']
+                station_name = self.extract_station_name(row[6])
                 latitude = spec.header["OBS_LAT"]
                 longitude = spec.header["OBS_LON"]
                 date_obs = spec.header['DATE-OBS']
@@ -149,6 +171,7 @@ class DailyObservation:
 
                 # Check if the observation date matches the current date and station name matches
                 if obs_date.date() != current_date.date() or station_name != self.station_name:
+                #if obs_date.date() != current_date.date():
                     continue
 
                 sunrise, sunset = self._calculate_sunrise_sunset(latitude, longitude, obs_date)
@@ -210,28 +233,35 @@ class DailyObservation:
         total_duration = self.data.groupby('Station')['Duration'].apply(
             lambda x: pd.to_timedelta(x).sum()
         ).reset_index()
-        total_duration['Duration'] = total_duration['Duration'].astype(str).str.extract(r'(\d+:\d+:\d+)')
+
+        #total_duration['Duration'] = total_duration['Duration'].apply(lambda duration: f"{duration.days} days, {duration}" if duration.days > 0else str(duration))
+        total_duration['Duration'] = total_duration['Duration'].apply(
+            lambda duration: f"{duration.days} days, {str(duration)[-8:]}"
+            if duration.days > 0
+            else str(duration)
+        )
 
         # Calculate the average SNR and std
         average_stats = self.data.groupby('Station').agg({'Avg-SNR': 'mean', 'Avg-STD': 'mean'}).reset_index()
 
         # Convert Avg-SNR and Avg-STD to stars
-        average_stats['snr_rating'] = self.convert_to_stars(average_stats['Avg-SNR'])
-        average_stats['std_rating'] = self.convert_to_stars(average_stats['Avg-STD'])
+        #average_stats['snr_rating'] = self.convert_to_stars(average_stats['Avg-SNR'])
+        #average_stats['std_rating'] = self.convert_to_stars(average_stats['Avg-STD'])
 
         # Merge total duration and average stats
         total_duration = total_duration.merge(average_stats, on='Station')
 
+
         return total_duration
 
-"""
+
 start_date = '2022-03-08 14:30:03'
 end_date = '2022-03-09 14:30:03'
-station_name = 'INDONESIA'
+station_name = 'MRT3_02'
 
-daily_observation = DailyObservation(start_date, end_date, station_name)
-print(daily_observation.data)
 
-total_duration_data = daily_observation.calculate_total_duration()
-print(total_duration_data)
-"""
+#daily_observation = DailyObservation(start_date, end_date, station_name)
+#print(daily_observation.data)
+
+#total_duration_data = daily_observation.calculate_total_duration()
+#print(total_duration_data)
