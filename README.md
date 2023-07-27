@@ -11,17 +11,23 @@ This is a quick overview of the folder structure:
 - docs
 - radiospectra2:
 - validation:
+  - Bursts:
+    - sync.py
+    - up_to_date.py
+    - upload_to_ecallisto.py
+
   - Orfees:
     - eca_files
     - Orfees_files
     - Orfees_read.py
     - Test_orfees.ipynb
-  - rating_stars:
+  - rating_system:
     - config.py
-    - convert_to_stars
+    - daily_observation.py
     - rating.py
-    - test_rating.py
-    - final_rate.xlsx
+    - rating_pro_file.ipynb
+    - test_data.ipynb
+    - testing.ipynb
   - source:
     - validation.py
     - update.py
