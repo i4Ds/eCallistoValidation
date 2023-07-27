@@ -46,9 +46,9 @@ class DailyObservation:
         self.start_date = start_date
         self.end_date = end_date
         self.station_name = station_name
-        self.rows = self.get_instruments_by_station( start_date, end_date, station_name)
+        self.rows = self.get_files_by_station(start_date, end_date, station_name)
         self.data = self._process_stations()
-        #self.duration_by_station = self.calculate_total_duration()
+        self.duration_by_station = self.calculate_total_duration()
 
     @staticmethod
     def _get_db():
@@ -88,9 +88,8 @@ class DailyObservation:
 
         return instruments
 
-
     @staticmethod
-    def get_instruments_by_station(start_date, end_date, station_name):
+    def get_files_by_station(start_date, end_date, station_name):
         """
         Retrieves instrument data from the database for the specified station.
 
@@ -174,7 +173,6 @@ class DailyObservation:
 
         return ""
 
-
     def _process_stations(self):
         """
         Processes the observation data for each day within the specified date range.
@@ -208,7 +206,7 @@ class DailyObservation:
                 obs_date = datetime.strptime(f"{date_obs} {time_obs}", '%Y/%m/%d %H:%M:%S.%f')
 
                 # Check if the observation date matches the current date and station name matches
-               # if obs_date.date() != current_date.date() or station_name != self.station_name:
+                # if obs_date.date() != current_date.date() or station_name != self.station_name:
                 if obs_date.date() != current_date.date():
                     continue
 
@@ -272,7 +270,8 @@ class DailyObservation:
             lambda x: pd.to_timedelta(x).sum()
         ).reset_index()
 
-        #total_duration['Duration'] = total_duration['Duration'].apply(lambda duration: f"{duration.days} days, {duration}" if duration.days > 0else str(duration))
+        # total_duration['Duration'] = total_duration['Duration'].apply(lambda duration: f"{duration.days} days,
+        # {duration}" if duration.days > 0else str(duration))
         total_duration['Duration'] = total_duration['Duration'].apply(
             lambda duration: f"{duration.days} days, {str(duration)[-8:]}"
             if duration.days > 0
@@ -283,12 +282,11 @@ class DailyObservation:
         average_stats = self.data.groupby('Station').agg({'Avg-SNR': 'mean', 'Avg-STD': 'mean'}).reset_index()
 
         # Convert Avg-SNR and Avg-STD to stars
-        #average_stats['snr_rating'] = self.convert_to_stars(average_stats['Avg-SNR'])
-        #average_stats['std_rating'] = self.convert_to_stars(average_stats['Avg-STD'])
+        # average_stats['snr_rating'] = self.convert_to_stars(average_stats['Avg-SNR'])
+        # average_stats['std_rating'] = self.convert_to_stars(average_stats['Avg-STD'])
 
         # Merge total duration and average stats
         total_duration = total_duration.merge(average_stats, on='Station')
-
 
         return total_duration
 
@@ -297,9 +295,8 @@ start_date = '2022-03-08 14:30:03'
 end_date = '2022-03-11 14:30:03'
 station_name = 'MRT3'
 
+# daily_observation = DailyObservation(start_date, end_date, station_name)
+# print(daily_observation.data)
 
-#daily_observation = DailyObservation(start_date, end_date, station_name)
-#print(daily_observation.data)
-
-#total_duration_data = daily_observation.calculate_total_duration()
-#print(total_duration_data)
+# total_duration_data = daily_observation.calculate_total_duration()
+# print(total_duration_data)
