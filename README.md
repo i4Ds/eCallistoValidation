@@ -116,8 +116,15 @@ The Rating System provides a way to rate stations based on the signal-to-noise r
 How to use it?
 To use the Rating system, you first need to import it into your Python script:
 
+install the requirements for rating System:
 ```python
-from eCallistoValidation/validation/rating_system/rating import *
+pip3 install -r rating_requirements.txt
+```
+
+Example: 
+
+```python
+from eCallistoValidation/validation/rating_system/rating import Rating
 # create an instance of the Rating class and call its rate_stations method, passing in a start and end time as arguments. For example:
 # 1) Run the rating.py script.
 # 2) Enter the start time and end time as following:
