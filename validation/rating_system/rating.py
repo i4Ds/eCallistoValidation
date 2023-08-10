@@ -1,13 +1,11 @@
 import os
+import re
 import sys
-
 import numpy as np
 import pandas as pd
 import psycopg2
 import psycopg2.extras
-
 import config as ecallisto_config
-
 sys.path.append(os.path.join(os.path.dirname(__file__), "../..", "radiospectra2"))
 
 
@@ -65,6 +63,25 @@ class Rating:
 
         return rating
 
+    @staticmethod
+    def extract_station_name(file_path):
+        """
+        Extracts the station name from the file path.
+
+        Parameters:
+            file_path (str): The file path containing the station name.
+
+        Returns:
+            str: The extracted station name.
+        """
+        match = re.search(r"/(\w+[-\w]*)_(\d{8})_\d{6}_(\d{2})\.fit\.gz$", file_path)
+        if match:
+            station_name = match.group(1)
+            station_number = match.group(3)
+            return f"{station_name}_{station_number}"
+
+        return ""
+
     def rate_stations(self):
         """
         Rate the stations
@@ -76,7 +93,7 @@ class Rating:
 
         df = df[df['snr'].notna()]
 
-        df["station_name"] = df["path"].str.split('[/|_]', expand=True)[4]
+        df["station_name"] = df["path"].apply(self.extract_station_name)
 
         df["snr_rating"] = self.convert_to_stars(df["snr"])
         df["std_rating"] = self.convert_to_stars(df["std"])
