@@ -58,35 +58,13 @@ class DailyObservation:
         Returns:
             psycopg2.extensions.connection: The database connection object.
         """
-        database = psycopg2.connect(
+        return psycopg2.connect(
             host=ecallisto_config.DB_HOST,
             user=ecallisto_config.DB_USER,
             database=ecallisto_config.DB_DATABASE,
             port=ecallisto_config.DB_PORT,
             password=ecallisto_config.DB_PASSWORD
         )
-        return database
-
-    def _get_all_instruments(self):
-        """
-        Retrieves all instrument data from the database.
-
-        Returns:
-            list: List of instrument data.
-        """
-        database = self._get_db()
-        sql_query_instruments = """
-        SELECT *, lower(observation_times) AS start_date, upper(observation_times) AS end_date 
-        FROM test 
-        WHERE observation_times && tsrange(%s, %s) AND snr IS NOT NULL 
-        ORDER BY snr DESC;
-        """
-
-        with database.cursor() as cursor:
-            cursor.execute(sql_query_instruments, (self.start_date, self.end_date))
-            instruments = cursor.fetchall()
-
-        return instruments
 
     @staticmethod
     def get_files_by_station(start_date, end_date, station_name):
@@ -101,13 +79,7 @@ class DailyObservation:
         Returns:
             list: List of instrument data.
         """
-        database = psycopg2.connect(
-            host=ecallisto_config.DB_HOST,
-            user=ecallisto_config.DB_USER,
-            database=ecallisto_config.DB_DATABASE,
-            port=ecallisto_config.DB_PORT,
-            password=ecallisto_config.DB_PASSWORD
-        )
+        database = DailyObservation._get_db()
         sql_query_instruments = """
         SELECT *, lower(observation_times) AS start_date, upper(observation_times) AS end_date
         FROM test
@@ -115,25 +87,18 @@ class DailyObservation:
             AND path LIKE %s
         ORDER BY snr DESC;
         """
-
         station_path = f"%/{station_name}_%"
-
         with database.cursor() as cursor:
             cursor.execute(sql_query_instruments, (start_date, end_date, station_path))
             instruments = cursor.fetchall()
-
         return instruments
 
     @staticmethod
     def convert_to_stars(score):
         ranking = [1.0, 2.0, 3.0, 4.0, 5.0]
-
-        # Compute the percentile of the data
         percent = np.percentile(score, [0, 25, 50, 75, 100])
         rating = np.interp(score, percent, ranking)
-        rating = np.round(rating, 2)
-
-        return rating
+        return np.round(rating, 2)
 
     @staticmethod
     def _calculate_sunrise_sunset(latitude, longitude, date):
@@ -149,10 +114,12 @@ class DailyObservation:
             tuple: A tuple containing the sunrise and sunset times in the format '%Y-%m-%d %H:%M:%S'.
         """
         observer = Observer(latitude=latitude, longitude=longitude)
-        sun_times = sun(observer, date=date)
-        sunrise = sun_times['sunrise'].strftime('%H:%M:%S')
-        sunset = sun_times['sunset'].strftime('%H:%M:%S')
-        return sunrise, sunset
+        try:
+            sun_times = sun(observer, date=date)
+            return sun_times['sunrise'].strftime('%H:%M:%S'), sun_times['sunset'].strftime('%H:%M:%S')
+        except ValueError as e:
+            print(f"Error calculating sunrise/sunset: {e}")
+            return None, None
 
     @staticmethod
     def extract_station_name(file_path):
@@ -167,10 +134,7 @@ class DailyObservation:
         """
         match = re.search(r"/(\w+[-\w]*)_(\d{8})_\d{6}_(\d{2})\.fit\.gz$", file_path)
         if match:
-            station_name = match.group(1)
-            station_number = match.group(3)
-            return f"{station_name}_{station_number}"
-
+            return f"{match.group(1)}_{match.group(3)}"
         return ""
 
     def _process_stations(self):
@@ -182,8 +146,6 @@ class DailyObservation:
         """
         data = []
         pd.set_option('display.max_columns', None)
-
-        # Process each day within the time range
         current_date = pd.Timestamp(self.start_date)
         end_date = pd.Timestamp(self.end_date)
 
@@ -192,7 +154,6 @@ class DailyObservation:
             snr_values = []
             std_values = []
 
-            # Process each row
             for row in self.rows:
                 spec = CallistoSpectrogram.read(ecallisto_config.DATA_PATH + row[6])
                 station_name = self.extract_station_name(row[6])
@@ -202,16 +163,12 @@ class DailyObservation:
                 time_obs = spec.header['TIME-OBS']
                 std = row[4]
                 snr = row[5]
-
                 obs_date = datetime.strptime(f"{date_obs} {time_obs}", '%Y/%m/%d %H:%M:%S.%f')
 
-                # Check if the observation date matches the current date and station name matches
-                # if obs_date.date() != current_date.date() or station_name != self.station_name:
                 if obs_date.date() != current_date.date():
                     continue
 
                 sunrise, sunset = self._calculate_sunrise_sunset(latitude, longitude, obs_date)
-
                 rows_to_append.append({
                     'Station': station_name,
                     'Date': obs_date.strftime('%Y-%m-%d'),
@@ -226,32 +183,25 @@ class DailyObservation:
                 snr_values.append(snr)
                 std_values.append(std)
 
-            # Determine the minimum Obs_start and maximum Obs_end for the current date
             if rows_to_append:
                 min_obs_start = min(rows_to_append, key=lambda x: x['Obs_start'])['Obs_start']
                 max_obs_end = max(rows_to_append, key=lambda x: x['Obs_end'])['Obs_end']
-                duration = max_obs_end - min_obs_start
-                duration_str = str(duration).split('.')[0]  # Remove microseconds
-                duration = datetime.strptime(duration_str, '%H:%M:%S')
+                duration = (max_obs_end - min_obs_start).total_seconds()
+                avg_snr = np.mean(snr_values)
+                avg_std = np.mean(std_values)
 
-                avg_snr = sum(snr_values) / len(snr_values)
-                avg_std = sum(std_values) / len(std_values)
-
-                row_to_append = {
+                data.append({
                     'Station': rows_to_append[0]['Station'],
                     'Sunrise': rows_to_append[0]['Sunrise'],
                     'Sunset': rows_to_append[0]['Sunset'],
                     'Obs_start': min_obs_start,
                     'Obs_end': max_obs_end,
-                    'Duration': duration.strftime('%H:%M:%S'),
+                    'Duration': str(pd.to_timedelta(duration, unit='s')).split('.')[0],
                     'Avg-SNR': avg_snr,
                     'Avg-STD': avg_std
-                }
 
-                # Append a single row for the current date with the combined information
-                data.append(row_to_append)
+                })
 
-            # Move to the next day
             current_date += pd.DateOffset(days=1)
 
         if not data:
@@ -266,37 +216,20 @@ class DailyObservation:
         Returns:
             pandas.DataFrame: Total duration and average SNR and std data by station.
         """
-        total_duration = self.data.groupby('Station')['Duration'].apply(
-            lambda x: pd.to_timedelta(x).sum()
-        ).reset_index()
-
-        # total_duration['Duration'] = total_duration['Duration'].apply(lambda duration: f"{duration.days} days,
-        # {duration}" if duration.days > 0else str(duration))
+        self.data['Duration'] = pd.to_timedelta(self.data['Duration'])
+        total_duration = self.data.groupby('Station')['Duration'].sum().reset_index()
         total_duration['Duration'] = total_duration['Duration'].apply(
-            lambda duration: f"{duration.days} days, {str(duration)[-8:]}"
-            if duration.days > 0
-            else str(duration)
+            lambda duration: f"{duration.days} days, {str(duration)[-8:]}" if duration.days > 0 else str(duration)
         )
 
-        # Calculate the average SNR and std
         average_stats = self.data.groupby('Station').agg({'Avg-SNR': 'mean', 'Avg-STD': 'mean'}).reset_index()
-
-        # Convert Avg-SNR and Avg-STD to stars
-        # average_stats['snr_rating'] = self.convert_to_stars(average_stats['Avg-SNR'])
-        # average_stats['std_rating'] = self.convert_to_stars(average_stats['Avg-STD'])
-
-        # Merge total duration and average stats
         total_duration = total_duration.merge(average_stats, on='Station')
-
         return total_duration
 
 
-start_date = '2022-03-08 14:30:03'
-end_date = '2022-03-11 14:30:03'
-station_name = 'MRT3'
-
+# start_date = '2022-03-08 14:30:03'
+# end_date = '2022-03-11 14:30:03'
+# station_name = 'MRT3'
+#
 # daily_observation = DailyObservation(start_date, end_date, station_name)
 # print(daily_observation.data)
-
-# total_duration_data = daily_observation.calculate_total_duration()
-# print(total_duration_data)
