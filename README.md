@@ -2,13 +2,18 @@
 
 The e-Callisto Validation project aims to evaluate the performance of the actual e-Callisto product. The project consists of two independent validation campaigns. The first campaign is focused on assessing the data quality, while the second is focused on each station's availability and cross-comparison level. The e-Callisto network, which consists of multiple CALLISTO spectrometers deployed worldwide, can continuously observe the solar radio spectrum 24/7. The e-Callisto provides radio spectrograms, which are time series of radio flux measurements at a relatively high number of radio frequencies, and the purpose of the validation campaign is to determine the intended cross-comparison within the e-Callisto network and test cases. The project aims to validate the e-Callisto product's ability to observe different types of solar radio bursts, such as type II, type III, or type IV, and to classify bursts and perform long-term trend analyses. The two main use cases for the validation of the product are the determination of the speed of accelerated electron beams, as they appear in Type III bursts, and the provision of spectrograms as complementary information for analysis of events observed by instruments on spacecraft that look at the same events, but in different wavelengths.
 ## Validation Plan: 
-[Check here](docs/Validation_plan.pdf)
+[Check here](docs/SSA-SWE-P3SWEXXV.2-RP-4001-i1r1+ValidationCampaignReport_JP2_AC.pdf)
 
 ## Data Source:
 - The entire Data: [Here](http://soleil80.cs.technik.fhnw.ch/solarradio/data/2002-20yy_Callisto/)
 
 This is a quick overview of the folder structure:
-
+- Calibrarion_with_Orfees:
+  - eca_files
+  - orfees_files
+  - Orfees_read.py
+  - calibration.ipynb
+  - cross_correlation.ipynb
 - docs
 - radiospectra2:
 - validation:
@@ -16,12 +21,6 @@ This is a quick overview of the folder structure:
     - sync.py
     - up_to_date.py
     - upload_to_ecallisto.py
-
-  - Orfees:
-    - eca_files
-    - Orfees_files
-    - Orfees_read.py
-    - Test_orfees.ipynb
   - rating_system:
     - config.py
     - daily_observation.py
@@ -40,6 +39,14 @@ This is a quick overview of the folder structure:
 
 Here is a brief description for each file:
 
+
+### Calibrarion_with_Orfees:
+   - eca_files: Contains the eCallisto files for tests
+  - orfees_files: Contains the Orfees files for tests
+  - Orfees_read.py
+  - calibration.ipynb
+  - cross_correlation.ipynb
+
 ### Sphinx documentation:
 
 Contains the documentation of the project. [eCallistoValidation Dokumentation](https://i4ds.github.io/eCallistoValidation/)
@@ -49,8 +56,6 @@ Contains the documentation of the project. [eCallistoValidation Dokumentation](h
 - radiospectra2: submodule of i4ds radiospectra project (https://github.com/i4Ds/radiospectra).
 
 # validation:
-
-- Orfees: Contains all Orfees files and scripts.
 - rating_stars: Contains the scripts for the Rating system.
 - source: Contains all files we need for validation.
 
@@ -67,7 +72,7 @@ This class reads data from Orfees spectrograms and allows the user to manipulate
 To read data from an Orfees spectrogram, use the read_orfees() method. The method takes a filename as a parameter and returns a dictionary containing the spectrogram data, as well as various other metadata. For example:
 
 ```python
-from validation.Orfees.Orfees_read import *
+from Calibrarion_with_Orfees.Orfees_read import *
 
 orfees = OrfeesSpectrogram('path to orfees files')
 ```
