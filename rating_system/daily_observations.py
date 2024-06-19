@@ -3,9 +3,8 @@ from datetime import datetime
 import psycopg2
 from astral import Observer
 from astral.sun import sun
-from matplotlib import pyplot as plt
 
-from radiospectra.sources import CallistoSpectrogram
+from rating_system.radiospectra.sources import CallistoSpectrogram
 import pandas as pd
 import numpy as np
 import config as ecallisto_config
